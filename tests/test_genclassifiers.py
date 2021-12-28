@@ -4,7 +4,7 @@ from pathlib import Path
 
 # from beetools.beeutils import rm_tree
 from beetools.beearchiver import Archiver
-from packageit import GenClassifiers
+from packageit.packageit import GenClassifiers
 
 # from genclassifiers_conftest import setup_env, make_ini
 

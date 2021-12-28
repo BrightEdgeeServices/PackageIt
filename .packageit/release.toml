@@ -1,3 +1,7 @@
+[3.1.4]
+Title = "Version 3.1.4"
+Description = [ "Destination project sources code fails to load", "To be able to read the project description and title, the source code must be loaded to access the dunder methods. PackageIt assume a module name with he same name as the project. This is not always the case and it causes an exception. Handle the exception to rather load temporary values rather than crashing out.",]
+
 [3.1.3]
 Title = "Version 3.1.3"
 Description = [ "Version 3.1.3", "Creation of the project", "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]

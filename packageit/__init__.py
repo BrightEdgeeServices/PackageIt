@@ -1,3 +1,1 @@
-from .packageit import *
-from .PackageItException import *
-from .ExceptionCodes import *
+from packageit import packageit

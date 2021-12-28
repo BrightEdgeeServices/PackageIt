@@ -104,8 +104,9 @@ from github import Github, GithubException as GH_Except
 import json
 from releaselogit import ReleaseLogIt
 import semverit
-from .PackageItException import OldVersionException
-from .ExceptionCodes import _status_codes
+
+# from packageit.PackageItException import OldVersionException
+# from .ExceptionCodes import _status_codes
 
 _PROJ_DESC = __doc__.split("\n")[0]
 _PROJ_PATH = Path(__file__)
@@ -163,7 +164,7 @@ class PackageIt:
 
             self.packageit_ini_pth = p_ini_pth
             self.packageit_ini = configparserext.ConfigParserExt(
-                _PROJ_NAME, inline_comment_prefixes="#"
+                inline_comment_prefixes="#"
             )
             self.packageit_ini.read([self.packageit_ini_pth])
             self.packageit_dir = _PROJ_PATH.parents[1]
@@ -225,7 +226,7 @@ class PackageIt:
                 )
             ]
             self.project_ini = configparserext.ConfigParserExt(
-                _PROJ_NAME, inline_comment_prefixes="#"
+                inline_comment_prefixes="#"
             )
             self.project_install_apps = [
                 x[1]
@@ -1054,7 +1055,7 @@ class PackageIt:
                 self.project_setup_cfg_pth.parent.mkdir(parents=True, exist_ok=True)
                 self.project_setup_cfg_pth.touch()
         self.project_setup_cfg = configparserext.ConfigParserExt(
-            _PROJ_NAME, inline_comment_prefixes="#"
+            inline_comment_prefixes="#"
         )
         self.project_setup_cfg.read([self.project_setup_cfg_pth])
 
@@ -1426,7 +1427,7 @@ class PackageIt:
             if self.project_new:
                 commit_msg = "PackageIt initial project creation."
             else:
-                commit_msg = "Package automated updates."
+                commit_msg = "PackageIt automated update."
             # include_lst = self.add_repo_files() + self.add_forced_repo_files()
             print(msg_milestone("""Commit to Git - {}""".format(commit_msg)))
             include_lst = self.add_repo_files() + self.add_forced_repo_files()
@@ -1824,7 +1825,10 @@ class PackageIt:
         spec = importlib.util.spec_from_file_location(p_project_name, p_project_pth)
         self.project_code = importlib.util.module_from_spec(spec)
         sys.modules[p_project_name] = self.project_code
-        spec.loader.exec_module(self.project_code)
+        try:
+            spec.loader.exec_module(self.project_code)
+        except FileNotFoundError:
+            print(msg_error('Could not load the source code.'))
         return self.project_code
 
     def make_project_specific_ini(self) -> None:
@@ -2229,9 +2233,7 @@ class GenClassifiers:
             self.logger = logging.getLogger(self.log_name)
         self.contents = []
         self.dev_status = None
-        self.ini = configparserext.ConfigParserExt(
-            _PROJ_NAME, inline_comment_prefixes="#"
-        )
+        self.ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         self.ini_pth = p_ini_pth
         self.intended_audience = None
         self.license = None
@@ -2634,6 +2636,51 @@ def init_logger():
     logger.addHandler(console_handle)
 
 
+class PackageItException(Exception):
+    """
+    Error handling in PackageIt is done with exceptions. This class is the base of all exceptions raised by PackageIt
+    Some other types of exceptions might be raised by underlying libraries.
+    """
+
+    def __init__(self, status, data):
+        super().__init__()
+        self.__code = status[0]
+        self.__data = data
+        self.__title = status[1]
+        print(msg_error(f"{self.__code}:{self.__title}"))
+        print(msg_error("\n".join(self.__data)))
+
+    @property
+    def code(self):
+        """
+        The (decoded) data returned by the PackageIt API
+        """
+        return self.__code
+
+    @property
+    def data(self):
+        """
+        The (decoded) data returned by the PackageIt API
+        """
+        return self.__data
+
+    @property
+    def title(self):
+        """
+        The status returned by the PackageIt API
+        """
+        return self.__title
+
+    def __str__(self):
+        return f"{self.__code}: {self.__title}"
+
+
+class OldVersionException(PackageItException):
+    """
+    Exception raised if the PyPI version is later or equal to the intended GitHub/PackageIt/Release.
+    """
+
+
 def read_args():
     arg_parser = argparse.ArgumentParser(description="Get configuration parameters")
     arg_parser.add_argument(
@@ -2662,6 +2709,20 @@ def read_args():
     # project_name = args.project_name[0]
     # token_dir = Path(args.token_dir)
     return args.project_name[0], ini_path, args.arc_extern_dir, Path(args.token_dir)
+
+
+_status_codes = {
+    # Informational.
+    1000: (
+        1000,
+        "Placeholder",
+    ),
+    # Version.
+    1100: (
+        1100,
+        "No later version",
+    ),
+}
 
 
 if __name__ == "__main__":

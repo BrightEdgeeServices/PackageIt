@@ -5,10 +5,5 @@
 # packageit\pipp.ini and
 # D:\Dropbox\Projects\PackageIt\.packageit\packageit.ini
 #===================================================================
-beetools
-configparserext
-releaselogit
-requests
-semverit
 termcolor
-toml
+beetools

@@ -4,102 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b66277d1-6173-4658-96d6-657ec6022a25" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/feature.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/ci.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/pre-commit.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/release.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/PackageIt.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.packageit/packageit.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.readthedocs.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cleanup.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/make.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/requirements_docs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/Installation.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/api.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/conf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/conventions.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/examples.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/faq.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/Process Flow 01HdT.vsdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/Process Flow 02HdT.vsdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/Process Flow 03HdT.vsdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/ExceptionCodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/PackageItException.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/pimp.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/pimt.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/pipp.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/pipt.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageit/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pimp.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pimt.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pipp.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pipt.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements_test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/IC-Functional-Specifications-9178-WORD.dotx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/MANIFEST_template.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Sample-internet-copyright-notice.doc.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/__init__template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/conftest_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/git_pre-commit-config_template.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/github_wf_ci_template.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/github_wf_release_template.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/readthedocs_def_.readthedocs_template.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/readthedocs_def_newproject_template.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_api.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_conventions.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_examples.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_faq.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_github_bug.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_github_config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_github_feature.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_github_wf_pre-commit.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_installation.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_ApacheLicense20.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_BoostSoftwareLicense10.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_GNUAGPLv3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_GNUGPLv3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_GNULGPLv3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_MITLicense.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_MozillaPublicLicense20.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_lic_TheUnlicense.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_package.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_package.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_setup.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_test_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templ_test_package.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_genclassifiers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_genlicense.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_gensetuppy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_packageit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_rstbuilder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dummy.txt" beforeDir="false" />
+    <list default="true" id="c5c93a0c-d3ad-4f5f-a393-2ec5340c3276" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/PackageIt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PackageIt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/ExceptionCodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/PackageItException.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/pimp.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pimp.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_genclassifiers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_genclassifiers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,16 +28,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="22qEvkX8J2claeskacM5QPmUDtI" />
+  <component name="ProjectId" id="22rSrihCaJXlO8NmDEO5DRwFvDH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/packageit/packageit.py" />
     <property name="settings.editor.selected.configurable" value="advanced.settings" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -132,8 +51,50 @@
     <option name="myAttachToSubprocess" value="false" />
     <option name="mySupportQtDebugging" value="false" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_packageit.TestPackageIt.test_create_source_code_py_package_existing">
-    <configuration name="Python tests for test_packageit.TestPackageIt.test_create_source_code_py_package_existing" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.BEETools">
+    <configuration name="BEETools" type="PythonConfigurationType" factoryName="Python">
+      <module name="PackageIt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\venv\packageit_env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packageit/packageit.py" />
+      <option name="PARAMETERS" value="BEETools -c packageit\pimp.ini -t D:\Dropbox\Lib\SSHKeys" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PackageItSampleModule pypi" type="PythonConfigurationType" factoryName="Python">
+      <module name="PackageIt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\venv\packageit_env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packageit/packageit.py" />
+      <option name="PARAMETERS" value="PackageItSampleModule  -c packageit\pimp.ini -t D:\Dropbox\Lib\SSHKeys" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers__init__" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,11 +104,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_packageit.TestPackageIt.test_create_source_code_py_package_existing&quot;" />
+      <option name="_new_target" value="&quot;test_genclassifiers.TestGenClassifiers.test_genclassifiers__init__&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_packageit.TestPackageIt.test_make_project_specific_ini_module" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -157,11 +118,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_packageit.TestPackageIt.test_make_project_specific_ini_module&quot;" />
+      <option name="_new_target" value="&quot;test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_packageit.TestPackageIt.test_read_project_detail_specific" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_packageit.TestPackageIt" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -171,11 +132,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_packageit.TestPackageIt.test_read_project_detail_specific&quot;" />
+      <option name="_new_target" value="&quot;test_packageit.TestPackageIt&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_rstbuilder.TestRstBuilder.test_rstbuilder_add_toctree" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_packageit.TestPackageIt.test__init__" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -185,60 +146,63 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_rstbuilder.TestRstBuilder.test_rstbuilder_add_toctree&quot;" />
+      <option name="_new_target" value="&quot;test_packageit.TestPackageIt.test__init__&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_rstbuilder.TestRstBuilder.test_rstbuilder_insert_at" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="PackageIt" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_rstbuilder.TestRstBuilder.test_rstbuilder_insert_at&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Python.PackageItSampleModule pypi" />
+      <item itemvalue="Python.BEETools" />
+      <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers__init__" />
+      <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test__init__" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_create_source_code_py_package_existing" />
-        <item itemvalue="Python tests.Python tests for test_rstbuilder.TestRstBuilder.test_rstbuilder_insert_at" />
-        <item itemvalue="Python tests.Python tests for test_rstbuilder.TestRstBuilder.test_rstbuilder_add_toctree" />
-        <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_read_project_detail_specific" />
-        <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_make_project_specific_ini_module" />
+        <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini" />
+        <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers__init__" />
+        <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test__init__" />
+        <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b66277d1-6173-4658-96d6-657ec6022a25" name="Changes" comment="" />
-      <created>1640556950081</created>
+      <changelist id="c5c93a0c-d3ad-4f5f-a393-2ec5340c3276" name="Changes" comment="" />
+      <created>1640594413496</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1640556950081</updated>
+      <updated>1640594413496</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
-          <line>1242</line>
-          <option name="timeStamp" value="18" />
+          <line>2734</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
+          <line>2736</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="tests">
-        <watch expression="self.project_code" />
-        <watch expression="self.project_anchor_dir" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

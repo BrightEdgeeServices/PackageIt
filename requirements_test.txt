@@ -6,9 +6,9 @@
 # D:\Dropbox\Projects\PackageIt\.packageit\packageit.ini
 #===================================================================
 pip
+wheel
 beetools
 black
-build
 configparserext
 gitignore_parser
 gitpython
@@ -16,13 +16,9 @@ pre-commit
 pygithub
 pytest
 pytest-cov
-releaselogit
-requests
-semverit
 sphinx
 sphinx-autobuild
 sphinx-rtd-theme
 termcolor
-toml
 twine
-wheel
+build

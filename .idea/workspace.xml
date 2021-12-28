@@ -151,8 +151,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.PackageItSampleModule pypi" />
       <item itemvalue="Python.BEETools" />
+      <item itemvalue="Python.PackageItSampleModule pypi" />
       <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers__init__" />
       <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini" />
       <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt" />

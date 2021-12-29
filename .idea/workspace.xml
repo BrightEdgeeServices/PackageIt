@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5210fdc3-b6f6-4591-82ff-0c9d7260d752" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packageit/packageit.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/packageit.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/PackageIt.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/pipp.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pipp.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

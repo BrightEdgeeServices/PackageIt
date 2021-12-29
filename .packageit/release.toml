@@ -1,3 +1,7 @@
+[3.1.5]
+Title = "Version 3.1.5"
+Description = [ "Corrected some settings in the .ini files",]
+
 [3.1.4]
 Title = "Version 3.1.4"
 Description = [ "Destination project sources code fails to load", "To be able to read the project description and title, the source code must be loaded to access the dunder methods. PackageIt assume a module name with he same name as the project. This is not always the case and it causes an exception. Handle the exception to rather load temporary values rather than crashing out.",]

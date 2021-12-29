@@ -332,7 +332,7 @@ class EnvSetUp:
     def make_packageit_ini(self):
         """Make INI file for testing"""
         packageit_ini_pth = self.anchor_dir / "pimt.ini"
-        ini = configparserext.ConfigParserExt(self.project_name)
+        ini = configparserext.ConfigParserExt()
         ini["Classifiers"] = {
             "DevStatus": "Development Status :: 1 - Planning",
             "IntendedAudience002": "Intended Audience :: Developers",

@@ -743,8 +743,15 @@ class TestPackageIt:
             p_token_dir=env_setup.token_dir,
         )
         p_it.create_scaffolding()
+        p_it.create_setup_cfg().exists()
 
-        assert p_it.create_setup_cfg().exists()
+        assert p_it.project_setup_cfg.options('options') == [
+            'install_requires',
+            'setup_requires',
+            'tests_require',
+            'package_dir',
+            'packages',
+        ]
         pass
 
     def test_create_setup_cfg_package(self, setup_env_self_destruct):

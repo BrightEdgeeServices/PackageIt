@@ -1089,9 +1089,9 @@ class PackageIt:
             ],
             [
                 "tests_require",
-                "\n{}".format("\n".join([x[1] for x in self.project_import_prod])),
+                "\n{}".format("\n".join([x[1] for x in self.project_import_test])),
             ],
-            ["python_requires", self.project_python_requires],
+            # ["python_requires", self.project_python_requires],
         ]
         options_packages_find = []
         if self.project_type == "Module":
@@ -1829,6 +1829,7 @@ class PackageIt:
             spec.loader.exec_module(self.project_code)
         except FileNotFoundError:
             print(msg_error('Could not load the source code.'))
+            self.project_code = None
         return self.project_code
 
     def make_project_specific_ini(self) -> None:
@@ -1976,7 +1977,6 @@ class PackageIt:
                 ).contents
 
             if self.project_ini.has_option("Git", "Enable"):
-
                 self.project_git_enable = self.project_ini.getboolean("Git", "Enable")
             if self.project_ini.has_option("GitHub", "Enable"):
                 self.project_gh_enable = self.project_ini.getboolean("GitHub", "Enable")
@@ -2067,18 +2067,18 @@ class PackageIt:
             if self.project_ini.has_option("Detail", "Url"):
                 self.project_url = self.project_ini.get("Detail", "Url")
 
-            if self.project_ini.has_option("Venv", "Enable"):
-                self.project_venv_enable = self.project_ini.has_option("Venv", "Enable")
+            if self.project_ini.has_option("VEnv", "Enable"):
+                self.project_venv_enable = self.project_ini.has_option("VEnv", "Enable")
                 self.project_venv_root_dir = Path(
                     self.project_ini.get(
                         "VEnv", "{}VEnvAnchorDir".format(beeutils.get_os())
                     )
                 )
-                if self.project_ini.has_option("Venv", "ReinstallVenv"):
+                if self.project_ini.has_option("VEnv", "ReinstallVenv"):
                     self.project_venv_reinstall = self.project_ini.getboolean(
                         "VEnv", "ReinstallVenv"
                     )
-                if self.project_ini.has_option("Venv", "Upgrade"):
+                if self.project_ini.has_option("VEnv", "Upgrade"):
                     self.project_venv_upgrade = self.project_ini.getboolean(
                         "VEnv", "Upgrade"
                     )
@@ -2136,7 +2136,7 @@ class PackageIt:
         self.update_to_latest_version()
 
         self.cleanup()
-        self.install_editable_package()
+        # self.install_editable_package()
         # self.do_pytest()
         self.git_commit()
         self.git_push()

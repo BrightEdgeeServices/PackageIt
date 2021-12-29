@@ -1,6 +1,7 @@
 ---
 name: Feature Request
 about: Request a new feature to be added
+title: "[Enhancement]: "
 labels:
   - enhancement
 ---

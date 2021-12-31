@@ -1454,7 +1454,6 @@ class PackageIt:
                         self.project_venv_root_dir,
                         self.project_name,
                         instructions,
-                        p_crash=False,
                         p_verbose=True,
                     )
                     commit_success = True
@@ -2140,7 +2139,7 @@ class PackageIt:
         self.create_github_pre_commit_yaml()
         self.create_readthedocs_yaml()
         self.update_to_latest_version()
-        self.update_git_release()
+        # self.update_git_release()
 
         self.cleanup()
         self.install_editable_package()

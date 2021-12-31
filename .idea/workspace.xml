@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e6ab5fe-e09f-4523-8fb0-f621350509a1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PackageIt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PackageIt.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PackageIt-3.1.3/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/packageit/packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_packageit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

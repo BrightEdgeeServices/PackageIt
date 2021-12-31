@@ -1,3 +1,7 @@
+[3.1.6]
+Title = "Version 3.1.6"
+Description = [ "[Bug]: Private repositories should not be published to PyPI and ReadTheDocs",]
+
 [3.1.5]
 Title = "Version 3.1.5"
 Description = [ "Corrected some settings in the .ini files",]

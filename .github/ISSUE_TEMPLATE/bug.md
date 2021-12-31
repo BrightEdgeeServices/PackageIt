@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 about: Report a bug
-title: "[Enhancement]: "
+title: "[Bug]: "
 labels:
   - bug
 ---

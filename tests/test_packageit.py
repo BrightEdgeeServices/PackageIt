@@ -33,7 +33,7 @@ _NAME = _PATH.stem
 
 def change_ini(p_ini_pth, p_section, p_option, p_value):
     """Change settings in INI file"""
-    ini = configparserext.ConfigParserExt(_NAME)
+    ini = configparserext.ConfigParserExt()
     ini.read([p_ini_pth])
     if not ini.has_section(p_section):
         ini[p_section] = {}
@@ -437,6 +437,9 @@ class TestPackageIt:
 
         assert dest_pth.exists()
         assert contents == env_setup.release_yaml_prod
+        p_it.project_pypi_publishing = 'No'
+        dest_pth = p_it.create_github_release_yml()
+        assert not dest_pth
         pass
 
     def test_create_github_release_yml_test(self, setup_env_self_destruct):
@@ -448,13 +451,15 @@ class TestPackageIt:
             p_arc_extern_dir=env_setup.external_arc_dir,
             p_token_dir=env_setup.token_dir,
         )
-        # p_it.get_project_details()
         p_it.create_scaffolding()
-
         dest_pth = p_it.create_github_release_yml()
         contents = dest_pth.read_text()
+
         assert dest_pth.exists()
         assert contents == env_setup.release_yaml_test
+        p_it.project_pypi_publishing = 'No'
+        dest_pth = p_it.create_github_release_yml()
+        assert not dest_pth
         pass
 
     def test_create_license(self, setup_env_self_destruct):
@@ -606,6 +611,8 @@ class TestPackageIt:
 
         assert p_it.create_readthedocs_yaml().exists()
         assert (p_it.project_sphinx_docs_dir / "requirements_docs.txt").exists()
+        p_it.project_readthedocs_enable = False
+        assert not p_it.create_readthedocs_yaml()
         pass
 
     def test_create_release(self, setup_env_with_project_ini_self_destruct):

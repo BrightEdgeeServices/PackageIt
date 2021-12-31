@@ -758,9 +758,8 @@ class PackageIt:
         return dest_pth
 
     def create_github_release_yml(self):
-        dest_pth = None
+        dest_pth = self.project_gh_wf_dir / "release.yml"
         if self.project_gh_enable and self.project_pypi_publishing == "GitHub":
-            dest_pth = self.project_gh_wf_dir / "release.yml"
             print(msg_milestone("Create {} file...".format(dest_pth.name)))
             prod_pypi_rep_url = """https://upload.pypi.org/legacy/"""
             test_pypi_rep_url = """https://test.pypi.org/legacy/"""
@@ -792,6 +791,10 @@ class PackageIt:
                 contents = contents.replace(src_url, dest_url)
                 contents = contents.replace(src_token_name, dest_token_name)
             dest_pth.write_text(contents)
+        else:
+            if dest_pth.exists():
+                dest_pth.unlink()
+            dest_pth = None
 
         return dest_pth
 
@@ -947,9 +950,8 @@ class PackageIt:
         # No proper doctest (<<<) because it is os dependent
         """
 
-        dest_pth = None
+        dest_pth = self.project_root_dir / ".readthedocs.yaml"
         if self.project_readthedocs_enable:
-            dest_pth = self.project_root_dir / ".readthedocs.yaml"
             print(msg_milestone("Create {} file...".format(dest_pth.name)))
             if not dest_pth.is_file():
                 shutil.copy(
@@ -960,6 +962,10 @@ class PackageIt:
             )
             requirements_docs_pth.write_text("sphinx\nsphinx-autobuild\n")
             # self.git_commit('Create {} file'.format(dest_pth))
+        else:
+            if dest_pth.exists():
+                dest_pth.unlink()
+            dest_pth = None
         return dest_pth
 
     def create_release(self):
@@ -2134,15 +2140,15 @@ class PackageIt:
         self.create_github_pre_commit_yaml()
         self.create_readthedocs_yaml()
         self.update_to_latest_version()
+        self.update_git_release()
 
         self.cleanup()
-        # self.install_editable_package()
+        self.install_editable_package()
         # self.do_pytest()
         self.git_commit()
         self.git_push()
         self.make_wheels()
         self.upload_to_pypi()
-        # self.update_git_release()
         self.git_repo.close()
         self.create_readthedocs_project()
         self.zip_project()  # Zip after changes

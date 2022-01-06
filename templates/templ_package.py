@@ -40,44 +40,23 @@ class {0}:
         if p_logger:
             self.logger_name = {0}
             self.logger = logging.getLogger(self.logger_name)
-        self._logger = logging.getLogger( self.self.logger_name )
         self.ini = configparserext.ConfigParserExt(self.logger_name, inline_comment_prefixes = '#')
-        self.proj_root_dir = None
-        self._renew_parameters()
         self.verbose = False
-    # end __init__
+
+        self.ini.read([self.ini_pth])
+        self.proj_root_dir = _PROJ_PATH.parents[1]
 
     def test_func( self ):
         '''Method description
         '''
         print( colored( 'Testing {0}...', 'yellow' ))
         return True
-    # end test_func
-
-    def _renew_parameters( self ):
-        '''Method description
-        '''
-        def create_folders():
-            '''Method description
-            '''
-            if not self.data_folder.exists():
-                self.data_folder.mkdir()
-            pass
-        # end _renew_parameters
-
-        self.ini([ self.ini_pth ])
-        self.proj_root_dir = _PROJ_PATH.parents[1]
-        create_folders()
-    # end renew_parameters
 
     def run( self ):
         '''Method description
         '''
         self.test_func()
         pass
-    # end run
-
-# end {0}
 
 
 def init_logger():

@@ -61,7 +61,7 @@ Conventions
 4.  Color Coding
     - Yellow is informational i.e. contents of batch fields
     - Purple is is mile stone messages
-    - White is messages by 3rd party API's
+    - White is messages by 3rd party APIs
     - Red - Warning or error messages
 
 Testing
@@ -2143,7 +2143,7 @@ class PackageIt:
 
         self.cleanup()
         self.install_editable_package()
-        # self.do_pytest()
+        self.do_pytest()
         self.git_commit()
         self.git_push()
         self.make_wheels()

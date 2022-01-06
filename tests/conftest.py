@@ -451,7 +451,7 @@ class EnvSetUp:
         )
         if not project_ini_pth.parents[0].exists():
             project_ini_pth.parents[0].mkdir(parents=True)
-        ini = configparserext.ConfigParserExt(self.project_name)
+        ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         ini["Classifiers"] = {
             "DevStatus": "Development Status :: 1 - Planning",
             "IntendedAudience002": "Intended Audience :: Developers",
@@ -504,7 +504,7 @@ class EnvSetUp:
             return _PROJECT_NAME
 
     def reduce_import_list(self):
-        ini = configparserext.ConfigParserExt(self.project_name)
+        ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         ini.read([self.packageit_ini_pth])
         ini.remove_section("Import")
         ini.add_section("Import")

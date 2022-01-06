@@ -45,7 +45,7 @@ def change_ini(p_ini_pth, p_section, p_option, p_value):
 
 def read_project_ini(p_ini_pth):
     """Read project specific ini file"""
-    ini = configparserext.ConfigParserExt(_NAME, inline_comment_prefixes="#")
+    ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
     ini.read([p_ini_pth])
     return ini
 
@@ -1127,7 +1127,7 @@ class TestPackageIt:
         # p_it.create_setup_py()
         p_it.create_pyproject_toml()
 
-        assert p_it.format_code()
+        assert p_it.format_code() == 0
         pass
 
     def test_get_github_release_titles(self, setup_env_with_project_ini_self_destruct):
@@ -1251,7 +1251,7 @@ class TestPackageIt:
         p_it.marry_git_github()
         env_setup.create_mock_files()
 
-        assert p_it.git_commit()
+        assert p_it.git_commit() == 0
 
         p_it.gh_repo.delete()
         pass
@@ -1275,7 +1275,7 @@ class TestPackageIt:
         p_it.init_github_master_branch()
         p_it.init_git()
         p_it.marry_git_github()
-        assert p_it.git_commit()
+        assert p_it.git_commit() == 0
 
         p_it.git_repo.close()
         p_it.gh_repo.delete()
@@ -1610,7 +1610,7 @@ class TestPackageIt:
         # p_it.create_venv()
         p_it.init_git()
 
-        assert p_it.install_prereq_apps_in_venv()
+        assert p_it.install_prereq_apps_in_venv() == 0
         pass
 
     def test_make_project_specific_ini_module(self, setup_env_self_destruct):
@@ -1717,7 +1717,7 @@ class TestPackageIt:
         p_it.format_code()
 
         dist_dir = env_setup.anchor_dir / env_setup.project_name / "dist"
-        assert p_it.make_wheels()
+        assert p_it.make_wheels() == 0
         assert p_it.project_wheels == [
             Path(dist_dir, "{}-0.0.0-py3-none-any.whl".format(env_setup.project_name)),
             Path(dist_dir, "{}-0.0.0.tar.gz".format(env_setup.project_name)),
@@ -1955,7 +1955,7 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.install_prereq_modules_in_venv()
 
-        assert p_it.setup_sphinx()
+        assert p_it.setup_sphinx() == 0
         pass
 
     def test_upload_to_pypi_publishing_no(
@@ -2027,7 +2027,7 @@ class TestPackageIt:
         p_it.make_wheels()
 
         # dist_dir = working_dir / env_setup.project_name / 'dist'
-        assert p_it.upload_to_pypi()
+        assert p_it.upload_to_pypi() == 0
         pass
 
     def test_update_to_latest_version(self, setup_env_with_project_ini_self_destruct):
@@ -2097,13 +2097,13 @@ class TestPackageIt:
         p_it.format_code()
 
         assert p_it.update_to_latest_version() == "0.0.2"
-        setup_cfg = configparserext.ConfigParserExt(_NAME, inline_comment_prefixes="#")
+        setup_cfg = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         setup_cfg.read(p_it.project_setup_cfg_pth)
         assert setup_cfg.get("metadata", "version") == "0.0.2"
 
         p_it.project_release.add_release_note(release_notes_010)
         assert p_it.update_to_latest_version() == "0.1.0"
-        setup_cfg = configparserext.ConfigParserExt(_NAME, inline_comment_prefixes="#")
+        setup_cfg = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         setup_cfg.read(p_it.project_setup_cfg_pth)
         assert setup_cfg.get("metadata", "version") == "0.1.0"
 

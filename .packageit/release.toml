@@ -1,3 +1,15 @@
+[3.1.7]
+Title = "Version 3.1.7"
+Description = [ "[Enhancement]: Issues with templ_package.py","- The renew_parameters() method is not necessary and an overkill for the establishment of a basic workable app.", "- The logger is instantiated twice i.e. not removed during a previous code change.", '''
+
+```python
+if p_logger:
+             self.logger_name = {0}
+             self.logger = logging.getLogger(self.logger_name)
+     self._logger = logging.getLogger( self.self.logger_name ) # Duplicate skeleton
+```''']
+GitHubIssues = [15]
+
 [3.1.6]
 Title = "Version 3.1.6"
 Description = [ "[Bug]: Private repositories should not be published to PyPI and ReadTheDocs",]

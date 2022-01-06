@@ -1,3 +1,8 @@
+[3.1.8]
+Title = "Version 3.1.8"
+Description = [ "[Bug]: PackageIt crash during the creation of a package due to issues in the templ_package.py",]
+GitHubIssues = [ 14,]
+
 [3.1.7]
 Title = "Version 3.1.7"
 Description = [ "[Enhancement]: Issues with templ_package.py", "- The renew_parameters() method is not necessary and an overkill for the establishment of a basic workable app.", "- The logger is instantiated twice i.e. not removed during a previous code change.",]

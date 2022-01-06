@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58bb6290-757f-4375-8ef9-4cc58c2455d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/PackageIt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PackageIt.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packageit/packageit.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/packageit.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/pimp.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pimp.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/pipt.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pipt.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/templ_package.py" beforeDir="false" afterPath="$PROJECT_DIR$/templates/templ_package.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_packageit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +32,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/packageit/packageit.py" />
     <property name="settings.editor.selected.configurable" value="advanced.settings" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -50,7 +46,28 @@
     <option name="myAttachToSubprocess" value="false" />
     <option name="mySupportQtDebugging" value="false" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_packageit.TestPackageIt.test_update_to_latest_version">
+  <component name="RunManager" selected="Python.PackageIt">
+    <configuration name="PackageIt" type="PythonConfigurationType" factoryName="Python">
+      <module name="PackageIt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\venv\PackageIt_env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packageit/packageit.py" />
+      <option name="PARAMETERS" value="PackageIt -c packageit\pipp.ini -t D:\Dropbox\Lib\SSHKeys" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,6 +138,14 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.PackageIt" />
+      <item itemvalue="Python tests.Python tests for test_genclassifiers.TestGenClassifiers.test_genclassifiers_read_ini" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_add_forced_repo_files" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_git_push_git_enable" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_update_to_latest_version" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_upload_to_pypi_enabled_manual" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_update_to_latest_version" />
@@ -147,25 +172,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
-          <line>1450</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../../../venv/PackageIt_env/Lib/site-packages/beetools/beevenv.py</url>
-          <line>147</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../../../venv/PackageIt_env/Lib/site-packages/beetools/beescript.py</url>
-          <line>107</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../../../venv/PackageIt_env/Lib/site-packages/beetools/beescript.py</url>
-          <line>113</line>
-          <option name="timeStamp" value="13" />
+          <line>2127</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="Path(p_ini_pth).exists()" />
+        <watch expression="self.project_packageit_config_dir" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

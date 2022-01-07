@@ -1,3 +1,8 @@
+[3.1.9]
+Title = "Version 3.1.9"
+Description = [ "[Bug]: Fix conftest.py",]
+GitHubIssues = [ 16,]
+
 [3.1.8]
 Title = "Version 3.1.8"
 Description = [ "[Bug]: PackageIt crash during the creation of a package due to issues in the templ_package.py",]

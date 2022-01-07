@@ -21,7 +21,7 @@ class Test{0}:
     def test__init__(self, env_setup_self_destruct):
         """Assert class __init__"""
         env_setup = env_setup_self_destruct
-        t_{1} = {1}.{0}("{0}", env_setup.dir)
+        t_{1} = {1}.{0}(env_setup.dir, True)
 
         assert t_{1}.success
         pass
@@ -31,11 +31,7 @@ class Test{0}:
         env_setup = env_setup_self_destruct
         t_{1} = {1}.{0}("{0}", env_setup.dir)
 
-        assert t_{1}.method_1("THis is a test message for Method_1")
+        assert t_{1}.method_1()
         pass
-
-    def test_do_examples(self):
-        {1}.do_examples()
-
 
 del b_tls

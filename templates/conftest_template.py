@@ -317,7 +317,7 @@ class EnvSetUp:
     def make_packageit_ini(self):
         '''Make INI file for testing'''
         packageit_ini_pth = self.dir / 'pimt.ini'
-        ini = configparserext.ConfigParserExt(self.project_name)
+        ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         ini['Classifiers'] = {2}
             'DevStatus': 'Development Status :: 1 - Planning',
             'IntendedAudience002': 'Intended Audience :: Developers',
@@ -447,7 +447,7 @@ class EnvSetUp:
         )
         if not project_ini_pth.parents[0].exists():
             project_ini_pth.parents[0].mkdir(parents=True)
-        ini = configparserext.ConfigParserExt(self.project_name)
+        ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         ini['Classifiers'] = {2}
             'DevStatus': 'Development Status :: 1 - Planning',
             'IntendedAudience002': 'Intended Audience :: Developers',

@@ -38,15 +38,15 @@ class {0}:
         self.logger_name = None
         self.logger = None
         if p_logger:
-            self.logger_name = {0}
+            self.logger_name = "{0}"
             self.logger = logging.getLogger(self.logger_name)
-        self.ini = configparserext.ConfigParserExt(self.logger_name, inline_comment_prefixes = '#')
+        self.ini = configparserext.ConfigParserExt(inline_comment_prefixes = '#')
         self.verbose = False
 
         self.ini.read([self.ini_pth])
         self.proj_root_dir = _PROJ_PATH.parents[1]
 
-    def test_func( self ):
+    def method_1( self ):
         '''Method description
         '''
         print( colored( 'Testing {0}...', 'yellow' ))
@@ -55,7 +55,7 @@ class {0}:
     def run( self ):
         '''Method description
         '''
-        self.test_func()
+        self.method_1()
         pass
 
 

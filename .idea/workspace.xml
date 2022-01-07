@@ -7,7 +7,6 @@
     <list default="true" id="58bb6290-757f-4375-8ef9-4cc58c2455d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/conftest_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/templates/conftest_template.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

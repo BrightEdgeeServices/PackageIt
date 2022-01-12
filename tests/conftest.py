@@ -510,6 +510,8 @@ class EnvSetUp:
         ini.add_section("Import")
         ini.set("Import", "ReWrite", "Yes")
         ini.set("Import", "Test01", "pypi;pre-commit")
+        ini.set("Import", "Test01", "pypi;pip")
+        ini.set("Import", "Test02", "pypi;pre-commit")
         with open(self.packageit_ini_pth, "w") as project_ini_file:
             ini.write(project_ini_file)
         pass

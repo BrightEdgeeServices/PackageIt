@@ -608,8 +608,8 @@ class PackageIt:
     def add_forced_repo_files(self):
         include_lst = []
         forced_lst = [
-            self.project_root_dir / ".coveragerc",
-            self.project_root_dir / ".gitignore",
+            # self.project_root_dir / ".coveragerc",
+            # self.project_root_dir / ".gitignore",
         ]
         for file in forced_lst:
             if file.exists():
@@ -1794,8 +1794,6 @@ class PackageIt:
         if self.project_venv_enable:
             print(msg_milestone("Install modules in virtual environment..."))
             switches = ""
-            # if self.project_venv_upgrade:
-            #     switches = '--upgrade'
             instructions = [
                 "{}".format(self.project_root_dir.drive),
                 "cd {}".format(self.project_root_dir),
@@ -1805,11 +1803,17 @@ class PackageIt:
             imported_list = []
             for item in import_items:
                 if item[0] == "pypi":
+                    not_installed = False
                     try:
                         pkg_resources.get_distribution(item[1])
                     except pkg_resources.DistributionNotFound:
-                        # if item[1] == 'pip' and self.project_venv_upgrade:
-                        if item[1] == "pip" and self.project_venv_upgrade:
+                        not_installed = True
+                    if not_installed or self.project_venv_upgrade:
+                        if self.project_venv_upgrade:
+                            switches = '--upgrade'
+                        if (
+                            item[1] == "pip" or item[1] == "pip3"
+                        ) and self.project_venv_upgrade:
                             instructions.append(
                                 "python.exe -m pip install {} pip".format(switches)
                             )
@@ -1818,8 +1822,11 @@ class PackageIt:
                                 "pip install {} {}".format(switches, item[1])
                             )
                         imported_list.append(item[1])
-            if not beevenv.install_in(
-                self.project_venv_root_dir, self.project_name, instructions
+            if (
+                beevenv.install_in(
+                    self.project_venv_root_dir, self.project_name, instructions
+                )
+                != 0
             ):
                 imported_list = []
         return imported_list
@@ -2198,7 +2205,10 @@ class PackageIt:
     def upload_to_pypi(self):
         """Upload to PyPi"""
         success = False
-        if self.project_pypi_publishing == "Twine":
+        if (
+            self.project_pypi_publishing == "Twine"
+            or self.project_pypi_publishing == "Reahl"
+        ):
             print(msg_milestone("Manual upload {} to PyPi".format(self.project_name)))
             cmd = [
                 "{}".format(self.project_root_dir.drive),

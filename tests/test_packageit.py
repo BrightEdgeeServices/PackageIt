@@ -215,9 +215,10 @@ class TestPackageIt:
         p_it_dup.create_git_ignore()
         env_setup.create_mock_files()
 
-        assert p_it.add_forced_repo_files() == [
-            str(Path(env_setup.anchor_dir, env_setup.project_name, ".gitignore"))
-        ]
+        # assert p_it.add_forced_repo_files() == [
+        #     str(Path(env_setup.anchor_dir, env_setup.project_name, ".gitignore"))
+        # ]
+        assert p_it.add_forced_repo_files() == []
         pass
 
     def test_add_repo_files(self, setup_env_with_project_ini_self_destruct):
@@ -560,7 +561,59 @@ class TestPackageIt:
             p_arc_extern_dir=env_setup.external_arc_dir,
             p_token_dir=env_setup.token_dir,
         )
-        p_it.run()
+        p_it.create_scaffolding()
+        p_it.create_venv()
+        p_it.create_git_ignore()
+        # p_it.init_github()
+        # p_it.init_github_repo()
+        # p_it.init_github_master_branch()
+        # p_it.init_git()
+        # p_it.marry_git_github()
+        p_it.install_prereq_apps_in_venv()
+        p_it.setup_sphinx()
+
+        p_it.create_release()
+        # p_it.github_format_titles()
+        # p_it.github_sync_release_notes()
+        p_it.create_sphinx_conf_py()
+        p_it.create_source_code_py()
+        p_it.create__init__()
+        p_it.create_source_code_ini()
+        p_it.create_license()
+        p_it.create_test_code()
+        # p_it.create_conftest_py()
+        p_it.create_pyproject_toml()
+        # p_it.create_github_ci_yaml()
+        # p_it.create_github_bug_templ()
+        # p_it.create_github_config_templ()
+        # p_it.create_github_feature_templ()
+        p_it.create_setup_cfg()
+        p_it.create_readme()
+        p_it.create_manifest()
+        # p_it.create_requirements("requirements.txt", p_it.project_import_prod)
+        # p_it.create_requirements("requirements_test.txt", p_it.project_import_test)
+        p_it.create_coveragerc()
+        # p_it.add_badges()
+        p_it.project_readme_rst.write_text()
+        p_it.create_sphinx_index_rst()
+        p_it.project_sphinx_index_rst.write_text()
+        p_it.create_sphinx_docs()
+        p_it.format_code()
+        # p_it.create_github_release_yml()
+        # p_it.create_git_pre_commit_config_yaml()
+        # p_it.create_github_pre_commit_yaml()
+        p_it.create_readthedocs_yaml()
+        # p_it.update_to_latest_version()
+        p_it.cleanup()
+        # p_it.install_editable_package()
+        # p_it.do_pytest()
+        # p_it.git_commit()
+        # p_it.git_push()
+        p_it.make_wheels()
+        # p_it.upload_to_pypi()
+        # p_it.git_repo.close()
+        p_it.create_readthedocs_project()
+        # p_it.zip_project()  # Zip after changes
 
         url = "https://readthedocs.org/api/v3/projects/{}/".format(
             p_it.project_name.lower()
@@ -570,7 +623,7 @@ class TestPackageIt:
         response = requests.get(url, headers=headers).json()
         assert len(response)
 
-        p_it.gh_repo.delete()
+        # p_it.gh_repo.delete()
         pass
 
     def test_create_readthedocs_project_existing(
@@ -1109,7 +1162,7 @@ class TestPackageIt:
         p_it.install_editable_package()
         p_it.format_code()
 
-        assert p_it.do_pytest()
+        assert p_it.do_pytest() == 0
         pass
 
     def test_format_code(self, setup_env_self_destruct):
@@ -1607,10 +1660,27 @@ class TestPackageIt:
             p_token_dir=env_setup.token_dir,
         )
         p_it.create_scaffolding()
-        # p_it.create_venv()
+        p_it.create_venv()
         p_it.init_git()
+        p_it.install_prereq_modules_in_venv()
 
         assert p_it.install_prereq_apps_in_venv() == 0
+        pass
+
+    def test_install_prereq_modules_in_venv(self, setup_env_self_destruct):
+        env_setup = setup_env_self_destruct
+        env_setup.reduce_import_list()
+        p_it = packageit.PackageIt(
+            env_setup.packageit_ini_pth,
+            env_setup.project_name,
+            p_arc_extern_dir=env_setup.external_arc_dir,
+            p_token_dir=env_setup.token_dir,
+        )
+        p_it.create_scaffolding()
+        p_it.create_venv()
+        p_it.init_git()
+
+        assert p_it.install_prereq_modules_in_venv() == ['pip', 'pre-commit']
         pass
 
     def test_make_project_specific_ini_module(self, setup_env_self_destruct):

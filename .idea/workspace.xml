@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="58bb6290-757f-4375-8ef9-4cc58c2455d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +41,7 @@
     <option name="myAttachToSubprocess" value="false" />
     <option name="mySupportQtDebugging" value="false" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_packageit.TestPackageIt.test_create_readme">
+  <component name="RunManager" selected="Python.PackageIt">
     <configuration name="PackageIt" type="PythonConfigurationType" factoryName="Python">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />

@@ -1283,6 +1283,24 @@ class TestPackageIt:
         assert not p_it.get_release_from_title("No Version.") == "9.9.9"
         pass
 
+    def test_get_title_and_desc(self, setup_env_with_project_ini_self_destruct):
+        """Testing create_source_code_py_module()"""
+        env_setup = setup_env_with_project_ini_self_destruct
+        p_it = packageit.PackageIt(
+            env_setup.packageit_ini_pth,
+            env_setup.project_name,
+            p_arc_extern_dir=env_setup.external_arc_dir,
+            p_token_dir=env_setup.token_dir,
+        )
+        p_it.create_scaffolding()
+        p_it.create_source_code_py()
+
+        assert (
+            p_it.project_desc == 'Project long description goes in here (project ini)'
+        )
+        assert p_it.project_title == 'Project Header Description (project ini)'
+        pass
+
     def test_git_commit(self, setup_env_self_destruct):
         """Testing packageit_git_commit()"""
         env_setup = setup_env_self_destruct

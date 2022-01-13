@@ -84,7 +84,6 @@ Testing
 
 import argparse
 import datetime
-import importlib.util
 import logging
 import os
 from pathlib import Path
@@ -192,6 +191,7 @@ class PackageIt:
             self.project_classifiers = GenClassifiers(
                 _PROJ_NAME, self.packageit_ini_pth
             ).contents
+            self.project_desc = None
             self.project_code = None
             self.project_docs_dir = None
             self.project_gh_bug_templ = self.packageit_ini.get("GitHub", "BugTemplate")
@@ -282,6 +282,7 @@ class PackageIt:
                 for x in self.packageit_ini.get("Sphinx", "AddSection", p_prefix=True)
             ]
             self.project_tests_dir = self.project_root_dir / "tests"
+            self.project_title = None
             self.project_type = self.packageit_ini.get("Detail", "Type")
             self.project_url = self.packageit_ini.get("Detail", "Url")
             self.project_venv_dir = None
@@ -881,11 +882,9 @@ class PackageIt:
         if self.project_readme_pth.exists():
             self.project_readme_pth.unlink()
         self.project_readme_rst = RSTBuilder(_PROJ_NAME, self.project_readme_pth)
-        if self.project_code:
-            title = self.project_code.project_desc()
-            desc = " ".join(self.project_code.__doc__.split("\n")[2:])
-        else:
+        if not self.project_title:
             title = "Multi source file project"
+        if not self.project_desc:
             desc = 'This still has to be sorted. See "PackageIt.create_readme"'
         self.project_readme_rst.add_paragraph(title)
         self.project_readme_rst.add_paragraph(desc, 1)
@@ -1264,8 +1263,7 @@ class PackageIt:
                 self.project_long_description,
             )
             dest_pth.write_text(contents)
-            # self.git_commit('Create {} file'.format(dest_pth))
-        if self.load_module(self.project_name.lower(), dest_pth):
+        if self.get_title_and_desc(dest_pth):
             success = True
         return success
 
@@ -1831,18 +1829,18 @@ class PackageIt:
                 imported_list = []
         return imported_list
 
-    def load_module(self, p_project_name, p_project_pth):
+    def get_title_and_desc(self, p_project_pth):
         """Definition"""
         print(msg_milestone("Load {} ...".format(p_project_pth.name)))
-        spec = importlib.util.spec_from_file_location(p_project_name, p_project_pth)
-        self.project_code = importlib.util.module_from_spec(spec)
-        sys.modules[p_project_name] = self.project_code
-        try:
-            spec.loader.exec_module(self.project_code)
-        except FileNotFoundError:
-            print(msg_error('Could not load the source code.'))
-            self.project_code = None
-        return self.project_code
+        src = p_project_pth.read_text()
+        res = re.search(r"'''[\s\S]*?'''", p_project_pth.read_text(), re.DOTALL)
+        doc_str = src[res.start() : res.end()].split('\n')
+        for i, sep in enumerate(doc_str[1:]):
+            if sep == '':
+                break
+        self.project_title = '\n'.join(doc_str[: i + 1]).strip()[3:]
+        self.project_desc = '\n'.join(doc_str[i + 2 :])[:-3].strip()
+        return self.project_title, self.project_desc
 
     def make_project_specific_ini(self) -> None:
         """Create a new project ini from a template.

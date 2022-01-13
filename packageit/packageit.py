@@ -883,11 +883,13 @@ class PackageIt:
             self.project_readme_pth.unlink()
         self.project_readme_rst = RSTBuilder(_PROJ_NAME, self.project_readme_pth)
         if not self.project_title:
-            title = "Multi source file project"
+            self.project_title = "Multi source file project"
         if not self.project_desc:
-            desc = 'This still has to be sorted. See "PackageIt.create_readme"'
-        self.project_readme_rst.add_paragraph(title)
-        self.project_readme_rst.add_paragraph(desc, 1)
+            self.project_desc = (
+                'This still has to be sorted. See "PackageIt.create_readme"'
+            )
+        self.project_readme_rst.add_paragraph(self.project_title)
+        self.project_readme_rst.add_paragraph(self.project_desc, 1)
         if self.project_readme_testing_enable:
             self.add_readme_testing()
         if self.project_readme_developing_enable:
@@ -1833,7 +1835,9 @@ class PackageIt:
         """Definition"""
         print(msg_milestone("Load {} ...".format(p_project_pth.name)))
         src = p_project_pth.read_text()
-        res = re.search(r"'''[\s\S]*?'''", p_project_pth.read_text(), re.DOTALL)
+        res = re.search(r'"""[\s\S]*?"""', p_project_pth.read_text(), re.DOTALL)
+        if not res:
+            res = re.search(r"'''[\s\S]*?'''", p_project_pth.read_text(), re.DOTALL)
         doc_str = src[res.start() : res.end()].split('\n')
         for i, sep in enumerate(doc_str[1:]):
             if sep == '':

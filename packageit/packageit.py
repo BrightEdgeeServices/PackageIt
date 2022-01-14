@@ -984,6 +984,7 @@ class PackageIt:
                     self.project_release.rel_notes[major][minor][patch]["Title"]
                 ] + self.project_release.rel_notes[major][minor][patch]["Description"]
                 self.project_release.rel_notes[major][minor][patch]["Title"] = cor_title
+
         self.project_release.write_toml()
         pass
 
@@ -1946,9 +1947,9 @@ class PackageIt:
     @staticmethod
     def raise_exception_old_version(p_release_toml_ver, p_gh_ver, p_pypi_ver):
         data = [
-            "The PyPI version is later or equal to any of the other versions",
-            "Any upload to PyPI will be unsuccessful.  The version in \
-            release.toml or GitHub must be later than that of PyPI."
+            "The PyPI version is later or equal to any of the other versions.",
+            "Any upload to PyPI will be unsuccessful.  The version in "
+            + "release.toml or GitHub must be later than that of PyPI.",
             f"PyPI:\t\t\t{p_pypi_ver}",
             f"GitHub:\t\t\t{p_gh_ver}",
             f"release.toml:\t{p_release_toml_ver}",

@@ -22,10 +22,8 @@ _CLASSIFIERS = [
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
     "Topic :: Software Development",
-    "Topic :: System :: Systems Administration",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3.0",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
 _INDEX_RST_BADGE_CODECOV = """.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/{0}
@@ -59,24 +57,24 @@ _INDEX_RST_BADGE_GITHUB_RELEASE = """.. image:: https://img.shields.io/github/v/
     :alt: GitHub release (latest by date)
 
 """
-_INDEX_RST_BADGE_PYPI_VERSION = """.. image:: https://img.shields.io/testpypi/v/{}
-    :alt: PyPi
+_INDEX_RST_BADGE_PYPI_VERSION = """.. image:: https://img.shields.io/testpypi/pyversions/{}
+    :alt: PyPI - Python Version
 
 """
-_INDEX_RST_BADGE_PYPI_DL = """.. image:: https://img.shields.io/pypi/dm/{}
+_INDEX_RST_BADGE_PYPI_DL = """.. image:: https://img.shields.io/testpypi/dm/{}
     :alt: PyPI - Downloads
 
 """
-_INDEX_RST_BADGE_PYPI_STATUS = """.. image:: https://img.shields.io/pypi/status/{}
+_INDEX_RST_BADGE_PYPI_STATUS = """.. image:: https://img.shields.io/testpypi/status/{}
     :alt: PyPI - Status
 
 """
-_INDEX_RST_BADGE_PYPI_WHEEL = """.. image:: https://img.shields.io/pypi/wheel/{}
+_INDEX_RST_BADGE_PYPI_WHEEL = """.. image:: https://img.shields.io/testpypi/wheel/{}
     :alt: PyPI - Wheel
 
 """
-_INDEX_RST_BADGE_PYVERSIONS = """.. image:: https://img.shields.io/pypi/pyversions/{}
-    :alt: PyPI - Python Version
+_INDEX_RST_BADGE_PYVERSIONS = """.. image:: https://img.shields.io/testpypi/v/{}
+    :alt: PyPi
 
 """
 _INDEX_RST_CONTENTS = """.. ======================================================
@@ -88,48 +86,48 @@ _INDEX_RST_CONTENTS = """.. ====================================================
 {0}
 ===============================
 
-.. image:: https://img.shields.io/pypi/status/{0}
-    :alt: PyPI - Status
-
-.. image:: https://img.shields.io/pypi/wheel/{0}
+.. image:: https://img.shields.io/testpypi/wheel/{0}
     :alt: PyPI - Wheel
 
-.. image:: https://img.shields.io/pypi/pyversions/{0}
+.. image:: https://img.shields.io/testpypi/pyversions/{0}
     :alt: PyPI - Python Version
 
-.. image:: https://img.shields.io/github/v/release/hendrikdutoit/{0}
-    :alt: GitHub release (latest by date)
+.. image:: https://img.shields.io/testpypi/status/{0}
+    :alt: PyPI - Status
 
-.. image:: https://img.shields.io/github/license/hendrikdutoit/{0}
-    :alt: License
-
-.. image:: https://img.shields.io/github/issues-raw/hendrikdutoit/{0}
-    :alt: GitHub issues
-
-.. image:: https://img.shields.io/pypi/dm/{0}
+.. image:: https://img.shields.io/testpypi/dm/{0}
     :alt: PyPI - Downloads
 
-.. image:: https://img.shields.io/github/search/hendrikdutoit/{0}/GitHub
-    :alt: GitHub Searches
-
-.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/{0}
-    :alt: CodeCov
-    :target: https://app.codecov.io/gh/hendrikdutoit/{0}
+.. image:: https://img.shields.io/testpypi/v/{0}
+    :alt: PyPi
 
 .. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/{0}/Pre-Commit
     :alt: GitHub Actions - Pre-Commit
     :target: https://github.com/hendrikdutoit/{0}/actions/workflows/pre-commit.yaml
 
+.. image:: https://img.shields.io/github/license/hendrikdutoit/{0}
+    :alt: License
+
+.. image:: https://img.shields.io/github/search/hendrikdutoit/{0}/GitHub
+    :alt: GitHub Searches
+
+.. image:: https://img.shields.io/github/v/release/hendrikdutoit/{0}
+    :alt: GitHub release (latest by date)
+
+.. image:: https://img.shields.io/github/issues-raw/hendrikdutoit/{0}
+    :alt: GitHub issues
+
+.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/{0}
+    :alt: CodeCov
+    :target: https://app.codecov.io/gh/hendrikdutoit/{0}
+
 .. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/{0}/CI
     :alt: GitHub Actions - CI
     :target: https://github.com/hendrikdutoit/{0}/actions/workflows/ci.yaml
 
-.. image:: https://img.shields.io/testpypi/v/{0}
-    :alt: PyPi
+Project Header Description (project ini)
 
-Project Header Description (default ini)
-
-    Project long description goes in here (default ini)
+    Project long description goes in here (project ini)
 
 ------------
 Installation
@@ -174,6 +172,93 @@ _PROJECT_CLASSIFIERS = [
     "Programming Language :: Python :: 3.10",
 ]
 _PROJECT_NAME = "PackageItTest"
+_README_CONTENTS = """.. image:: https://img.shields.io/testpypi/wheel/{0}
+    :alt: PyPI - Wheel
+
+.. image:: https://img.shields.io/testpypi/pyversions/{0}
+    :alt: PyPI - Python Version
+
+.. image:: https://img.shields.io/testpypi/status/{0}
+    :alt: PyPI - Status
+
+.. image:: https://img.shields.io/testpypi/dm/{0}
+    :alt: PyPI - Downloads
+
+.. image:: https://img.shields.io/testpypi/v/{0}
+    :alt: PyPi
+
+.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/{0}/Pre-Commit
+    :alt: GitHub Actions - Pre-Commit
+    :target: https://github.com/hendrikdutoit/{0}/actions/workflows/pre-commit.yaml
+
+.. image:: https://img.shields.io/github/license/hendrikdutoit/{0}
+    :alt: License
+
+.. image:: https://img.shields.io/github/search/hendrikdutoit/{0}/GitHub
+    :alt: GitHub Searches
+
+.. image:: https://img.shields.io/github/v/release/hendrikdutoit/{0}
+    :alt: GitHub release (latest by date)
+
+.. image:: https://img.shields.io/github/issues-raw/hendrikdutoit/{0}
+    :alt: GitHub issues
+
+.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/{0}
+    :alt: CodeCov
+    :target: https://app.codecov.io/gh/hendrikdutoit/{0}
+
+.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/{0}/CI
+    :alt: GitHub Actions - CI
+    :target: https://github.com/hendrikdutoit/{0}/actions/workflows/ci.yaml
+
+Project Header Description (project ini)
+
+    Project long description goes in here (project ini)
+
+=======
+Testing
+=======
+
+This project uses ``pytest`` to run tests and also to test docstring examples.
+
+Install the test dependencies.
+
+.. code-block:: bash
+
+    $ pip install -r requirements_test.txt
+
+Run the tests.
+
+==========
+Developing
+==========
+
+This project uses ``black`` to format code and ``flake8`` for linting. We also support ``pre-commit`` to ensure these have been run. To configure your local environment please install these development dependencies and set up the commit hooks.
+
+.. code-block:: bash
+
+    $ pip install black flake8 pre-commit
+    $ pre-commit install
+
+=========
+Releasing
+=========
+
+Releases are published automatically when a tag is pushed to GitHub.
+
+.. code-block:: bash
+
+    # Set next version number
+    export RELEASE = x.x.x
+
+    # Create tags
+    git commit --allow -empty -m "Release $RELEASE"
+    git tag -a $RELEASE -m "Version $RELEASE"
+
+    # Push
+    git push upstream --tags
+
+"""
 _RELEASE_YAML_PROD = """name: Build distribution
 
 on: [push, pull_request]
@@ -303,6 +388,7 @@ class EnvSetUp:
         self.project_classifiers = _PROJECT_CLASSIFIERS
         self.packageit_ini_pth = self.make_packageit_ini()
         self.project_ini_pth = None
+        self.readme_contents = _README_CONTENTS.format(self.project_name)
         self.release_yaml_prod = _RELEASE_YAML_PROD
         self.release_yaml_test = _RELEASE_YAML_TEST
         self.token_dir = Path("d:\\", "dropbox", "lib", "SSHKeys")
@@ -333,6 +419,20 @@ class EnvSetUp:
         """Make INI file for testing"""
         packageit_ini_pth = self.anchor_dir / "pimt.ini"
         ini = configparserext.ConfigParserExt()
+        ini['Badges'] = {
+            'BadgePyPI': 'Yes',
+            'BadgeCI': 'Yes',
+            'BadgePreCommit': 'Yes',
+            'BadgeCodeCov': 'Yes',
+            'BadgeGitHubSearch': 'Yes',
+            'BadgePyPIDownload': 'Yes',
+            'BadgeGitHubIssues': 'Yes',
+            'BadgeLicense': 'Yes',
+            'BadgeGitHubRelease': 'Yes',
+            'BadgePyPIVersion': 'Yes',
+            'BadgePyPIWheel': 'Yes',
+            'BadgePyPIStatus': 'Yes',
+        }
         ini["Classifiers"] = {
             "DevStatus": "Development Status :: 1 - Planning",
             "IntendedAudience002": "Intended Audience :: Developers",
@@ -401,11 +501,7 @@ class EnvSetUp:
             "TokenFileNamePyPi": "PYPI_API_TOKEN.txt",
             "TokenFileNameTestPyPi": "TEST_PYPI_API_TOKEN.txt",
         }
-        ini["ReadMe"] = {
-            "EnableTesting": "Yes",
-            "EnableDeveloping": "Yes",
-            "EnableReleasing": "Yes",
-        }
+        ini["ReadMe"] = {"DefaultBodyTemplate": "README_body_template.rst"}
         ini["ReadTheDocs"] = {
             "Enable": "Yes",
             "ConfigTemplate": "readthedocs_def_.readthedocs_template.yaml",
@@ -452,6 +548,20 @@ class EnvSetUp:
         if not project_ini_pth.parents[0].exists():
             project_ini_pth.parents[0].mkdir(parents=True)
         ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
+        ini['Badges'] = {
+            'BadgePyPI': 'Yes',
+            'BadgeCI': 'Yes',
+            'BadgePreCommit': 'Yes',
+            'BadgeCodeCov': 'Yes',
+            'BadgeGitHubSearch': 'Yes',
+            'BadgePyPIDownload': 'Yes',
+            'BadgeGitHubIssues': 'Yes',
+            'BadgeLicense': 'Yes',
+            'BadgeGitHubRelease': 'Yes',
+            'BadgePyPIVersion': 'Yes',
+            'BadgePyPIWheel': 'Yes',
+            'BadgePyPIStatus': 'Yes',
+        }
         ini["Classifiers"] = {
             "DevStatus": "Development Status :: 1 - Planning",
             "IntendedAudience002": "Intended Audience :: Developers",
@@ -480,11 +590,7 @@ class EnvSetUp:
         ini["Import"] = {}
         ini["Install Apps"] = {}
         ini["LogLevels"] = {}
-        ini["ReadMe"] = {
-            "EnableTesting": "Yes",
-            "EnableDeveloping": "Yes",
-            "EnableReleasing": "Yes",
-        }
+        ini["ReadMe"] = {"DefaultBodyTemplate": "README_body_template.rst"}
         ini["PyPi"] = {}
         ini["Sphinx"] = {}
         ini["tool:pytest"] = {

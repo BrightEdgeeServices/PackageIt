@@ -115,8 +115,13 @@ _PROJ_NAME = _PROJ_PATH.stem
 # _VERSION = '3.1.0'
 
 
-def project_desc():
-    return _PROJ_DESC
+class FileTemplate:
+    src_pth: Path = None
+
+    def create_from_template(self, p_templ_pth: Path, p_ow: bool = False):
+        if not self.src_pth.exists() or p_ow:
+            shutil.copy(p_templ_pth, self.src_pth)
+        pass
 
 
 class PackageIt:
@@ -246,16 +251,16 @@ class PackageIt:
             )
             self.project_pypi_publishing = self.packageit_ini.get("PyPi", "Publishing")
             self.project_pypi_repository = self.packageit_ini.get("PyPi", "Repository")
-            self.project_readme_developing_enable = self.packageit_ini.getboolean(
-                "ReadMe", "EnableDeveloping"
-            )
-            self.project_readme_releasing_enable = self.packageit_ini.getboolean(
-                "ReadMe", "EnableReleasing"
-            )
-            self.project_readme_rst = None
-            self.project_readme_testing_enable = self.packageit_ini.getboolean(
-                "ReadMe", "EnableTesting"
-            )
+            # self.project_readme_developing_enable = self.packageit_ini.getboolean(
+            #     "ReadMe", "EnableDeveloping"
+            # )
+            # self.project_readme_releasing_enable = self.packageit_ini.getboolean(
+            #     "ReadMe", "EnableReleasing"
+            # )
+            # self.project_readme_rst = None
+            # self.project_readme_testing_enable = self.packageit_ini.getboolean(
+            #     "ReadMe", "EnableTesting"
+            # )
             self.project_readthedocs_enable = self.packageit_ini.getboolean(
                 "ReadTheDocs", "Enable"
             )
@@ -366,12 +371,12 @@ class PackageIt:
                     "VEnv", "Upgrade"
                 )
             self.read_project_detail_specific()
-            self.project_readme_pth = self.project_root_dir / "README.rst"
+            self.readme = ReadMe(self.project_root_dir)
         else:
             self.success = False
         pass
 
-    def add_badges(self):
+    def add_readme_badges(self):
         print(msg_milestone("Add badges..."))
         badge_detail = {
             "pypi": {
@@ -392,7 +397,7 @@ class PackageIt:
                     self.project_gh_username, self.project_name
                 ),
             },
-            "pc": {
+            "precommit": {
                 "uri": """https://img.shields.io/github/workflow/status/{}/{}/Pre-Commit""".format(
                     self.project_gh_username, self.project_name
                 ),
@@ -402,7 +407,7 @@ class PackageIt:
                     self.project_gh_username, self.project_name
                 ),
             },
-            "CodeCov": {
+            "codecov": {
                 "uri": """https://img.shields.io/codecov/c/gh/{}/{}""".format(
                     self.project_gh_username, self.project_name
                 ),
@@ -412,7 +417,7 @@ class PackageIt:
                     self.project_gh_username, self.project_name
                 ),
             },
-            "github_search": {
+            "githubsearch": {
                 "uri": """https://img.shields.io/github/search/{}/{}/GitHub""".format(
                     self.project_gh_username, self.project_name
                 ),
@@ -420,15 +425,15 @@ class PackageIt:
                 "pos": 0,
                 "target": "",
             },
-            "pypi_dl": {
-                "uri": """https://img.shields.io/pypi/dm/{}""".format(
-                    self.project_name
+            "pypidownload": {
+                "uri": """https://img.shields.io/{}/dm/{}""".format(
+                    self.project_pypi_repository, self.project_name
                 ),
                 "alt": "PyPI - Downloads",
                 "pos": 0,
                 "target": "",
             },
-            "issues_raw": {
+            "githubissues": {
                 "uri": """https://img.shields.io/github/issues-raw/{}/{}""".format(
                     self.project_gh_username, self.project_name
                 ),
@@ -444,7 +449,7 @@ class PackageIt:
                 "pos": 0,
                 "target": "",
             },
-            "github_release": {
+            "githubrelease": {
                 "uri": """https://img.shields.io/github/v/release/{}/{}""".format(
                     self.project_gh_username, self.project_name
                 ),
@@ -452,25 +457,25 @@ class PackageIt:
                 "pos": 0,
                 "target": "",
             },
-            "pyversions": {
-                "uri": """https://img.shields.io/pypi/pyversions/{}""".format(
-                    self.project_name
+            "pypiversion": {
+                "uri": """https://img.shields.io/{}/pyversions/{}""".format(
+                    self.project_pypi_repository, self.project_name
                 ),
                 "alt": "PyPI - Python Version",
                 "pos": 0,
                 "target": "",
             },
-            "pypi_wheel": {
-                "uri": """https://img.shields.io/pypi/wheel/{}""".format(
-                    self.project_name
+            "pypiwheel": {
+                "uri": """https://img.shields.io/{}/wheel/{}""".format(
+                    self.project_pypi_repository, self.project_name
                 ),
                 "alt": "PyPI - Wheel",
                 "pos": 0,
                 "target": "",
             },
-            "pypi_status": {
-                "uri": """https://img.shields.io/pypi/status/{}""".format(
-                    self.project_name
+            "pypistatus": {
+                "uri": """https://img.shields.io/{}/status/{}""".format(
+                    self.project_pypi_repository, self.project_name
                 ),
                 "alt": "PyPI - Status",
                 "pos": 0,
@@ -478,13 +483,14 @@ class PackageIt:
             },
         }
 
-        for det in badge_detail:
-            self.project_readme_rst.add_directive_image(
-                p_uri=badge_detail[det]["uri"],
-                p_alt=badge_detail[det]["alt"],
-                p_pos=badge_detail[det]["pos"],
-                p_target=badge_detail[det]["target"],
-            )
+        for badge in self.project_ini.get('Badges', 'Badge', True):
+            if badge[1] == 'Yes':
+                self.readme.add_directive_image(
+                    p_uri=badge_detail[badge[0][5:]]["uri"],
+                    p_alt=badge_detail[badge[0][5:]]["alt"],
+                    p_pos=badge_detail[badge[0][5:]]["pos"],
+                    p_target=badge_detail[badge[0][5:]]["target"],
+                )
         pass
 
     def add_sphinx_index_contents(self):
@@ -509,7 +515,7 @@ class PackageIt:
                             )
                     else:
                         rstbuilder = RSTBuilder(
-                            _PROJ_NAME, dest_pth, p_first_level_title=item.capitalize()
+                            p_pth=dest_pth, p_first_level_title=item.capitalize()
                         )
                         rstbuilder.write_text()
             self.project_sphinx_index_rst.add_toctree(
@@ -546,52 +552,49 @@ class PackageIt:
             # self.git_commit('Add Sphinx index sections')
         return success
 
-    def add_readme_developing(self):
-        print(msg_milestone('Add README "Development" section...'))
-        self.project_readme_rst.add_first_level_title("Developing")
-        self.project_readme_rst.add_paragraph(
-            """This project uses ``black`` to format code and ``flake8`` for
-            linting. We also support ``pre-commit`` to ensure these have been
-            run. To configure your local environment please install these
-            development dependencies and set up the commit hooks."""
-        )
-        self.project_readme_rst.add_code_block(
-            "$ pip install black flake8 pre-commit\n$ pre-commit install", "bash"
-        )
-        pass
-
-    def add_readme_releasing(self):
-        print(msg_milestone('Add README "Releasing" section...'))
-        text = "# Set next version number\n"
-        text += "export RELEASE = x.x.x\n\n"
-        text += "# Create tags\n"
-        text += 'git commit --allow -empty -m "Release $RELEASE"\n'
-        text += 'git tag -a $RELEASE -m "Version $RELEASE"\n\n'
-        text += "# Push\n"
-        text += "git push upstream --tags"
-
-        self.project_readme_rst.add_first_level_title("Releasing")
-        self.project_readme_rst.add_paragraph(
-            "Releases are published automatically when a tag is pushed to GitHub."
-        )
-        self.project_readme_rst.add_code_block(text, "bash")
-
-    def add_readme_testing(self):
-        print(msg_milestone('Add README "Testing" section...'))
-        self.project_readme_rst.add_first_level_title("Testing")
-        self.project_readme_rst.add_paragraph(
-            "This project uses ``pytest`` to run tests and also to test docstring examples."
-        )
-        self.project_readme_rst.add_paragraph("Install the test dependencies.")
-        self.project_readme_rst.add_code_block(
-            "$ pip install -r requirements_test.txt", "bash"
-        )
-        self.project_readme_rst.add_paragraph("Run the tests.")
-        self.project_readme_rst.add_code_block(
-            "$ pytest tests\n=== XXX passed in SSS seconds ===", "bash"
-        )
-        pass
-
+    # def add_readme_developing(self):
+    #     print(msg_milestone('Add README "Development" section...'))
+    #     self.project_readme_rst.add_first_level_title("Developing")
+    #     self.project_readme_rst.add_paragraph(
+    #         """This project uses ``black`` to format code and ``flake8`` for
+    #         linting. We also support ``pre-commit`` to ensure these have been
+    #         run. To configure your local environment please install these
+    #         development dependencies and set up the commit hooks."""
+    #     )
+    #     self.project_readme_rst.add_code_block(
+    #         "$ pip install black flake8 pre-commit\n$ pre-commit install", "bash"
+    #     )
+    #     pass
+    #
+    # def add_readme_releasing(self):
+    #     print(msg_milestone('Add README "Releasing" section...'))
+    #     text = "# Set next version number\n"
+    #     text += "export RELEASE = x.x.x\n\n"
+    #     text += "# Create tags\n"
+    #     text += 'git commit --allow -empty -m "Release $RELEASE"\n'
+    #     text += 'git tag -a $RELEASE -m "Version $RELEASE"\n\n'
+    #     text += "# Push\n"
+    #     text += "git push upstream --tags"
+    #
+    #     self.project_readme_rst.add_first_level_title("Releasing")
+    #     self.project_readme_rst.add_paragraph(
+    #         "Releases are published automatically when a tag is pushed to GitHub."
+    #     )
+    #     self.project_readme_rst.add_code_block(text, "bash")
+    #
+    # def add_readme_testing(self):
+    #     print(msg_milestone('Add README "Testing" section...'))
+    #     templ_body_pth = self.project_dir / 'README_body.rst'
+    #     if not self.project_ini.has_option('ReadMe', 'Body01'):
+    #         templ_pth = self.project_dir / self.project_ini.has_option('ReadMe', 'DefaultTemplate')
+    #         shutil.copy(templ_pth, templ_body_pth)
+    #         self.project_ini.set('ReadMe', 'Body01', 'README_body.rst')
+    #         with open(templ_body_pth, 'w') as fp:
+    #             self.project_ini.write(fp)
+    #     for part in self.project_ini.get('ReadMe', 'Body', p_prefix = True):
+    #         self.project_readme_rst.add_formatted_text((self.project_dir / part).read_text())
+    #     pass
+    #
     def add_repo_files(self):
         include_lst = self.git_repo.untracked_files
         # gitignore_pth = self.project_root_dir / '.gitignore'
@@ -879,24 +882,23 @@ class PackageIt:
 
         """
         print(msg_milestone('Create the "README" structure...'))
-        if self.project_readme_pth.exists():
-            self.project_readme_pth.unlink()
-        self.project_readme_rst = RSTBuilder(_PROJ_NAME, self.project_readme_pth)
+        body_pth = self.project_dir / 'README_body.rst'
+        templ_body_pth = self.templ_dir / self.project_ini.get(
+            'ReadMe', 'DefaultBodyTemplate'
+        )
+        self.readme.create_body_from_template(body_pth, templ_body_pth)
         if not self.project_title:
             self.project_title = "Multi source file project"
         if not self.project_desc:
             self.project_desc = (
                 'This still has to be sorted. See "PackageIt.create_readme"'
             )
-        self.project_readme_rst.add_paragraph(self.project_title)
-        self.project_readme_rst.add_paragraph(self.project_desc, 1)
-        if self.project_readme_testing_enable:
-            self.add_readme_testing()
-        if self.project_readme_developing_enable:
-            self.add_readme_developing()
-        if self.project_readme_releasing_enable:
-            self.add_readme_releasing()
-        return self.project_readme_pth
+        self.add_readme_badges()
+        self.readme.add_paragraph(self.project_title)
+        self.readme.add_paragraph(self.project_desc, 1)
+        self.readme.add_formatted_text(body_pth.read_text())
+        self.readme.write_text()
+        return self.readme.src_pth
 
     def create_readthedocs_project(self):
         response = None
@@ -1195,7 +1197,7 @@ class PackageIt:
             if self.project_sphinx_index_rst_pth.exists():
                 self.project_sphinx_index_rst_pth.unlink()
             self.project_sphinx_index_rst = RSTBuilder(
-                _PROJ_NAME, self.project_sphinx_index_rst_pth
+                self.project_sphinx_index_rst_pth
             )
             self.project_sphinx_index_rst.add_comment(
                 "======================================================"
@@ -1208,9 +1210,11 @@ class PackageIt:
                 "======================================================"
             )
             self.project_sphinx_index_rst.add_first_level_title(self.project_name)
-            for element in self.project_readme_rst:
-                if element["Type"] == "DirectiveImage":
-                    self.project_sphinx_index_rst.add_element(element)
+            for element in self.readme.elements:
+                if self.readme.elements[element]["Type"] == "DirectiveImage":
+                    self.project_sphinx_index_rst.add_element(
+                        self.readme.elements[element]
+                    )
             self.project_sphinx_index_rst.add_paragraph(self.project_header_description)
             self.project_sphinx_index_rst.add_paragraph(
                 self.project_long_description, 1
@@ -2050,18 +2054,18 @@ class PackageIt:
                 self.pypi_curr_token = self.read_token(pypi_token_fn)
                 self.pypi_curr_token_name = pypi_token_fn.stem
 
-            if self.packageit_ini.has_option("ReadMe", "EnableDeveloping"):
-                self.project_readme_developing_enable = self.packageit_ini.getboolean(
-                    "ReadMe", "EnableDeveloping"
-                )
-            if self.packageit_ini.has_option("ReadMe", "EnableReleasing"):
-                self.project_readme_releasing_enable = self.packageit_ini.getboolean(
-                    "ReadMe", "EnableReleasing"
-                )
-            if self.packageit_ini.has_option("ReadMe", "EnableTesting"):
-                self.project_readme_testing_enable = self.packageit_ini.getboolean(
-                    "ReadMe", "EnableTesting"
-                )
+            # if self.packageit_ini.has_option("ReadMe", "EnableDeveloping"):
+            #     self.project_readme_developing_enable = self.packageit_ini.getboolean(
+            #         "ReadMe", "EnableDeveloping"
+            #     )
+            # if self.packageit_ini.has_option("ReadMe", "EnableReleasing"):
+            #     self.project_readme_releasing_enable = self.packageit_ini.getboolean(
+            #         "ReadMe", "EnableReleasing"
+            #     )
+            # if self.packageit_ini.has_option("ReadMe", "EnableTesting"):
+            #     self.project_readme_testing_enable = self.packageit_ini.getboolean(
+            #         "ReadMe", "EnableTesting"
+            #     )
 
             if self.project_ini.has_option("Sphinx", "Enable"):
                 self.project_sphinx_enable = self.project_ini.getboolean(
@@ -2138,8 +2142,9 @@ class PackageIt:
         self.create_requirements("requirements.txt", self.project_import_prod)
         self.create_requirements("requirements_test.txt", self.project_import_test)
         self.create_coveragerc()
-        self.add_badges()
-        self.project_readme_rst.write_text()
+        # self.add_badges()
+        self.create_readme()
+        # self.project_readme_rst.write_text()
         self.create_sphinx_index_rst()
         self.project_sphinx_index_rst.write_text()
         self.create_sphinx_docs()
@@ -2388,7 +2393,7 @@ class GenLicense:
         return success
 
 
-class RSTBuilder:
+class RSTBuilder(FileTemplate):
     """Build a  reStructuredText (RST) file.
 
     The file will be rebuilt everytime i.e. it will be deleted and recreated
@@ -2397,25 +2402,24 @@ class RSTBuilder:
 
     def __init__(
         self,
-        p_parent_log_name,
-        p_pth,
+        p_pth=None,
         p_first_level_title=None,
-        p_logger=False,
         p_tab_len=4,
         p_verbose=True,
+        p_parent_log_name=None,
     ):
         """Initialize the class"""
         self.success = True
-        self.log_name = None
+        self.loger_name = None
         self.logger = None
-        if p_logger:
-            self.log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
-            self.logger = logging.getLogger(self.log_name)
+        if p_parent_log_name:
+            self.loger_name = "{}.{}".format(p_parent_log_name, 'RSTBuilder')
+            self.logger = logging.getLogger(self.loger_name)
         self.contents = ""
         self.curr_pos = 0
         self.element_cntr = 0
         self.elements = {}
-        self.pth = p_pth
+        self.src_pth = p_pth
         if p_first_level_title:
             self.add_first_level_title(p_first_level_title)
         self.tab_len = p_tab_len
@@ -2541,6 +2545,12 @@ class RSTBuilder:
         pos = self._insert_at(element, p_pos)
         return pos
 
+    def add_formatted_text(self, p_text, p_pos=None):
+        """Method description"""
+        element = {"Type": "FormattedText", "Text": p_text}
+        pos = self._insert_at(element, p_pos)
+        return pos
+
     def add_fourth_level_title(self, p_text, p_pos=None):
         """Method description"""
         text = "{}\n{}\n".format(p_text, self._underline(p_text, "-"))
@@ -2629,29 +2639,14 @@ class RSTBuilder:
             underline += p_template
         return underline
 
-    def write_text(self):
+    def write_text(self, p_pth: Path = None):
         self.contents = ""
+        if p_pth:
+            self.src_pth = p_pth
         for element in sorted(self.elements):
             self.contents += self.elements[element]["Text"]
-        self.pth.write_text(self.contents)
+        self.src_pth.write_text(self.contents)
         pass
-
-
-def init_logger():
-    logger = logging.getLogger(_PROJ_NAME)
-    logger.setLevel(beeutils.DEF_LOG_LEV)
-    file_handle = logging.FileHandler(beeutils.LOG_FILE_NAME, mode="w")
-    file_handle.setLevel(beeutils.DEF_LOG_LEV_FILE)
-    console_handle = logging.StreamHandler()
-    console_handle.setLevel(beeutils.DEF_LOG_LEV_CON)
-    file_format = logging.Formatter(
-        beeutils.LOG_FILE_FORMAT, datefmt=beeutils.LOG_DATE_FORMAT
-    )
-    console_format = logging.Formatter(beeutils.LOG_CONSOLE_FORMAT)
-    file_handle.setFormatter(file_format)
-    console_handle.setFormatter(console_format)
-    logger.addHandler(file_handle)
-    logger.addHandler(console_handle)
 
 
 class PackageItException(Exception):
@@ -2697,6 +2692,35 @@ class OldVersionException(PackageItException):
     """
     Exception raised if the PyPI version is later or equal to the intended GitHub/PackageIt/Release.
     """
+
+
+class ReadMe(RSTBuilder):
+    def __init__(self, p_src_pth):
+        super().__init__(p_src_pth)
+        self.src_pth = p_src_pth / 'README.rst'
+        pass
+
+    def create_body_from_template(self, p_body_pth, p_templ_body_pth):
+        if not p_body_pth.exists():
+            shutil.copy(p_templ_body_pth, p_body_pth)
+        pass
+
+
+def init_logger():
+    logger = logging.getLogger(_PROJ_NAME)
+    logger.setLevel(beeutils.DEF_LOG_LEV)
+    file_handle = logging.FileHandler(beeutils.LOG_FILE_NAME, mode="w")
+    file_handle.setLevel(beeutils.DEF_LOG_LEV_FILE)
+    console_handle = logging.StreamHandler()
+    console_handle.setLevel(beeutils.DEF_LOG_LEV_CON)
+    file_format = logging.Formatter(
+        beeutils.LOG_FILE_FORMAT, datefmt=beeutils.LOG_DATE_FORMAT
+    )
+    console_format = logging.Formatter(beeutils.LOG_CONSOLE_FORMAT)
+    file_handle.setFormatter(file_format)
+    console_handle.setFormatter(console_format)
+    logger.addHandler(file_handle)
+    logger.addHandler(console_handle)
 
 
 def read_args():

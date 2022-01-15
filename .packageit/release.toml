@@ -1,17 +1,25 @@
-[3.2.1]
+[3.3.0]
 Title = "Version 3.3.0"
-Description = [ "[Bug]: Ignore git tags that are not versions", "[Enhancement]: Add GitHubIssues to release.toml"]
-GitHubIssues = [ 1,]
+Description = [
+    "[Enhancement]: Generate README from template.",
+    "- Extensive changes to the building of the README file.
+]
+GitHubIssues = [ 23, 24]
+
+[3.2.1]
+Title = "Version 3.2.1"
+Description = [ "Version 3.3.0", "[Bug]: Ignore git tags that are not versions.", "[Enhancement]: Add GitHubIssues to release.toml.",]
+GitHubIssues = [ 21, 22]
 
 [3.2.0]
 Title = "Version 3.2.0"
-Description = [ "Version 3.1.10", "[Bug]: Loading of the target source code fails",]
-GitHubIssues = [ 1,]
+Description = [ "Version 3.1.10", "[Bug]: Loading of the target source code fails.",]
+GitHubIssues = [ 19]
 
 [3.1.10]
 Title = "Version 3.1.10"
-Description = [ "[Bug]: pip install -e . fails", "Discrepancy between import options from default packageit.ini and .packageit/packageit.ini",]
-GitHubIssues = [ 4, 18]
+Description = [ "[Bug]: pip install -e . fails.", "Discrepancy between import options from default packageit.ini and .packageit/packageit.ini.",]
+GitHubIssues = [ 4, 18,]
 
 [3.1.9]
 Title = "Version 3.1.9"

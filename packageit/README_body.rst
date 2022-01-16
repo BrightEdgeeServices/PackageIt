@@ -2,7 +2,23 @@
 Testing
 =======
 
-This project uses ``pytest`` to run tests and also to test docstring examples.
+1. This project uses ``pytest`` to run tests and also to test docstring examples.
+
+2. Virtual Environments
+    PackageIt rely on virtual environments and also assume (default) any
+    creation of a new module.package/library will be in a virtual
+    environment.  By convention each of the tests should therefore run in
+    it's own freshly created virtual environment.  This is unfortunately
+    and expectedly become very expensive.  PackageIt there fore applies
+    the following strategy with regards to testing:
+
+    -   It (obviously) assume the PackageIt.create_venv work correctly and is tested properly.
+    -   Tests rely on the virtual environment installed for PackageIt.
+    -   Fresh virtual environments will only be created if:
+
+        -   The test or any methods it calls will alter the virtual environment or
+        -   It requires to operate specifically in the virtual environment for the package begin created.
+
 
 Install the test dependencies.
 
@@ -40,4 +56,3 @@ Releases are published automatically when a tag is pushed to GitHub.
 
     # Push
     git push upstream --tags
-

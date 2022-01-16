@@ -7,41 +7,8 @@
 PackageIt
 =========
 
-.. image:: https://img.shields.io/pypi/status/PackageIt
-    :alt: PyPI - Status
-
-.. image:: https://img.shields.io/pypi/wheel/PackageIt
-    :alt: PyPI - Wheel
-
-.. image:: https://img.shields.io/pypi/pyversions/PackageIt
-    :alt: PyPI - Python Version
-
-.. image:: https://img.shields.io/github/v/release/hendrikdutoit/PackageIt
-    :alt: GitHub release (latest by date)
-
-.. image:: https://img.shields.io/github/license/hendrikdutoit/PackageIt
-    :alt: License
-
-.. image:: https://img.shields.io/github/issues-raw/hendrikdutoit/PackageIt
-    :alt: GitHub issues
-
-.. image:: https://img.shields.io/pypi/dm/PackageIt
-    :alt: PyPI - Downloads
-
-.. image:: https://img.shields.io/github/search/hendrikdutoit/PackageIt/GitHub
-    :alt: GitHub Searches
-
-.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/PackageIt
-    :alt: CodeCov
-    :target: https://app.codecov.io/gh/hendrikdutoit/PackageIt
-
-.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/PackageIt/Pre-Commit
-    :alt: GitHub Actions - Pre-Commit
-    :target: https://github.com/hendrikdutoit/PackageIt/actions/workflows/pre-commit.yaml
-
-.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/PackageIt/CI
-    :alt: GitHub Actions - CI
-    :target: https://github.com/hendrikdutoit/PackageIt/actions/workflows/ci.yaml
+.. image:: https://img.shields.io/pypi/v/PackageIt
+    :alt: PyPi
 
 .. image:: https://img.shields.io/pypi/v/PackageIt
     :alt: PyPi

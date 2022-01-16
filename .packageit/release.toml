@@ -1,20 +1,17 @@
-[3.3.0]
-Title = "Version 3.3.0"
-Description = [
-    "[Enhancement]: Generate README from template.",
-    "- Extensive changes to the building of the README file.
-]
-GitHubIssues = [ 23, 24]
+[3.3.2]
+Title = "Version 3.3.2"
+Description = [ "[Enhancement]: Generate README from template.", "- Extensive changes to the building of the README file.",]
+GitHubIssues = [ 23, 24,]
 
 [3.2.1]
 Title = "Version 3.2.1"
 Description = [ "Version 3.3.0", "[Bug]: Ignore git tags that are not versions.", "[Enhancement]: Add GitHubIssues to release.toml.",]
-GitHubIssues = [ 21, 22]
+GitHubIssues = [ 21, 22,]
 
 [3.2.0]
 Title = "Version 3.2.0"
 Description = [ "Version 3.1.10", "[Bug]: Loading of the target source code fails.",]
-GitHubIssues = [ 19]
+GitHubIssues = [ 19,]
 
 [3.1.10]
 Title = "Version 3.1.10"

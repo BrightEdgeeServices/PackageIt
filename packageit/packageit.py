@@ -98,7 +98,7 @@ from beetools.beearchiver import Archiver, msg_error, msg_info, msg_milestone
 import configparserext
 from git import Repo, exc as git_exc
 
-# from gitignore_parser import parse_gitignore
+from gitignore_parser import parse_gitignore
 from github import Github, GithubException as GH_Except
 import json
 from releaselogit import ReleaseLogIt
@@ -597,16 +597,18 @@ class PackageIt:
     #
     def add_repo_files(self):
         include_lst = self.git_repo.untracked_files
-        # gitignore_pth = self.project_root_dir / '.gitignore'
-        # ignore_match = parse_gitignore(gitignore_pth)
-        # dir_contents = list(self.project_root_dir.glob('**/*'))
-        # # gitignore_parser excludes .gitignore & .github/* erroneously.  Add them manually
-        # for item in dir_contents:
-        #     if not ignore_match(item) or \
-        #             item.is_relative_to(self.project_gh_wf_dir) or \
-        #             item.is_relative_to(self.project_gh_issue_templ_dir):
-        #         if item.is_file():
-        #             include_lst.append(str(item))
+        gitignore_pth = self.project_root_dir / '.gitignore'
+        ignore_match = parse_gitignore(gitignore_pth)
+        dir_contents = list(self.project_root_dir.glob('**/*'))
+        # gitignore_parser excludes .gitignore & .github/* erroneously.  Add them manually
+        for item in dir_contents:
+            if (
+                not ignore_match(item)
+                or item.is_relative_to(self.project_gh_wf_dir)
+                or item.is_relative_to(self.project_gh_issue_templ_dir)
+            ):
+                if item.is_file():
+                    include_lst.append(str(item))
         return include_lst
 
     def add_forced_repo_files(self):
@@ -2158,7 +2160,7 @@ class PackageIt:
 
         self.cleanup()
         self.install_editable_package()
-        self.do_pytest()
+        # self.do_pytest()
         self.git_commit()
         self.git_push()
         self.make_wheels()

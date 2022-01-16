@@ -5,18 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58bb6290-757f-4375-8ef9-4cc58c2455d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/README_Template.rst.old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/README_body_template.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_ReadMe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packageit/packageit.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/packageit.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dummy.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packageit/packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/pipp.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pipp.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_packageit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_rstbuilder.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_rstbuilder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/README_body_template.rst" beforeDir="false" afterPath="$PROJECT_DIR$/templates/README_body_template.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/github_wf_release_template.yml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/github_wf_release_template.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/templ_gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/templates/templ_gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_ReadMe.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_ReadMe.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,11 +188,11 @@
     <list>
       <item itemvalue="Python.PackageIt" />
       <item itemvalue="Python.ReleaseLogIt" />
-      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_update_to_latest_version" />
-      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_do_pytest" />
-      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_run" />
       <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test__init__" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_do_pytest" />
       <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_get_github_release_titles" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_run" />
+      <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_update_to_latest_version" />
     </list>
     <recent_temporary>
       <list>
@@ -234,11 +236,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
-          <line>2214</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
           <line>1378</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
@@ -266,11 +263,6 @@
           <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
           <line>2198</line>
           <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
-          <line>2155</line>
-          <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_ReadMe.py</url>
@@ -326,6 +318,11 @@
           <url>file://$PROJECT_DIR$/tests/test_packageit.py</url>
           <line>1254</line>
           <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
+          <line>2157</line>
+          <option name="timeStamp" value="209" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

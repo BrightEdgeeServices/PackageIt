@@ -883,7 +883,7 @@ class PackageIt:
         # No proper doctest (<<<) because it is os dependent
 
         """
-        print(msg_milestone('Create the "README" structure...'))
+        print(msg_milestone('Create the "README"...'))
         body_pth = self.project_dir / 'README_body.rst'
         templ_body_pth = self.templ_dir / self.project_ini.get(
             'ReadMe', 'DefaultBodyTemplate'
@@ -2145,7 +2145,7 @@ class PackageIt:
         self.create_requirements("requirements_test.txt", self.project_import_test)
         self.create_coveragerc()
         # self.add_badges()
-        self.create_readme()
+        # self.create_readme()
         # self.project_readme_rst.write_text()
         self.create_sphinx_index_rst()
         self.project_sphinx_index_rst.write_text()

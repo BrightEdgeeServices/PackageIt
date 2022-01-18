@@ -6,19 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="58bb6290-757f-4375-8ef9-4cc58c2455d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packageit/packageit.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/packageit.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packageit/release.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.packageit/release.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dummy.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/source/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/source/index.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packageit/packageit.py" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/packageit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/README_body_template.rst" beforeDir="false" afterPath="$PROJECT_DIR$/templates/README_body_template.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/github_wf_release_template.yml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/github_wf_release_template.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/pimp.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pimp.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/pimt.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pimt.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/pipp.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pipp.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageit/pipt.ini" beforeDir="false" afterPath="$PROJECT_DIR$/packageit/pipt.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/templ_gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/templates/templ_gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_ReadMe.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_ReadMe.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +35,17 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/tests/test_packageit.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packageit/pipp.ini" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/packageit/packageit.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/cleanup.bat" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/setup.cfg" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.packageit/packageit.ini" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.packageit/release.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/conftest.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -72,7 +76,28 @@
     <option name="myAttachToSubprocess" value="false" />
     <option name="mySupportQtDebugging" value="false" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_packageit.TestPackageIt.test_get_github_release_titles">
+  <component name="RunManager" selected="Python.CsvWrpr">
+    <configuration name="CsvWrpr" type="PythonConfigurationType" factoryName="Python">
+      <module name="PackageIt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\venv\PackageIt_env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packageit/packageit.py" />
+      <option name="PARAMETERS" value="CsvWrpr -c packageit\pimp.ini -t D:\Dropbox\Lib\SSHKeys" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="PackageIt" type="PythonConfigurationType" factoryName="Python">
       <module name="PackageIt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -108,6 +133,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packageit/packageit.py" />
       <option name="PARAMETERS" value="ReleaseLogIt -c packageit\pimp.ini -t D:\Dropbox\Lib\SSHKeys" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SemVerIt" type="PythonConfigurationType" factoryName="Python">
+      <module name="PackageIt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\venv\PackageIt_env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/packageit/packageit.py" />
+      <option name="PARAMETERS" value="SemVerIt -c packageit\pimp.ini -t D:\Dropbox\Lib\SSHKeys" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -186,8 +232,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.CsvWrpr" />
       <item itemvalue="Python.PackageIt" />
       <item itemvalue="Python.ReleaseLogIt" />
+      <item itemvalue="Python.SemVerIt" />
       <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test__init__" />
       <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_do_pytest" />
       <item itemvalue="Python tests.Python tests for test_packageit.TestPackageIt.test_get_github_release_titles" />
@@ -260,11 +308,6 @@
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
-          <line>2198</line>
-          <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_ReadMe.py</url>
           <line>18</line>
           <option name="timeStamp" value="149" />
@@ -321,8 +364,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
-          <line>2157</line>
-          <option name="timeStamp" value="209" />
+          <line>885</line>
+          <option name="timeStamp" value="220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/packageit/packageit.py</url>
+          <line>2142</line>
+          <option name="timeStamp" value="221" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

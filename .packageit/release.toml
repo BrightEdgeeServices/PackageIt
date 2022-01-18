@@ -1,3 +1,8 @@
+[3.3.4]
+Title = "Version 3.3.4"
+Description = [ "[Bug]: Duplicate README sections in ini files.",]
+GitHubIssues = [ 23, 24,]
+
 [3.3.2]
 Title = "Version 3.3.2"
 Description = [ "[Enhancement]: Generate README from template.", "- Extensive changes to the building of the README file.",]

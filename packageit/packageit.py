@@ -1394,8 +1394,8 @@ class PackageIt:
                 commit_msg = "PackageIt automated update."
             # include_lst = self.add_repo_files() + self.add_forced_repo_files()
             print(msg_milestone("""Commit to Git - {}""".format(commit_msg)))
-            include_lst = self.add_repo_files() + self.add_forced_repo_files()
-            self.git_repo.index.add(include_lst)
+            # include_lst = self.add_repo_files() + self.add_forced_repo_files()
+            self.git_repo.git.add(all=True)
             instructions = [
                 self.project_root_dir.drive,
                 "cd {}".format(self.project_root_dir),

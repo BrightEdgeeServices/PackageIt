@@ -10,29 +10,9 @@ PackageIt
 .. image:: https://img.shields.io/pypi/v/PackageIt
     :alt: PyPi
 
-.. image:: https://img.shields.io/pypi/v/PackageIt
-    :alt: PyPi
-
 Project Short Description (default ini)
 
     Project long description or extended summary goes in here (default ini)
-
-1. Tokens
-    - GitHUb
-    - ReadTheDocs
-2. Runs the system without human intervention i.e. a GUI interface.  No GUI,
-    questions.  All through setting up the ini and templates.
-    - Templates gives opportunity to add own requirements and changes.
-    - Changes in (version) applications using the templates can also be more
-     easily accommodated.
-    - User can configure his/her own templates and leave the defaults intact.
-3. You cannot delete a project on ReadTheDOcs via API.  To properly run the
-    tests the TestProject you are creating must be deleted manually on
-    ReadTheDocs
-4.  PackageIt must tun in a virtual environment
-5.  All packages and modules created by PackageIt must run in a virtual
-    environment.
-
 
 ------------
 Installation
@@ -59,3 +39,4 @@ Usage
     api
     examples
     faq
+

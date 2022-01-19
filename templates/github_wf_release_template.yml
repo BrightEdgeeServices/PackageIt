@@ -1,4 +1,4 @@
-name: Build distribution
+name: Distribute to PyPI
 
 on: [push, pull_request]
 

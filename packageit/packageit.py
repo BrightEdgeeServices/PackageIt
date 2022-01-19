@@ -1449,7 +1449,8 @@ class PackageIt:
                 )
             except git_exc.GitCommandError as err:
                 print(msg_error(err.stderr))
-            success = self.origin.push()
+            success = self.origin.push(all=True, set_upstream=True)
+            success = self.origin.push(tags=True) and success
             self.git_repo.close()
         return success
 

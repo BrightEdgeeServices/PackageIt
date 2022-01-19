@@ -1,7 +1,7 @@
 [3.3.5]
 Title = "Version 3.3.5"
 Description = [ "[Bug]: Push Git tags.",]
-GitHubIssues = [38]
+GitHubIssues = [ 38,]
 
 [3.3.4]
 Title = "Version 3.3.4"

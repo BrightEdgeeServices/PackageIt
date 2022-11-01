@@ -321,7 +321,7 @@ class PackageIt:
                 self.project_venv_upgrade = self.packageit_ini.getboolean(
                     "VEnv", "Upgrade"
                 )
-            self.read_project_detail_specific()
+            # self.read_project_detail_specific()
             self.readme = ReadMe(self.project_root_dir)
         else:
             self.success = False
@@ -472,7 +472,6 @@ class PackageIt:
             self.project_sphinx_index_rst.add_toctree(
                 self.project_sphinx_index_contents, p_maxdepth=2, p_caption="Contents"
             )
-            # self.git_commit('Add Sphinx index content files')
             success = True
         return success
 
@@ -500,7 +499,6 @@ class PackageIt:
                 self.project_sphinx_index_rst.add_second_level_title(item)
                 self.project_sphinx_index_rst.add_code_block(item_contents)
                 success = True
-            # self.git_commit('Add Sphinx index sections')
         return success
 
     # def add_readme_developing(self):
@@ -578,7 +576,6 @@ class PackageIt:
         if dest_pth.is_file():
             self.git_repo.index.remove([str(dest_pth)])
             dest_pth.unlink()
-            # self.git_commit('Remove "Dummy.txt" dummy file')
 
     def create__init__(self):
         """Create the __init__.py file."""
@@ -588,7 +585,6 @@ class PackageIt:
             shutil.copy(self.templ_dir / "__init__template.py", dest_pth)
             contents = dest_pth.read_text().format(self.project_name.lower())
             dest_pth.write_text(contents)
-            # self.git_commit('Create __init__.py file')
         return dest_pth
 
     def create_conftest_py(self):
@@ -627,7 +623,6 @@ class PackageIt:
         for item in omit_files_lst:
             contents += "    {}\n".format(item)
         dest_pth.write_text(contents)
-        # self.git_commit('Create coveragerc file')
         return dest_pth
 
     def create_git_ignore(self):
@@ -662,7 +657,6 @@ class PackageIt:
                 shutil.copy(
                     self.templ_dir / "git_pre-commit-config_template.yaml", dest_pth
                 )
-            # self.git_commit('Create {} file'.format(dest_pth))
             success = True
         if success:
             return dest_pth
@@ -676,7 +670,6 @@ class PackageIt:
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / self.project_gh_bug_templ, dest_pth)
                 dest_pth.write_text(dest_pth.read_text().format(self.project_name))
-            # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_github_ci_yaml(self):
@@ -686,7 +679,6 @@ class PackageIt:
             print(msg_milestone("Create {} file...".format(dest_pth.name)))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / "github_wf_ci_template.yaml", dest_pth)
-            # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_github_config_templ(self):
@@ -697,7 +689,6 @@ class PackageIt:
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / self.project_gh_config_templ, dest_pth)
                 dest_pth.write_text(dest_pth.read_text().format(self.project_name))
-                # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_github_pre_commit_yaml(self):
@@ -711,7 +702,6 @@ class PackageIt:
                 shutil.copy(
                     self.templ_dir / "templ_github_wf_pre-commit.yaml", dest_pth
                 )
-                # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_github_release_yml(self):
@@ -762,7 +752,6 @@ class PackageIt:
             print(msg_milestone("Create {} file...".format(dest_pth.name)))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / self.project_gh_feature_templ, dest_pth)
-                # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_license(self):
@@ -786,7 +775,6 @@ class PackageIt:
             dest_pth.unlink()
         lic = GenLicense(_PROJ_NAME, "MITLicense", self.templ_dir).contents
         dest_pth.write_text(lic)
-        # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_manifest(self):
@@ -797,14 +785,12 @@ class PackageIt:
             shutil.copy(self.templ_dir / "MANIFEST_template.in", dest_pth)
             contents = dest_pth.read_text().format(self.project_name.lower())
             dest_pth.write_text(contents)
-            # self.git_commit('Create {} file'.format(dest_pth))
         return dest_pth
 
     def create_pyproject_toml(self):
         print(msg_milestone("Create {} file...".format(self.pyproject_toml_pth)))
         if not self.pyproject_toml_pth.exists():
             self.pyproject_toml_pth.touch()
-            # self.git_commit('Create {} file'.format(self.pyproject_toml_pth.name))
         pyproject_toml = toml.load(self.pyproject_toml_pth)
         pyproject_toml["build-system"] = {
             "requires": ["setuptools", "wheel"],
@@ -917,7 +903,6 @@ class PackageIt:
                 self.project_root_dir / "docs" / "requirements_docs.txt"
             )
             requirements_docs_pth.write_text("sphinx\nsphinx-autobuild\n")
-            # self.git_commit('Create {} file'.format(dest_pth))
         else:
             if dest_pth.exists():
                 dest_pth.unlink()
@@ -967,7 +952,6 @@ class PackageIt:
                 if item[0] == "pypi":
                     contents += "{}\n".format(item[1])
             dest_pth.write_text(contents)
-            # self.git_commit('Create {} file'.format(prod_dest_pth))
         return dest_pth
 
     def create_scaffolding(self):
@@ -1005,6 +989,7 @@ class PackageIt:
             if not self.project_packageit_ini_pth.parents[0].exists():
                 self.project_packageit_ini_pth.parents[0].mkdir(parents=True)
             self.make_project_specific_ini()
+        self.read_project_detail_specific()
 
         # self.project_release = ReleaseLogIt(self.project_packageit_config_dir)
         return success
@@ -1186,7 +1171,6 @@ class PackageIt:
                 shutil.copy(self.templ_dir / "templ_package.ini", dest_pth)
                 contents = dest_pth.read_text().format(self.project_name)
                 res = dest_pth.write_text(contents)
-                # self.git_commit('Create {} file'.format(dest_pth))
                 if res <= 0:
                     success = False
         return success
@@ -1582,7 +1566,6 @@ class PackageIt:
                     config.set_value("user", "email", self.project_author_email)
                     config.set_value("user", "name", self.project_author)
             if self.git_repo:
-                # self.git_commit('Initialize Git')
                 success = True
         return success
 
@@ -1828,7 +1811,6 @@ class PackageIt:
             )
         )
         shutil.copy(self.packageit_ini_pth, self.project_packageit_ini_pth)
-        # self.git_commit('Create {} file'.format(self.project_packageit_ini_pth))
         pass
 
     @staticmethod

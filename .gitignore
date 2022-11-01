@@ -9,6 +9,9 @@
 VersionArchive/
 Archive/
 TestData/*_env/
+.git/
+tmp/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -62,6 +65,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+CovReport/
 
 # Translations
 *.mo

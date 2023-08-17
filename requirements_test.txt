@@ -5,7 +5,6 @@
 # packageit\pimp.ini and
 # D:\Dropbox\Projects\PackageIt\.packageit\packageit.ini
 #===================================================================
-pip
 wheel
 beetools
 black

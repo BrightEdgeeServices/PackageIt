@@ -15,7 +15,6 @@ one of these methods must create a virtual environment.
 
 """
 
-
 from pathlib import Path
 import requests
 import time
@@ -90,10 +89,7 @@ class TestPackageIt:
         assert p_it.project_dir is None
         assert p_it.project_git_enable is True
         assert p_it.project_gh_enable is True
-        assert (
-            p_it.project_header_description
-            == "Project Header Description (project ini)"
-        )
+        assert p_it.project_header_description == "Project Header Description (project ini)"
 
         assert p_it.project_import_prod == [["pypi", "termcolor"]]
         assert p_it.project_import_rewrite is True
@@ -106,7 +102,7 @@ class TestPackageIt:
             ["pypi", "pytest-cov"],
             ["pypi", "sphinx"],
             ["pypi", "sphinx-autobuild"],
-            ['pypi', 'sphinx-rtd-theme'],
+            ["pypi", "sphinx-rtd-theme"],
             ["pypi", "black"],
             ["pypi", "build"],
             ["pypi", "configparserext"],
@@ -117,10 +113,7 @@ class TestPackageIt:
             env_setup.anchor_dir, env_setup.project_name, ".packageit", "packageit.ini"
         )
         assert p_it.project_install_apps == ["pre-commit install"]
-        assert (
-            p_it.project_long_description
-            == "Project long description goes in here (project ini)"
-        )
+        assert p_it.project_long_description == "Project long description goes in here (project ini)"
         assert p_it.project_name == env_setup.project_name
         assert p_it.project_python_requires == ">=3.6"
 
@@ -128,28 +121,16 @@ class TestPackageIt:
 
         assert p_it.project_readthedocs_enable
 
-        assert p_it.project_root_dir == Path(
-            env_setup.anchor_dir, env_setup.project_name
-        )
+        assert p_it.project_root_dir == Path(env_setup.anchor_dir, env_setup.project_name)
 
-        assert (
-            p_it.project_readthedocs_config_template
-            == "readthedocs_def_.readthedocs_template.yaml"
-        )
-        assert (
-            p_it.project_readthedocs_newproject_template
-            == "readthedocs_def_newproject_template.json"
-        )
+        assert p_it.project_readthedocs_config_template == "readthedocs_def_.readthedocs_template.yaml"
+        assert p_it.project_readthedocs_newproject_template == "readthedocs_def_newproject_template.json"
 
-        assert p_it.project_tests_dir == Path(
-            env_setup.anchor_dir, env_setup.project_name, "tests"
-        )
+        assert p_it.project_tests_dir == Path(env_setup.anchor_dir, env_setup.project_name, "tests")
 
         assert p_it.project_version.version == "0.0.0"
 
-        assert p_it.project_versionarchive_dir == Path(
-            env_setup.anchor_dir, env_setup.project_name, "VersionArchive"
-        )
+        assert p_it.project_versionarchive_dir == Path(env_setup.anchor_dir, env_setup.project_name, "VersionArchive")
 
         assert p_it.project_pypi_publishing == "GitHub"
         assert p_it.project_pypi_repository == "testpypi"
@@ -179,10 +160,7 @@ class TestPackageIt:
         assert p_it.pypi_prod_token_name == "PYPI_API_TOKEN"
         assert p_it.pypi_test_token_name == "TEST_PYPI_API_TOKEN"
 
-        assert (
-            p_it.pyproject_toml_pth
-            == env_setup.anchor_dir / env_setup.project_name / "pyproject.toml"
-        )
+        assert p_it.pyproject_toml_pth == env_setup.anchor_dir / env_setup.project_name / "pyproject.toml"
         assert p_it.git_repo is None
         assert p_it.templ_dir == p_it.packageit_dir / "templates"
         assert p_it.verbose
@@ -201,50 +179,50 @@ class TestPackageIt:
 
         p_it.add_readme_badges()
         assert p_it.readme.elements == {
-            0: {'Type': 'DirectiveImage', 'Text': env_setup.index_rst_badge_pypi_wheel},
+            0: {"Type": "DirectiveImage", "Text": env_setup.index_rst_badge_pypi_wheel},
             1: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pypi_version,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pypi_version,
             },
             2: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pypi_status,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pypi_status,
             },
             3: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pypi_dl,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pypi_dl,
             },
             4: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pyversions,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pyversions,
             },
             5: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_pre_commit,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_pre_commit,
             },
             6: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_license,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_license,
             },
             7: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_hits,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_hits,
             },
             8: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_release,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_release,
             },
             9: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_issues,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_issues,
             },
             10: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_codecov,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_codecov,
             },
             11: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_ci,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_ci,
             },
         }
         pass
@@ -294,7 +272,7 @@ class TestPackageIt:
         env_setup.create_mock_files()
 
         assert p_it.add_repo_files() == [
-            '.gitignore',
+            ".gitignore",
             ".packageit/packageit.ini",
             "setup.cfg",
             f"src/{env_setup.project_name.lower()}/{env_setup.project_name.lower()}.ini",
@@ -315,9 +293,7 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_git_ignore()
         # p_it.project_readme_rst = packageit.RSTBuilder(_NAME, p_it.project_readme_pth)
-        p_it.project_sphinx_index_rst = packageit.RSTBuilder(
-            p_it.project_sphinx_index_rst_pth
-        )
+        p_it.project_sphinx_index_rst = packageit.RSTBuilder(p_it.project_sphinx_index_rst_pth)
         (p_it.project_sphinx_source_dir / "conventions.rst").write_text(
             "===========\nConventions\n===========\n\n1. Convention 1\n2. Next convention\n\n"
         )
@@ -345,12 +321,8 @@ class TestPackageIt:
 
         p_it.create_scaffolding()
         # p_it.project_readme_rst = packageit.RSTBuilder(_NAME, p_it.project_readme_pth)
-        p_it.project_sphinx_index_rst = packageit.RSTBuilder(
-            p_pth=p_it.project_sphinx_index_rst_pth
-        )
-        (p_it.project_sphinx_source_dir / "Usage.rst").write_text(
-            ">>> This is how you use {}".format(p_it.project_name)
-        )
+        p_it.project_sphinx_index_rst = packageit.RSTBuilder(p_pth=p_it.project_sphinx_index_rst_pth)
+        (p_it.project_sphinx_source_dir / "Usage.rst").write_text(f">>> This is how you use {p_it.project_name}")
         p_it.add_sphinx_index_sections()
 
         assert p_it.project_sphinx_index_rst.elements == {
@@ -365,9 +337,7 @@ class TestPackageIt:
             2: {"Type": "SecondLevelTitle", "Text": "-----\nUsage\n-----\n\n"},
             3: {
                 "Type": "CodeBlock",
-                "Text": ".. code-block:: bash\n\n    >>> This is how you use {}\n\n".format(
-                    env_setup.project_name
-                ),
+                "Text": ".. code-block:: bash\n\n    >>> This is how you use {}\n\n".format(env_setup.project_name),
             },
             4: {"Type": "SecondLevelTitle", "Text": "-------\nSupport\n-------\n\n"},
             5: {
@@ -495,7 +465,7 @@ class TestPackageIt:
 
         assert dest_pth.exists()
         assert contents == env_setup.release_yaml_prod
-        p_it.project_pypi_publishing = 'No'
+        p_it.project_pypi_publishing = "No"
         dest_pth = p_it.create_github_release_yml()
         assert not dest_pth
         pass
@@ -515,7 +485,7 @@ class TestPackageIt:
 
         assert dest_pth.exists()
         assert contents == env_setup.release_yaml_test
-        p_it.project_pypi_publishing = 'No'
+        p_it.project_pypi_publishing = "No"
         dest_pth = p_it.create_github_release_yml()
         assert not dest_pth
         pass
@@ -550,69 +520,67 @@ class TestPackageIt:
         assert p_it.readme.contents == env_setup.readme_contents
         assert p_it.readme.element_cntr == 15
         assert p_it.readme.elements == {
-            0: {'Type': 'DirectiveImage', 'Text': env_setup.index_rst_badge_pypi_wheel},
+            0: {"Type": "DirectiveImage", "Text": env_setup.index_rst_badge_pypi_wheel},
             1: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pypi_version,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pypi_version,
             },
             2: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pypi_status,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pypi_status,
             },
             3: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pypi_dl,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pypi_dl,
             },
             4: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_pyversions,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_pyversions,
             },
             5: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_pre_commit,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_pre_commit,
             },
             6: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_license,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_license,
             },
             7: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_hits,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_hits,
             },
             8: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_release,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_release,
             },
             9: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_issues,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_issues,
             },
             10: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_codecov,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_codecov,
             },
             11: {
-                'Type': 'DirectiveImage',
-                'Text': env_setup.index_rst_badge_github_ci,
+                "Type": "DirectiveImage",
+                "Text": env_setup.index_rst_badge_github_ci,
             },
             12: {
-                'Type': 'Paragraph',
-                'Text': 'Project Header Description (project ini)\n\n',
+                "Type": "Paragraph",
+                "Text": "Project Header Description (project ini)\n\n",
             },
             13: {
-                'Type': 'Paragraph',
-                'Text': '    Project long description goes in here (project ini)\n\n',
+                "Type": "Paragraph",
+                "Text": "    Project long description goes in here (project ini)\n\n",
             },
             14: {
-                'Type': 'FormattedText',
-                'Text': '=======\nTesting\n=======\n\nThis project uses ``pytest`` to run tests and also to test docstring examples.\n\nInstall the test dependencies.\n\n.. code-block:: bash\n\n    $ pip install -r requirements_test.txt\n\nRun the tests.\n\n==========\nDeveloping\n==========\n\nThis project uses ``black`` to format code and ``flake8`` for linting. We also support ``pre-commit`` to ensure these have been run. To configure your local environment please install these development dependencies and set up the commit hooks.\n\n.. code-block:: bash\n\n    $ pip install black flake8 pre-commit\n    $ pre-commit install\n\n=========\nReleasing\n=========\n\nReleases are published automatically when a tag is pushed to GitHub.\n\n.. code-block:: bash\n\n    # Set next version number\n    export RELEASE = x.x.x\n\n    # Create tags\n    git commit --allow -empty -m "Release $RELEASE"\n    git tag -a $RELEASE -m "Version $RELEASE"\n\n    # Push\n    git push upstream --tags\n\n',
+                "Type": "FormattedText",
+                "Text": '=======\nTesting\n=======\n\nThis project uses ``pytest`` to run tests and also to test docstring examples.\n\nInstall the test dependencies.\n\n.. code-block:: bash\n\n    $ pip install -r requirements_test.txt\n\nRun the tests.\n\n==========\nDeveloping\n==========\n\nThis project uses ``black`` to format code and ``flake8`` for linting. We also support ``pre-commit`` to ensure these have been run. To configure your local environment please install these development dependencies and set up the commit hooks.\n\n.. code-block:: bash\n\n    $ pip install black flake8 pre-commit\n    $ pre-commit install\n\n=========\nReleasing\n=========\n\nReleases are published automatically when a tag is pushed to GitHub.\n\n.. code-block:: bash\n\n    # Set next version number\n    export RELEASE = x.x.x\n\n    # Create tags\n    git commit --allow -empty -m "Release $RELEASE"\n    git tag -a $RELEASE -m "Version $RELEASE"\n\n    # Push\n    git push upstream --tags\n\n',
             },
         }
         pass
 
-    def test_create_readthedocs_project_new(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_create_readthedocs_project_new(self, setup_env_with_project_ini_self_destruct):
         """Testing packageit_upload_to_enabled()"""
         env_setup = setup_env_with_project_ini_self_destruct
         p_it = packageit.PackageIt(
@@ -675,9 +643,7 @@ class TestPackageIt:
         p_it.create_readthedocs_project()
         # p_it.zip_project()  # Zip after changes
 
-        url = "https://readthedocs.org/api/v3/projects/{}/".format(
-            p_it.project_name.lower()
-        )
+        url = "https://readthedocs.org/api/v3/projects/{}/".format(p_it.project_name.lower())
         # url = 'https://readthedocs.org/api/v3/projects/'
         headers = {"Authorization": f"token {p_it.rtd_token}"}
         response = requests.get(url, headers=headers).json()
@@ -725,7 +691,7 @@ class TestPackageIt:
                             "List all the changes to the project here.",
                             "Changes listed here will be in the release notes under the above heading.",
                         ],
-                        'GitHubIssues': [],
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -760,31 +726,18 @@ class TestPackageIt:
         p_it.create_scaffolding()
 
         assert (
-            p_it.project_dir
-            == env_setup.anchor_dir
-            / env_setup.project_name
-            / "src"
-            / env_setup.project_name.lower()
+            p_it.project_dir == env_setup.anchor_dir / env_setup.project_name / "src" / env_setup.project_name.lower()
         )
         assert p_it.project_dir.exists()
         assert p_it.project_packageit_ini_pth == Path(
             env_setup.anchor_dir, env_setup.project_name, ".packageit", "packageit.ini"
         )
         assert p_it.project_packageit_ini_pth.exists()
-        assert (
-            p_it.project_src_dir
-            == env_setup.anchor_dir / env_setup.project_name.lower() / "src"
-        )
+        assert p_it.project_src_dir == env_setup.anchor_dir / env_setup.project_name.lower() / "src"
         assert p_it.project_src_dir.exists()
-        assert (
-            p_it.project_tests_dir
-            == env_setup.anchor_dir / env_setup.project_name / "tests"
-        )
+        assert p_it.project_tests_dir == env_setup.anchor_dir / env_setup.project_name / "tests"
         assert p_it.project_tests_dir.exists()
-        assert (
-            p_it.project_versionarchive_dir
-            == env_setup.anchor_dir / env_setup.project_name / "VersionArchive"
-        )
+        assert p_it.project_versionarchive_dir == env_setup.anchor_dir / env_setup.project_name / "VersionArchive"
         assert p_it.project_versionarchive_dir.exists()
         pass
 
@@ -800,33 +753,17 @@ class TestPackageIt:
         )
         p_it.create_scaffolding()
 
-        assert (
-            p_it.project_dir
-            == env_setup.anchor_dir
-            / env_setup.project_name
-            / env_setup.project_name.lower()
-        )
+        assert p_it.project_dir == env_setup.anchor_dir / env_setup.project_name / env_setup.project_name.lower()
         assert p_it.project_dir.exists()
         assert p_it.project_packageit_ini_pth == Path(
             env_setup.anchor_dir, env_setup.project_name, ".packageit", "packageit.ini"
         )
         assert p_it.project_packageit_ini_pth.exists()
-        assert (
-            p_it.project_src_dir
-            == env_setup.anchor_dir
-            / env_setup.project_name
-            / env_setup.project_name.lower()
-        )
+        assert p_it.project_src_dir == env_setup.anchor_dir / env_setup.project_name / env_setup.project_name.lower()
         assert p_it.project_src_dir.exists()
-        assert (
-            p_it.project_tests_dir
-            == env_setup.anchor_dir / env_setup.project_name / "tests"
-        )
+        assert p_it.project_tests_dir == env_setup.anchor_dir / env_setup.project_name / "tests"
         assert p_it.project_tests_dir.exists()
-        assert (
-            p_it.project_versionarchive_dir
-            == env_setup.anchor_dir / env_setup.project_name / "VersionArchive"
-        )
+        assert p_it.project_versionarchive_dir == env_setup.anchor_dir / env_setup.project_name / "VersionArchive"
         assert p_it.project_versionarchive_dir.exists()
 
     def test_create_setup_cfg_module(self, setup_env_self_destruct):
@@ -841,12 +778,12 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_setup_cfg().exists()
 
-        assert p_it.project_setup_cfg.options('options') == [
-            'install_requires',
-            'setup_requires',
-            'tests_require',
-            'package_dir',
-            'packages',
+        assert p_it.project_setup_cfg.options("options") == [
+            "install_requires",
+            "setup_requires",
+            "tests_require",
+            "package_dir",
+            "packages",
         ]
         pass
 
@@ -865,9 +802,7 @@ class TestPackageIt:
         assert p_it.create_setup_cfg().exists()
         pass
 
-    def test_create_source_code_ini_module(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_create_source_code_ini_module(self, setup_env_with_project_ini_self_destruct):
         """Testing create_source_code_py_module()"""
         env_setup = setup_env_with_project_ini_self_destruct
         p_it = packageit.PackageIt(
@@ -879,14 +814,10 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_source_code_ini()
 
-        assert not Path(
-            p_it.project_src_dir / "{}.ini".format(env_setup.project_name.lower())
-        ).exists()
+        assert not Path(p_it.project_src_dir / f"{env_setup.project_name.lower()}.ini").exists()
         pass
 
-    def test_create_source_code_ini_package(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_create_source_code_ini_package(self, setup_env_with_project_ini_self_destruct):
         """Testing create_source_code_ini_package()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "Detail", "Type", "Package")
@@ -899,14 +830,10 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_source_code_ini()
 
-        assert Path(
-            p_it.project_src_dir / "{}.ini".format(env_setup.project_name.lower())
-        ).exists()
+        assert Path(p_it.project_src_dir / f"{env_setup.project_name.lower()}.ini").exists()
         pass
 
-    def test_create_source_code_py_module(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_create_source_code_py_module(self, setup_env_with_project_ini_self_destruct):
         """Testing create_source_code_py_module()"""
         env_setup = setup_env_with_project_ini_self_destruct
         p_it = packageit.PackageIt(
@@ -919,15 +846,11 @@ class TestPackageIt:
         p_it.create_source_code_py()
 
         assert Path(
-            p_it.project_src_dir
-            / "{}".format(env_setup.project_name.lower())
-            / "{}.py".format(env_setup.project_name.lower())
+            p_it.project_src_dir / f"{env_setup.project_name.lower()}" / f"{env_setup.project_name.lower()}.py"
         ).exists()
         pass
 
-    def test_create_source_code_py_package(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_create_source_code_py_package(self, setup_env_with_project_ini_self_destruct):
         """Testing create_source_code_py_package()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "Detail", "Type", "Package")
@@ -940,9 +863,7 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_source_code_py()
 
-        assert Path(
-            p_it.project_src_dir / "{}.py".format(env_setup.project_name.lower())
-        ).exists()
+        assert Path(p_it.project_src_dir / f"{env_setup.project_name.lower()}.py").exists()
         pass
 
     def test_create_sphinx_conf_py(self, setup_env_with_project_ini_self_destruct):
@@ -998,9 +919,7 @@ class TestPackageIt:
         p_it.create_sphinx_index_rst().write_text()
         p_it.create_sphinx_docs()
 
-        assert (
-            p_it.project_root_dir / "docs" / "build" / "html" / "index.html"
-        ).exists()
+        assert (p_it.project_root_dir / "docs" / "build" / "html" / "index.html").exists()
         pass
 
     def test_create_sphinx_index_rst(self, setup_env_with_project_ini_self_destruct):
@@ -1021,100 +940,100 @@ class TestPackageIt:
 
         assert p_it.project_sphinx_index_rst.elements == {
             0: {
-                'Type': 'Comment',
-                'Text': '.. ======================================================\n',
+                "Type": "Comment",
+                "Text": ".. ======================================================\n",
             },
             1: {
-                'Type': 'Comment',
-                'Text': '.. This file is auto generated by PackageIt. Any changes\n',
+                "Type": "Comment",
+                "Text": ".. This file is auto generated by PackageIt. Any changes\n",
             },
-            2: {'Type': 'Comment', 'Text': '.. to it will be over written\n'},
+            2: {"Type": "Comment", "Text": ".. to it will be over written\n"},
             3: {
-                'Type': 'Comment',
-                'Text': '.. ======================================================\n\n',
+                "Type": "Comment",
+                "Text": ".. ======================================================\n\n",
             },
             4: {
-                'Type': 'FirstLevelTitle',
-                'Text': f'===============================\n{p_it.project_name}\n===============================\n\n',
+                "Type": "FirstLevelTitle",
+                "Text": f"===============================\n{p_it.project_name}\n===============================\n\n",
             },
             5: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/testpypi/wheel/{p_it.project_name}\n    :alt: PyPI - Wheel\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/testpypi/wheel/{p_it.project_name}\n    :alt: PyPI - Wheel\n\n",
             },
             6: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/testpypi/pyversions/{p_it.project_name}\n    :alt: PyPI - Python Version\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/testpypi/pyversions/{p_it.project_name}\n    :alt: PyPI - Python Version\n\n",
             },
             7: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/testpypi/status/{p_it.project_name}\n    :alt: PyPI - Status\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/testpypi/status/{p_it.project_name}\n    :alt: PyPI - Status\n\n",
             },
             8: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/testpypi/dm/{p_it.project_name}\n    :alt: PyPI - Downloads\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/testpypi/dm/{p_it.project_name}\n    :alt: PyPI - Downloads\n\n",
             },
             9: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/testpypi/v/{p_it.project_name}\n    :alt: PyPi\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/testpypi/v/{p_it.project_name}\n    :alt: PyPi\n\n",
             },
             10: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/github/workflow/status/{p_it.project_gh_username}/{p_it.project_name}/Pre-Commit\n    :alt: GitHub Actions - Pre-Commit\n    :target: https://github.com/{p_it.project_gh_username}/{p_it.project_name}/actions/workflows/pre-commit.yaml\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/github/workflow/status/{p_it.project_gh_username}/{p_it.project_name}/Pre-Commit\n    :alt: GitHub Actions - Pre-Commit\n    :target: https://github.com/{p_it.project_gh_username}/{p_it.project_name}/actions/workflows/pre-commit.yaml\n\n",
             },
             11: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/github/license/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: License\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/github/license/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: License\n\n",
             },
             12: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/github/search/{p_it.project_gh_username}/{p_it.project_name}/GitHub\n    :alt: GitHub Searches\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/github/search/{p_it.project_gh_username}/{p_it.project_name}/GitHub\n    :alt: GitHub Searches\n\n",
             },
             13: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/github/v/release/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: GitHub release (latest by date)\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/github/v/release/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: GitHub release (latest by date)\n\n",
             },
             14: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/github/issues-raw/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: GitHub issues\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/github/issues-raw/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: GitHub issues\n\n",
             },
             15: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/codecov/c/gh/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: CodeCov\n    :target: https://app.codecov.io/gh/{p_it.project_gh_username}/{p_it.project_name}\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/codecov/c/gh/{p_it.project_gh_username}/{p_it.project_name}\n    :alt: CodeCov\n    :target: https://app.codecov.io/gh/{p_it.project_gh_username}/{p_it.project_name}\n\n",
             },
             16: {
-                'Type': 'DirectiveImage',
-                'Text': f'.. image:: https://img.shields.io/github/workflow/status/{p_it.project_gh_username}/{p_it.project_name}/CI\n    :alt: GitHub Actions - CI\n    :target: https://github.com/{p_it.project_gh_username}/{p_it.project_name}/actions/workflows/ci.yaml\n\n',
+                "Type": "DirectiveImage",
+                "Text": f".. image:: https://img.shields.io/github/workflow/status/{p_it.project_gh_username}/{p_it.project_name}/CI\n    :alt: GitHub Actions - CI\n    :target: https://github.com/{p_it.project_gh_username}/{p_it.project_name}/actions/workflows/ci.yaml\n\n",
             },
             17: {
-                'Type': 'Paragraph',
-                'Text': 'Project Header Description (project ini)\n\n',
+                "Type": "Paragraph",
+                "Text": "Project Header Description (project ini)\n\n",
             },
             18: {
-                'Type': 'Paragraph',
-                'Text': '    Project long description goes in here (project ini)\n\n',
+                "Type": "Paragraph",
+                "Text": "    Project long description goes in here (project ini)\n\n",
             },
             19: {
-                'Type': 'SecondLevelTitle',
-                'Text': '------------\nInstallation\n------------\n\n',
+                "Type": "SecondLevelTitle",
+                "Text": "------------\nInstallation\n------------\n\n",
             },
             20: {
-                'Type': 'CodeBlock',
-                'Text': '.. code-block:: bash\n\n    $ pip install .\n\n',
+                "Type": "CodeBlock",
+                "Text": ".. code-block:: bash\n\n    $ pip install .\n\n",
             },
-            21: {'Type': 'SecondLevelTitle', 'Text': '-----\nUsage\n-----\n\n'},
+            21: {"Type": "SecondLevelTitle", "Text": "-----\nUsage\n-----\n\n"},
             22: {
-                'Type': 'CodeBlock',
-                'Text': '.. code-block:: bash\n\n    Insert text in Usage.rst\n\n',
+                "Type": "CodeBlock",
+                "Text": ".. code-block:: bash\n\n    Insert text in Usage.rst\n\n",
             },
-            23: {'Type': 'SecondLevelTitle', 'Text': '-------\nSupport\n-------\n\n'},
+            23: {"Type": "SecondLevelTitle", "Text": "-------\nSupport\n-------\n\n"},
             24: {
-                'Type': 'CodeBlock',
-                'Text': '.. code-block:: bash\n\n    Insert text in Support.rst\n\n',
+                "Type": "CodeBlock",
+                "Text": ".. code-block:: bash\n\n    Insert text in Support.rst\n\n",
             },
             25: {
-                'Type': 'TocTree',
-                'Text': '.. toctree::\n    :maxdepth: 2\n    :caption: Contents\n    :numbered:\n\n    conventions\n    api\n    donotexist\n\n',
-                'Items': ['conventions', 'api', 'donotexist'],
+                "Type": "TocTree",
+                "Text": ".. toctree::\n    :maxdepth: 2\n    :caption: Contents\n    :numbered:\n\n    conventions\n    api\n    donotexist\n\n",
+                "Items": ["conventions", "api", "donotexist"],
             },
         }
         assert p_it.project_sphinx_index_rst.contents == env_setup.index_rst_contents
@@ -1133,15 +1052,11 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_venv()
 
-        assert p_it.project_venv_dir == env_setup.anchor_dir / "venv" / "{}_env".format(
-            env_setup.project_name
-        )
+        assert p_it.project_venv_dir == env_setup.anchor_dir / "venv" / "{}_env".format(env_setup.project_name)
         assert (p_it.project_venv_dir / "pyvenv.cfg").exists()
         pass
 
-    def test_create_venv_not_exist_and_reinstall_yes(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_create_venv_not_exist_and_reinstall_yes(self, setup_env_with_project_ini_self_destruct):
         """Testing packageit_do_install_venv_not_exist_and_reinstall_yes()"""
         env_setup = setup_env_with_project_ini_self_destruct
         p_it = packageit.PackageIt(
@@ -1154,9 +1069,7 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_venv()
 
-        assert p_it.project_venv_dir == env_setup.anchor_dir / "venv" / "{}_env".format(
-            env_setup.project_name
-        )
+        assert p_it.project_venv_dir == env_setup.anchor_dir / "venv" / "{}_env".format(env_setup.project_name)
         assert (p_it.project_venv_dir / "pyvenv.cfg").exists()
         pass
 
@@ -1172,9 +1085,7 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_venv()
 
-        assert p_it.project_venv_dir == env_setup.anchor_dir / "venv" / "{}_env".format(
-            env_setup.project_name
-        )
+        assert p_it.project_venv_dir == env_setup.anchor_dir / "venv" / "{}_env".format(env_setup.project_name)
         assert (p_it.project_venv_dir / "pyvenv.cfg").exists()
         pass
 
@@ -1252,16 +1163,10 @@ class TestPackageIt:
         p_it.gh_repo.delete()
         p_it.init_github()
         p_it.init_github_repo()
-        commit_rc = p_it.gh_repo.create_file(
-            "test.txt", "test", "test", branch="master"
-        )
+        commit_rc = p_it.gh_repo.create_file("test.txt", "test", "test", branch="master")
         for release_detail in release_details:
-            p_it.gh_repo.create_git_tag(
-                release_detail[0], release_detail[1], commit_rc["commit"].sha, "commit"
-            )
-            p_it.gh_repo.create_git_release(
-                release_detail[0], release_detail[2], "Line 1\nLine 2"
-            )
+            p_it.gh_repo.create_git_tag(release_detail[0], release_detail[1], commit_rc["commit"].sha, "commit")
+            p_it.gh_repo.create_git_release(release_detail[0], release_detail[2], "Line 1\nLine 2")
 
         assert p_it.get_github_repo_tags() == list(reversed(release_titles))
 
@@ -1318,14 +1223,8 @@ class TestPackageIt:
         )
         assert p_it.get_release_from_title("Version 9.9.9.") == "9.9.9"
         assert p_it.get_release_from_title("Version 9.9.9") == "9.9.9"
-        assert (
-            p_it.get_release_from_title("Version 9.9.9. and the something else")
-            == "9.9.9"
-        )
-        assert (
-            p_it.get_release_from_title("Version 9.9.9 and the something else")
-            == "9.9.9"
-        )
+        assert p_it.get_release_from_title("Version 9.9.9. and the something else") == "9.9.9"
+        assert p_it.get_release_from_title("Version 9.9.9 and the something else") == "9.9.9"
         assert p_it.get_release_from_title("9.9.9.") == "9.9.9"
         assert p_it.get_release_from_title("9.9.9") == "9.9.9"
         assert not p_it.get_release_from_title("No Version.") == "9.9.9"
@@ -1343,10 +1242,8 @@ class TestPackageIt:
         p_it.create_scaffolding()
         p_it.create_source_code_py()
 
-        assert (
-            p_it.project_desc == 'Project long description goes in here (project ini)'
-        )
-        assert p_it.project_title == 'Project Header Description (project ini)'
+        assert p_it.project_desc == "Project long description goes in here (project ini)"
+        assert p_it.project_title == "Project Header Description (project ini)"
         pass
 
     def test_git_commit(self, setup_env_self_destruct):
@@ -1462,17 +1359,11 @@ class TestPackageIt:
         p_it.gh_repo.delete()
         p_it.init_github()
         p_it.init_github_repo()
-        commit_rc = p_it.gh_repo.create_file(
-            "test.txt", "test", "test", branch="master"
-        )
+        commit_rc = p_it.gh_repo.create_file("test.txt", "test", "test", branch="master")
         for rel_det in release_details_factory:
-            p_it.gh_repo.create_git_tag(
-                rel_det[0], rel_det[1], commit_rc["commit"].sha, "commit"
-            )
+            p_it.gh_repo.create_git_tag(rel_det[0], rel_det[1], commit_rc["commit"].sha, "commit")
             p_it.gh_repo.create_git_release(rel_det[0], rel_det[2], "Line 1\nLine 2")
-        p_it.gh_repo.create_git_tag(
-            "0.0.3", "Version 0.0.3", commit_rc["commit"].sha, "commit"
-        )
+        p_it.gh_repo.create_git_tag("0.0.3", "Version 0.0.3", commit_rc["commit"].sha, "commit")
         p_it.create_release()
         p_it.project_release.add_release_note(release_notes_001)
         p_it.project_release.add_release_note(release_notes_003)
@@ -1511,13 +1402,9 @@ class TestPackageIt:
         p_it.init_github()
         p_it.init_github_repo()
 
-        commit_rc = p_it.gh_repo.create_file(
-            "test.txt", "test", "test", branch="master"
-        )
+        commit_rc = p_it.gh_repo.create_file("test.txt", "test", "test", branch="master")
         for rel_det in release_details_factory:
-            p_it.gh_repo.create_git_tag(
-                rel_det[0], rel_det[1], commit_rc["commit"].sha, "commit"
-            )
+            p_it.gh_repo.create_git_tag(rel_det[0], rel_det[1], commit_rc["commit"].sha, "commit")
             p_it.gh_repo.create_git_release(rel_det[0], rel_det[2], "Line 1\nLine 2")
 
         assert p_it.github_format_titles()
@@ -1631,9 +1518,7 @@ class TestPackageIt:
         assert not p_it.github
         pass
 
-    def test_init_github_master_branch_new(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_init_github_master_branch_new(self, setup_env_with_project_ini_self_destruct):
         """Testing init_github_master_branch_new()"""
         env_setup = setup_env_with_project_ini_self_destruct
         # change_ini(env_setup.packageit_ini_pth, 'GitHub', 'Enable', 'No')
@@ -1654,9 +1539,7 @@ class TestPackageIt:
         p_it.gh_repo.delete()
         pass
 
-    def test_init_github_master_branch_existing(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_init_github_master_branch_existing(self, setup_env_with_project_ini_self_destruct):
         """Testing init_github_master_branch_existing()"""
         env_setup = setup_env_with_project_ini_self_destruct
         # env_setup.del_github_repo()
@@ -1746,7 +1629,7 @@ class TestPackageIt:
         p_it.create_venv()
         p_it.init_git()
 
-        assert p_it.install_prereq_modules_in_venv() == ['pip', 'pre-commit']
+        assert p_it.install_prereq_modules_in_venv() == ["pip", "pre-commit"]
         pass
 
     def test_make_project_specific_ini_module(self, setup_env_self_destruct):
@@ -1777,7 +1660,7 @@ class TestPackageIt:
             "Install Apps",
             "LogLevels",
             "PyPi",
-            'ReadMe',
+            "ReadMe",
             "ReadTheDocs",
             "Sphinx",
             "VEnv",
@@ -1786,9 +1669,7 @@ class TestPackageIt:
         ]
         pass
 
-    def test_make_project_specific_ini_package(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_make_project_specific_ini_package(self, setup_env_with_project_ini_self_destruct):
         """Testing make_project_specific_ini_package()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "Detail", "Type", "Package")
@@ -1818,7 +1699,7 @@ class TestPackageIt:
             "Install Apps",
             "LogLevels",
             "PyPi",
-            'ReadMe',
+            "ReadMe",
             "ReadTheDocs",
             "Sphinx",
             "tool:pytest",
@@ -1857,14 +1738,12 @@ class TestPackageIt:
         dist_dir = env_setup.anchor_dir / env_setup.project_name / "dist"
         assert p_it.make_wheels() == 0
         assert p_it.project_wheels == [
-            Path(dist_dir, "{}-0.0.0-py3-none-any.whl".format(env_setup.project_name)),
-            Path(dist_dir, "{}-0.0.0.tar.gz".format(env_setup.project_name)),
+            Path(dist_dir, f"{env_setup.project_name}-0.0.0-py3-none-any.whl"),
+            Path(dist_dir, f"{env_setup.project_name}-0.0.0.tar.gz"),
         ]
         pass
 
-    def test_marry_git_github_all_enable(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_marry_git_github_all_enable(self, setup_env_with_project_ini_self_destruct):
         """Testing marry_git_github_all_enable()"""
         env_setup = setup_env_with_project_ini_self_destruct
         # env_setup.del_github_repo()
@@ -1886,9 +1765,7 @@ class TestPackageIt:
         p_it.git_repo.close()
         pass
 
-    def test_marry_git_github_git_disable(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_marry_git_github_git_disable(self, setup_env_with_project_ini_self_destruct):
         """Testing marry_git_github()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "Git", "Enable", "No")
@@ -1909,9 +1786,7 @@ class TestPackageIt:
         assert not p_it.marry_git_github()
         pass
 
-    def test_marry_git_github_github_disable(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_marry_git_github_github_disable(self, setup_env_with_project_ini_self_destruct):
         """Testing marry_git_github()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "GitHub", "Enable", "No")
@@ -1932,15 +1807,13 @@ class TestPackageIt:
         assert not p_it.marry_git_github()
         pass
 
-    def test_read_project_detail_specific(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_read_project_detail_specific(self, setup_env_with_project_ini_self_destruct):
         """Testing read_project_detail_specific()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(
             env_setup.packageit_ini_pth,
             "Folders",
-            "{}PackageFolder".format(get_os()),
+            f"{get_os()}PackageFolder",
             Path(env_setup.anchor_dir, "foo"),
         )
         p_it = packageit.PackageIt(
@@ -1965,10 +1838,7 @@ class TestPackageIt:
         assert p_it.project_dir is None
         assert p_it.project_git_enable
         assert p_it.project_gh_enable
-        assert (
-            p_it.project_header_description
-            == "Project Header Description (project ini)"
-        )
+        assert p_it.project_header_description == "Project Header Description (project ini)"
         assert p_it.project_import_prod == [["pypi", "termcolor"]]
         assert p_it.project_import_rewrite is True
         assert p_it.project_import_test == [
@@ -1980,17 +1850,14 @@ class TestPackageIt:
             ["pypi", "pytest-cov"],
             ["pypi", "sphinx"],
             ["pypi", "sphinx-autobuild"],
-            ['pypi', 'sphinx-rtd-theme'],
+            ["pypi", "sphinx-rtd-theme"],
             ["pypi", "black"],
             ["pypi", "build"],
             ["pypi", "configparserext"],
             ["pypi", "pygithub"],
         ]
         assert p_it.project_install_apps == ["pre-commit install"]
-        assert (
-            p_it.project_long_description
-            == "Project long description goes in here (project ini)"
-        )
+        assert p_it.project_long_description == "Project long description goes in here (project ini)"
         assert p_it.project_pypi_publishing == "GitHub"
         assert p_it.project_pypi_repository == "testpypi"
         assert p_it.project_python_requires == ">=3.6"
@@ -2059,20 +1926,12 @@ class TestPackageIt:
             env_setup.anchor_dir, env_setup.project_name, ".packageit", "packageit.ini"
         )
         assert p_it.project_name == env_setup.project_name
-        assert p_it.project_src_dir == Path(
-            env_setup.anchor_dir, env_setup.project_name, "src"
-        )
-        assert p_it.project_tests_dir == Path(
-            env_setup.anchor_dir, env_setup.project_name, "tests"
-        )
-        assert p_it.project_versionarchive_dir == Path(
-            env_setup.anchor_dir, env_setup.project_name, "VersionArchive"
-        )
+        assert p_it.project_src_dir == Path(env_setup.anchor_dir, env_setup.project_name, "src")
+        assert p_it.project_tests_dir == Path(env_setup.anchor_dir, env_setup.project_name, "tests")
+        assert p_it.project_versionarchive_dir == Path(env_setup.anchor_dir, env_setup.project_name, "VersionArchive")
         assert p_it.templ_dir == p_it.packageit_dir / "templates"
         assert p_it.project_venv_root_dir == env_setup.anchor_dir / "venv"
-        assert p_it.project_venv_dir == Path(
-            env_setup.anchor_dir, "venv", "{}_env".format(env_setup.project_name)
-        )
+        assert p_it.project_venv_dir == Path(env_setup.anchor_dir, "venv", f"{env_setup.project_name}_env")
         assert p_it.project_venv_name == env_setup.project_name
         assert p_it.verbose
 
@@ -2096,9 +1955,7 @@ class TestPackageIt:
         assert p_it.setup_sphinx() == 0
         pass
 
-    def test_upload_to_pypi_publishing_no(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_upload_to_pypi_publishing_no(self, setup_env_with_project_ini_self_destruct):
         """Testing packageit_upload_to_pypi_disabled()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "PyPi", "Publishing", "No")
@@ -2132,9 +1989,7 @@ class TestPackageIt:
         assert not p_it.upload_to_pypi()
         pass
 
-    def test_upload_to_pypi_enabled_manual(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_upload_to_pypi_enabled_manual(self, setup_env_with_project_ini_self_destruct):
         """Testing packageit_upload_to_enabled()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "PyPi", "Publishing", "Twine")
@@ -2213,13 +2068,9 @@ class TestPackageIt:
         p_it.create_source_code_py()
         p_it.create__init__()
         p_it.create_source_code_ini()
-        commit_rc = p_it.gh_repo.create_file(
-            "test.txt", "test", "test", branch="master"
-        )
+        commit_rc = p_it.gh_repo.create_file("test.txt", "test", "test", branch="master")
         for rel_det in release_details_factory:
-            p_it.gh_repo.create_git_tag(
-                rel_det[0], rel_det[1], commit_rc["commit"].sha, "commit"
-            )
+            p_it.gh_repo.create_git_tag(rel_det[0], rel_det[1], commit_rc["commit"].sha, "commit")
             p_it.gh_repo.create_git_release(rel_det[0], rel_det[2], "Line 1\nLine 2")
         p_it.create_release()
         p_it.create_setup_cfg()
@@ -2255,9 +2106,7 @@ class TestPackageIt:
         #     p_it.update_to_latest_version()
         pass
 
-    def test_upload_to_pypi_enabled_auto(
-        self, setup_env_with_project_ini_self_destruct
-    ):
+    def test_upload_to_pypi_enabled_auto(self, setup_env_with_project_ini_self_destruct):
         """Testing packageit_upload_to_enabled()"""
         env_setup = setup_env_with_project_ini_self_destruct
         change_ini(env_setup.packageit_ini_pth, "PyPi", "Publishing", "GitHub")

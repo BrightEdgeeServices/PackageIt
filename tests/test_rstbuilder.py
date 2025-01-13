@@ -2,7 +2,9 @@
 
 import logging
 from pathlib import Path
+
 from beetools.beearchiver import Archiver
+
 from packageit.packageit import RSTBuilder
 
 _DESC = __doc__.split("\n")[0]
@@ -82,7 +84,7 @@ class TestRstBuilder:
     def test__init__with_details(self, working_dir_self_destruct):
         """Testing rstbuilder__init_with_details()"""
         working_dir = working_dir_self_destruct
-        test_rst_pth = working_dir.dir / 'test_rst_file.rst'
+        test_rst_pth = working_dir.dir / "test_rst_file.rst"
         t_rstbuilder = RSTBuilder(
             p_pth=test_rst_pth,
             p_first_level_title="First Level Title",
@@ -149,9 +151,7 @@ class TestRstBuilder:
         t_rstbuilder = RSTBuilder()
 
         t_rstbuilder.add_formatted_text(_FORMATED_TEXT)
-        assert t_rstbuilder.elements == {
-            0: {"Type": "FormattedText", "Text": _FORMATED_TEXT}
-        }
+        assert t_rstbuilder.elements == {0: {"Type": "FormattedText", "Text": _FORMATED_TEXT}}
         pass
 
     def test_add_image_directive_basic(self):
@@ -182,9 +182,7 @@ class TestRstBuilder:
             p_target=_TARGET,
             p_width="50px",
         )
-        assert t_rstbuilder.elements == {
-            0: {"Type": "DirectiveImage", "Text": _IMAGE_TEXT}
-        }
+        assert t_rstbuilder.elements == {0: {"Type": "DirectiveImage", "Text": _IMAGE_TEXT}}
         assert t_rstbuilder.element_cntr == 1
         pass
 
@@ -287,9 +285,7 @@ class TestRstBuilder:
         """Testing rstbuilder_add_toctree()"""
         t_rstbuilder = RSTBuilder()
         toc_items = ["Conventions", "api", "examples"]
-        t_rstbuilder.add_toctree(
-            toc_items, p_maxdepth=2, p_caption="Contents", p_numbered=True
-        )
+        t_rstbuilder.add_toctree(toc_items, p_maxdepth=2, p_caption="Contents", p_numbered=True)
 
         assert t_rstbuilder.element_cntr == 1
         assert t_rstbuilder.elements == {
@@ -345,7 +341,7 @@ class TestRstBuilder:
     def test_write(self, working_dir_self_destruct):
         """Testing rstbuilder_underline()"""
         working_dir = working_dir_self_destruct
-        test_rst_pth = working_dir.dir / 'test_rst_file.rst'
+        test_rst_pth = working_dir.dir / "test_rst_file.rst"
         t_rstbuilder = RSTBuilder(test_rst_pth)
         t_rstbuilder.add_first_level_title("First Level Title")
         t_rstbuilder.add_comment("This is a comment.")

@@ -118,9 +118,7 @@ class PackageIt:
                 self.logger = logging.getLogger(self._logger_name)
 
             self.packageit_ini_pth = p_ini_pth
-            self.packageit_ini = configparserext.ConfigParserExt(
-                inline_comment_prefixes="#"
-            )
+            self.packageit_ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
             self.packageit_ini.read([self.packageit_ini_pth])
             self.packageit_dir = _PROJ_PATH.parents[1]
 
@@ -131,75 +129,42 @@ class PackageIt:
             self.ini_spec_pth = None
             self.origin = None
 
-            self.project_anchor_dir = Path(
-                self.packageit_ini.get(
-                    "Detail", "{}ProjectAnchorDir".format(beeutils.get_os())
-                )
-            )
-            self.project_root_dir = Path(
-                self.project_anchor_dir, p_project_name
-            ).resolve()
+            self.project_anchor_dir = Path(self.packageit_ini.get("Detail", f"{beeutils.get_os()}ProjectAnchorDir"))
+            self.project_root_dir = Path(self.project_anchor_dir, p_project_name).resolve()
             self.project_src_dir = None
             self.project_dir = None
 
             self.project_author = self.packageit_ini.get("Detail", "Author")
             self.project_author_email = self.packageit_ini.get("Detail", "AuthorEmail")
-            self.project_classifiers = GenClassifiers(
-                _PROJ_NAME, self.packageit_ini_pth
-            ).contents
+            self.project_classifiers = GenClassifiers(_PROJ_NAME, self.packageit_ini_pth).contents
             self.project_desc = None
             self.project_code = None
             self.project_docs_dir = None
             self.project_gh_bug_templ = self.packageit_ini.get("GitHub", "BugTemplate")
-            self.project_gh_config_templ = self.packageit_ini.get(
-                "GitHub", "ConfigTemplate"
-            )
+            self.project_gh_config_templ = self.packageit_ini.get("GitHub", "ConfigTemplate")
             self.project_gh_enable = self.packageit_ini.getboolean("GitHub", "Enable")
-            self.project_gh_feature_templ = self.packageit_ini.get(
-                "GitHub", "FeatureTemplate"
-            )
+            self.project_gh_feature_templ = self.packageit_ini.get("GitHub", "FeatureTemplate")
             self.project_gh_issue_templ_dir = None
             self.project_gh_username = self.packageit_ini.get("GitHub", "UserName")
             self.project_gh_token = None
             self.project_gh_wf_dir = None
             self.project_git_enable = self.packageit_ini.getboolean("Git", "Enable")
-            self.project_header_description = self.packageit_ini.get(
-                "Detail", "HeaderDescription"
-            )
+            self.project_header_description = self.packageit_ini.get("Detail", "HeaderDescription")
             self.project_import_prod = [
-                x[1]
-                for x in self.packageit_ini.get(
-                    "Import", "Prod", p_prefix=True, p_split=True
-                )
+                x[1] for x in self.packageit_ini.get("Import", "Prod", p_prefix=True, p_split=True)
             ]
-            self.project_import_rewrite = self.packageit_ini.getboolean(
-                "Import", "ReWrite"
-            )
+            self.project_import_rewrite = self.packageit_ini.getboolean("Import", "ReWrite")
             self.project_import_test = [
-                x[1]
-                for x in self.packageit_ini.get(
-                    "Import", "Test", p_prefix=True, p_split=True
-                )
+                x[1] for x in self.packageit_ini.get("Import", "Test", p_prefix=True, p_split=True)
             ]
-            self.project_ini = configparserext.ConfigParserExt(
-                inline_comment_prefixes="#"
-            )
-            self.project_install_apps = [
-                x[1]
-                for x in self.packageit_ini.get("Install Apps", "App", p_prefix=True)
-            ]
-            self.project_long_description = self.packageit_ini.get(
-                "Detail", "LongDescription"
-            )
+            self.project_ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
+            self.project_install_apps = [x[1] for x in self.packageit_ini.get("Install Apps", "App", p_prefix=True)]
+            self.project_long_description = self.packageit_ini.get("Detail", "LongDescription")
             self.project_name = p_project_name
             self.project_new = False
             self.project_packageit_config_dir = self.project_root_dir / ".packageit"
-            self.project_packageit_ini_pth = Path(
-                self.project_packageit_config_dir, "packageit.ini"
-            )
-            self.project_python_requires = self.packageit_ini.get(
-                "Detail", "PythonRequires"
-            )
+            self.project_packageit_ini_pth = Path(self.project_packageit_config_dir, "packageit.ini")
+            self.project_python_requires = self.packageit_ini.get("Detail", "PythonRequires")
             self.project_pypi_publishing = self.packageit_ini.get("PyPi", "Publishing")
             self.project_pypi_repository = self.packageit_ini.get("PyPi", "Repository")
             # self.project_readme_developing_enable = self.packageit_ini.getboolean(
@@ -212,30 +177,23 @@ class PackageIt:
             # self.project_readme_testing_enable = self.packageit_ini.getboolean(
             #     "ReadMe", "EnableTesting"
             # )
-            self.project_readthedocs_enable = self.packageit_ini.getboolean(
-                "ReadTheDocs", "Enable"
-            )
+            self.project_readthedocs_enable = self.packageit_ini.getboolean("ReadTheDocs", "Enable")
             self.project_readthedocs_config_template = None
             self.project_readthedocs_newproject_template = None
             self.project_release = None
             self.project_setup_cfg = None
             self.project_setup_cfg_pth = self.project_root_dir / "setup.cfg"
-            self.project_sphinx_enable = self.packageit_ini.getboolean(
-                "Sphinx", "Enable"
-            )
+            self.project_sphinx_enable = self.packageit_ini.getboolean("Sphinx", "Enable")
             self.project_sphinx_index_rst = None
             self.project_sphinx_source_dir = None
             self.project_sphinx_conf_py_inst = [
-                x[1]
-                for x in self.packageit_ini.get("Sphinx", "ConfPyInstr", p_prefix=True)
+                x[1] for x in self.packageit_ini.get("Sphinx", "ConfPyInstr", p_prefix=True)
             ]
             self.project_sphinx_index_contents = [
-                x[1]
-                for x in self.packageit_ini.get("Sphinx", "AddContent", p_prefix=True)
+                x[1] for x in self.packageit_ini.get("Sphinx", "AddContent", p_prefix=True)
             ]
             self.project_sphinx_index_sections = [
-                x[1]
-                for x in self.packageit_ini.get("Sphinx", "AddSection", p_prefix=True)
+                x[1] for x in self.packageit_ini.get("Sphinx", "AddSection", p_prefix=True)
             ]
             self.project_tests_dir = self.project_root_dir / "tests"
             self.project_title = None
@@ -248,9 +206,7 @@ class PackageIt:
             self.project_venv_upgrade = None
             self.project_versionarchive_dir = self.project_root_dir / "VersionArchive"
             self.project_wheels = None
-            self.project_version = semverit.SemVerIt(
-                p_version=self.project_setup_cfg_pth
-            )
+            self.project_version = semverit.SemVerIt(p_version=self.project_setup_cfg_pth)
             self.pypi_curr_token = None
             self.pypi_curr_token_name = None
             self.pypi_prod_token = None
@@ -265,23 +221,17 @@ class PackageIt:
 
             if self.project_gh_enable:
                 self.gh_dir = self.project_root_dir / ".github"
-                self.project_gh_token = self.read_token(
-                    self.packageit_ini.get("GitHub", "TokenFileName")
-                )
+                self.project_gh_token = self.read_token(self.packageit_ini.get("GitHub", "TokenFileName"))
                 self.project_gh_wf_dir = self.gh_dir / "workflows"
                 self.project_gh_issue_templ_dir = self.gh_dir / "ISSUE_TEMPLATE"
             # self.project_dir = Path(self.project_anchor_dir / self.project_name)
             if self.project_pypi_publishing == "GitHub":
                 if self.packageit_ini.has_option("PyPi", "TokenFileNamePyPi"):
-                    pypi_prod_token_fn = Path(
-                        self.packageit_ini.get("PyPi", "TokenFileNamePyPi")
-                    )
+                    pypi_prod_token_fn = Path(self.packageit_ini.get("PyPi", "TokenFileNamePyPi"))
                     self.pypi_prod_token = self.read_token(pypi_prod_token_fn)
                     self.pypi_prod_token_name = pypi_prod_token_fn.stem
                 if self.packageit_ini.has_option("PyPi", "TokenFileNameTestPyPi"):
-                    pypi_test_token_fn = Path(
-                        self.packageit_ini.get("PyPi", "TokenFileNameTestPyPi")
-                    )
+                    pypi_test_token_fn = Path(self.packageit_ini.get("PyPi", "TokenFileNameTestPyPi"))
                     self.pypi_test_token = self.read_token(pypi_test_token_fn)
                     self.pypi_test_token_name = pypi_test_token_fn.stem
                 if self.project_pypi_repository == "pypi":
@@ -291,36 +241,20 @@ class PackageIt:
                     self.pypi_curr_token = self.pypi_test_token
                     self.pypi_curr_token_name = self.pypi_test_token_name
             if self.project_readthedocs_enable:
-                self.rtd_token = self.read_token(
-                    self.packageit_ini.get("ReadTheDocs", "TokenFileName")
-                )
-                self.project_readthedocs_config_template = self.packageit_ini.get(
-                    "ReadTheDocs", "ConfigTemplate"
-                )
+                self.rtd_token = self.read_token(self.packageit_ini.get("ReadTheDocs", "TokenFileName"))
+                self.project_readthedocs_config_template = self.packageit_ini.get("ReadTheDocs", "ConfigTemplate")
                 self.project_readthedocs_newproject_template = self.packageit_ini.get(
                     "ReadTheDocs", "NewProjectTemplate"
                 )
             if self.project_sphinx_enable:
                 self.project_sphinx_docs_dir = self.project_root_dir / "docs"
                 self.project_sphinx_source_dir = self.project_sphinx_docs_dir / "source"
-                self.project_sphinx_conf_py_pth = (
-                    self.project_sphinx_source_dir / "conf.py"
-                )
-                self.project_sphinx_index_rst_pth = (
-                    self.project_sphinx_source_dir / "index.rst"
-                )
+                self.project_sphinx_conf_py_pth = self.project_sphinx_source_dir / "conf.py"
+                self.project_sphinx_index_rst_pth = self.project_sphinx_source_dir / "index.rst"
             if self.project_venv_enable:
-                self.project_venv_root_dir = Path(
-                    self.packageit_ini.get(
-                        "VEnv", "{}VEnvAnchorDir".format(beeutils.get_os())
-                    )
-                )
-                self.project_venv_reinstall = self.packageit_ini.getboolean(
-                    "VEnv", "ReinstallVenv"
-                )
-                self.project_venv_upgrade = self.packageit_ini.getboolean(
-                    "VEnv", "Upgrade"
-                )
+                self.project_venv_root_dir = Path(self.packageit_ini.get("VEnv", f"{beeutils.get_os()}VEnvAnchorDir"))
+                self.project_venv_reinstall = self.packageit_ini.getboolean("VEnv", "ReinstallVenv")
+                self.project_venv_upgrade = self.packageit_ini.getboolean("VEnv", "Upgrade")
             # self.read_project_detail_specific()
             self.readme = ReadMe(self.project_root_dir)
         else:
@@ -331,9 +265,7 @@ class PackageIt:
         print(msg_milestone("Add badges..."))
         badge_detail = {
             "pypi": {
-                "uri": """https://img.shields.io/{}/v/{}""".format(
-                    self.project_pypi_repository, self.project_name
-                ),
+                "uri": """https://img.shields.io/{}/v/{}""".format(self.project_pypi_repository, self.project_name),
                 "alt": "PyPi",
                 "pos": 0,
                 "target": "",
@@ -364,9 +296,7 @@ class PackageIt:
                 ),
                 "alt": "CodeCov",
                 "pos": 0,
-                "target": """https://app.codecov.io/gh/{}/{}""".format(
-                    self.project_gh_username, self.project_name
-                ),
+                "target": """https://app.codecov.io/gh/{}/{}""".format(self.project_gh_username, self.project_name),
             },
             "githubsearch": {
                 "uri": """https://img.shields.io/github/search/{}/{}/GitHub""".format(
@@ -377,9 +307,7 @@ class PackageIt:
                 "target": "",
             },
             "pypidownload": {
-                "uri": """https://img.shields.io/{}/dm/{}""".format(
-                    self.project_pypi_repository, self.project_name
-                ),
+                "uri": """https://img.shields.io/{}/dm/{}""".format(self.project_pypi_repository, self.project_name),
                 "alt": "PyPI - Downloads",
                 "pos": 0,
                 "target": "",
@@ -417,9 +345,7 @@ class PackageIt:
                 "target": "",
             },
             "pypiwheel": {
-                "uri": """https://img.shields.io/{}/wheel/{}""".format(
-                    self.project_pypi_repository, self.project_name
-                ),
+                "uri": """https://img.shields.io/{}/wheel/{}""".format(self.project_pypi_repository, self.project_name),
                 "alt": "PyPI - Wheel",
                 "pos": 0,
                 "target": "",
@@ -434,8 +360,8 @@ class PackageIt:
             },
         }
 
-        for badge in self.project_ini.get('Badges', 'Badge', True):
-            if badge[1] == 'Yes':
+        for badge in self.project_ini.get("Badges", "Badge", True):
+            if badge[1] == "Yes":
                 self.readme.add_directive_image(
                     p_uri=badge_detail[badge[0][5:]]["uri"],
                     p_alt=badge_detail[badge[0][5:]]["alt"],
@@ -447,27 +373,17 @@ class PackageIt:
     def add_sphinx_index_contents(self):
         success = False
         if self.project_sphinx_enable:
-            print(
-                msg_milestone(
-                    'Add "index contents": [{}]'.format(
-                        ", ".join(self.project_sphinx_index_contents)
-                    )
-                )
-            )
+            print(msg_milestone('Add "index contents": [{}]'.format(", ".join(self.project_sphinx_index_contents))))
             for item in self.project_sphinx_index_contents:
-                dest_pth = Path(self.project_sphinx_source_dir, "{}.rst".format(item))
+                dest_pth = Path(self.project_sphinx_source_dir, f"{item}.rst")
                 if not dest_pth.exists():
-                    templ_pth = Path(self.templ_dir, "templ_{}.rst".format(item))
+                    templ_pth = Path(self.templ_dir, f"templ_{item}.rst")
                     if templ_pth.exists():
                         shutil.copy(templ_pth, dest_pth)
                         if dest_pth.stem == "api":
-                            dest_pth.write_text(
-                                dest_pth.read_text().format(self.project_name.lower())
-                            )
+                            dest_pth.write_text(dest_pth.read_text().format(self.project_name.lower()))
                     else:
-                        rstbuilder = RSTBuilder(
-                            p_pth=dest_pth, p_first_level_title=item.capitalize()
-                        )
+                        rstbuilder = RSTBuilder(p_pth=dest_pth, p_first_level_title=item.capitalize())
                         rstbuilder.write_text()
             self.project_sphinx_index_rst.add_toctree(
                 self.project_sphinx_index_contents, p_maxdepth=2, p_caption="Contents"
@@ -477,23 +393,17 @@ class PackageIt:
 
     def add_sphinx_index_sections(self):
         success = False
-        print(
-            msg_milestone(
-                'Add "index sections": [{}]'.format(
-                    ", ".join(self.project_sphinx_index_sections)
-                )
-            )
-        )
+        print(msg_milestone('Add "index sections": [{}]'.format(", ".join(self.project_sphinx_index_sections))))
         if self.project_sphinx_enable:
             for item in self.project_sphinx_index_sections:
-                dest_pth = Path(self.project_sphinx_source_dir, "{}.rst".format(item))
+                dest_pth = Path(self.project_sphinx_source_dir, f"{item}.rst")
                 if not dest_pth.exists():
-                    templ_pth = Path(self.templ_dir, "templ_{}.rst".format(item))
+                    templ_pth = Path(self.templ_dir, f"templ_{item}.rst")
                     if templ_pth.exists():
                         shutil.copy(templ_pth, dest_pth)
                         item_contents = dest_pth.read_text().strip()
                     else:
-                        item_contents = "Insert text in {}.rst".format(item)
+                        item_contents = f"Insert text in {item}.rst"
                 else:
                     item_contents = dest_pth.read_text().strip()
                 self.project_sphinx_index_rst.add_second_level_title(item)
@@ -546,9 +456,9 @@ class PackageIt:
     #
     def add_repo_files(self):
         include_lst = self.git_repo.untracked_files
-        gitignore_pth = self.project_root_dir / '.gitignore'
+        gitignore_pth = self.project_root_dir / ".gitignore"
         ignore_match = parse_gitignore(gitignore_pth)
-        dir_contents = list(self.project_root_dir.glob('**/*'))
+        dir_contents = list(self.project_root_dir.glob("**/*"))
         # gitignore_parser excludes .gitignore & .github/* erroneously.  Add them manually
         for item in dir_contents:
             if (
@@ -580,7 +490,7 @@ class PackageIt:
     def create__init__(self):
         """Create the __init__.py file."""
         dest_pth = self.project_dir / "__init__.py"
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         if not dest_pth.exists():
             shutil.copy(self.templ_dir / "__init__template.py", dest_pth)
             contents = dest_pth.read_text().format(self.project_name.lower())
@@ -602,12 +512,10 @@ class PackageIt:
 
         """
         dest_pth = self.project_tests_dir / "conftest.py"
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         if not dest_pth.is_file():
             shutil.copy(self.templ_dir / "conftest_template.py", dest_pth)
-            contents = dest_pth.read_text().format(
-                self.project_name.lower(), "{}", "{", "}"
-            )
+            contents = dest_pth.read_text().format(self.project_name.lower(), "{}", "{", "}")
             res = dest_pth.write_text(contents)
             if res <= 0:
                 dest_pth = None
@@ -615,13 +523,11 @@ class PackageIt:
 
     def create_coveragerc(self):
         dest_pth = self.project_root_dir / ".coveragerc"
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
-        omit_files_lst = [
-            x[1] for x in self.packageit_ini.get("Coverage", "Omit", p_prefix=True)
-        ]
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
+        omit_files_lst = [x[1] for x in self.packageit_ini.get("Coverage", "Omit", p_prefix=True)]
         contents = "[run]\nomit = \n"
         for item in omit_files_lst:
-            contents += "    {}\n".format(item)
+            contents += f"    {item}\n"
         dest_pth.write_text(contents)
         return dest_pth
 
@@ -641,7 +547,7 @@ class PackageIt:
 
         """
         dest_pth = self.project_root_dir / ".gitignore"
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         if not dest_pth.is_file():
             shutil.copy(self.templ_dir / "templ_gitignore", dest_pth)
 
@@ -650,13 +556,11 @@ class PackageIt:
         dest_pth = None
         if self.project_git_enable:
             dest_pth = self.project_root_dir / ".pre-commit-config.yaml"
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 if not dest_pth.parent.is_dir():
                     dest_pth.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy(
-                    self.templ_dir / "git_pre-commit-config_template.yaml", dest_pth
-                )
+                shutil.copy(self.templ_dir / "git_pre-commit-config_template.yaml", dest_pth)
             success = True
         if success:
             return dest_pth
@@ -666,7 +570,7 @@ class PackageIt:
         dest_pth = None
         if self.project_gh_enable:
             dest_pth = self.project_gh_issue_templ_dir / "bug.md"
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / self.project_gh_bug_templ, dest_pth)
                 dest_pth.write_text(dest_pth.read_text().format(self.project_name))
@@ -676,7 +580,7 @@ class PackageIt:
         dest_pth = None
         if self.project_gh_enable:
             dest_pth = self.project_gh_wf_dir / "ci.yaml"
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / "github_wf_ci_template.yaml", dest_pth)
         return dest_pth
@@ -685,7 +589,7 @@ class PackageIt:
         dest_pth = None
         if self.project_gh_enable:
             dest_pth = self.project_gh_issue_templ_dir / "config.yaml"
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / self.project_gh_config_templ, dest_pth)
                 dest_pth.write_text(dest_pth.read_text().format(self.project_name))
@@ -695,19 +599,17 @@ class PackageIt:
         dest_pth = None
         if self.project_gh_enable:
             dest_pth = self.project_gh_wf_dir / "pre-commit.yaml"
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 if not dest_pth.parent.is_dir():
                     dest_pth.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy(
-                    self.templ_dir / "templ_github_wf_pre-commit.yaml", dest_pth
-                )
+                shutil.copy(self.templ_dir / "templ_github_wf_pre-commit.yaml", dest_pth)
         return dest_pth
 
     def create_github_release_yml(self):
         dest_pth = self.project_gh_wf_dir / "release.yml"
         if self.project_gh_enable and self.project_pypi_publishing == "GitHub":
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             prod_pypi_rep_url = """https://upload.pypi.org/legacy/"""
             test_pypi_rep_url = """https://test.pypi.org/legacy/"""
             prod_token_name = "PYPI_API_TOKEN"
@@ -720,21 +622,19 @@ class PackageIt:
                 if not dest_pth.parent.is_dir():
                     dest_pth.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy(self.templ_dir / "github_wf_release_template.yml", dest_pth)
-                contents = dest_pth.read_text().format(
-                    "{0}", "{", "}", self.pypi_curr_token_name, pypi_rep_url
-                )
+                contents = dest_pth.read_text().format("{0}", "{", "}", self.pypi_curr_token_name, pypi_rep_url)
             else:
                 contents = dest_pth.read_text()
                 if self.project_pypi_repository == "pypi":
                     src_url = test_pypi_rep_url
                     dest_url = prod_pypi_rep_url
-                    src_token_name = ".{}".format(test_token_name)
-                    dest_token_name = ".{}".format(prod_token_name)
+                    src_token_name = f".{test_token_name}"
+                    dest_token_name = f".{prod_token_name}"
                 else:
                     src_url = prod_pypi_rep_url
                     dest_url = test_pypi_rep_url
-                    src_token_name = ".{}".format(prod_token_name)
-                    dest_token_name = ".{}".format(test_token_name)
+                    src_token_name = f".{prod_token_name}"
+                    dest_token_name = f".{test_token_name}"
                 contents = contents.replace(src_url, dest_url)
                 contents = contents.replace(src_token_name, dest_token_name)
             dest_pth.write_text(contents)
@@ -749,7 +649,7 @@ class PackageIt:
         dest_pth = None
         if self.project_gh_enable:
             dest_pth = self.project_gh_issue_templ_dir / "feature.md"
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / self.project_gh_feature_templ, dest_pth)
         return dest_pth
@@ -770,7 +670,7 @@ class PackageIt:
 
         """
         dest_pth = self.project_root_dir / "LICENSE"
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         if dest_pth.exists():
             dest_pth.unlink()
         lic = GenLicense(_PROJ_NAME, "MITLicense", self.templ_dir).contents
@@ -780,7 +680,7 @@ class PackageIt:
     def create_manifest(self):
         """Create the MANIFEST.in file."""
         dest_pth = self.project_root_dir / "MANIFEST.in"
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         if not dest_pth.exists():
             shutil.copy(self.templ_dir / "MANIFEST_template.in", dest_pth)
             contents = dest_pth.read_text().format(self.project_name.lower())
@@ -788,7 +688,7 @@ class PackageIt:
         return dest_pth
 
     def create_pyproject_toml(self):
-        print(msg_milestone("Create {} file...".format(self.pyproject_toml_pth)))
+        print(msg_milestone(f"Create {self.pyproject_toml_pth} file..."))
         if not self.pyproject_toml_pth.exists():
             self.pyproject_toml_pth.touch()
         pyproject_toml = toml.load(self.pyproject_toml_pth)
@@ -797,7 +697,7 @@ class PackageIt:
             "build-backend": "setuptools.build_meta",
         }
         pyproject_toml["tool"] = {
-            'black': {
+            "black": {
                 "skip-string-normalization": True,
                 "extend-exclude": "/templates",
             }
@@ -821,17 +721,13 @@ class PackageIt:
 
         """
         print(msg_milestone('Create the "README"...'))
-        body_pth = self.project_dir / 'README_body.rst'
-        templ_body_pth = self.templ_dir / self.project_ini.get(
-            'ReadMe', 'DefaultBodyTemplate'
-        )
+        body_pth = self.project_dir / "README_body.rst"
+        templ_body_pth = self.templ_dir / self.project_ini.get("ReadMe", "DefaultBodyTemplate")
         self.readme.create_body_from_template(body_pth, templ_body_pth)
         if not self.project_title:
             self.project_title = "Multi source file project"
         if not self.project_desc:
-            self.project_desc = (
-                'This still has to be sorted. See "PackageIt.create_readme"'
-            )
+            self.project_desc = 'This still has to be sorted. See "PackageIt.create_readme"'
         self.add_readme_badges()
         self.readme.add_paragraph(self.project_title)
         self.readme.add_paragraph(self.project_desc, 1)
@@ -842,9 +738,7 @@ class PackageIt:
     def create_readthedocs_project(self):
         response = None
         if self.project_readthedocs_enable and self.project_new:
-            print(
-                msg_milestone("Register {} at ReadTheDocs...".format(self.project_name))
-            )
+            print(msg_milestone(f"Register {self.project_name} at ReadTheDocs..."))
             url = "https://readthedocs.org/api/v3/projects/"
             headers = {"Authorization": f"token {self.rtd_token}"}
             proj_detail = (
@@ -854,9 +748,7 @@ class PackageIt:
                     "{",
                     "}",
                     self.project_name,
-                    "https://github.com/{}/{}".format(
-                        self.project_gh_username, self.project_name
-                    ),
+                    "https://github.com/{}/{}".format(self.project_gh_username, self.project_name),
                     self.project_name.lower(),
                 )
             )
@@ -894,14 +786,10 @@ class PackageIt:
 
         dest_pth = self.project_root_dir / ".readthedocs.yaml"
         if self.project_readthedocs_enable:
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
-                shutil.copy(
-                    self.templ_dir / self.project_readthedocs_config_template, dest_pth
-                )
-            requirements_docs_pth = (
-                self.project_root_dir / "docs" / "requirements_docs.txt"
-            )
+                shutil.copy(self.templ_dir / self.project_readthedocs_config_template, dest_pth)
+            requirements_docs_pth = self.project_root_dir / "docs" / "requirements_docs.txt"
             requirements_docs_pth.write_text("sphinx\nsphinx-autobuild\n")
         else:
             if dest_pth.exists():
@@ -916,9 +804,7 @@ class PackageIt:
             minor = list(rel_note[major].keys())[0]
             patch = list(rel_note[major][minor].keys())[0]
             release_title = rel_note[major][minor][patch]["Title"]
-            cor_title = self.make_version_title(
-                "{}.{}.{}".format(major, minor, patch), "Version"
-            )
+            cor_title = self.make_version_title(f"{major}.{minor}.{patch}", "Version")
             if release_title != cor_title:
                 self.project_release.rel_notes[major][minor][patch]["Description"] = [
                     self.project_release.rel_notes[major][minor][patch]["Title"]
@@ -933,24 +819,18 @@ class PackageIt:
         # print(msg_milestone('Create {} file...'.format(prod_dest_pth)))
         if self.project_import_rewrite:
             print(msg_milestone("Create {} file...").format(p_filename))
-            contents = (
-                "#===================================================================\n"
-            )
+            contents = "#===================================================================\n"
             contents += "# This file is auto generated by PackageIt\n"
-            contents += (
-                "# Be careful to manually add modules as it might be over written.\n"
-            )
+            contents += "# Be careful to manually add modules as it might be over written.\n"
             contents += "# Check the [Project Import][ReWrite] settings in:\n"
-            contents += "# {} and\n".format(self.packageit_ini_pth)
-            contents += "# {}\n".format(self.project_packageit_ini_pth)
-            contents += (
-                "#===================================================================\n"
-            )
+            contents += f"# {self.packageit_ini_pth} and\n"
+            contents += f"# {self.project_packageit_ini_pth}\n"
+            contents += "#===================================================================\n"
             if dest_pth.is_file():
                 dest_pth.unlink()
             for item in import_lst:
                 if item[0] == "pypi":
-                    contents += "{}\n".format(item[1])
+                    contents += f"{item[1]}\n"
             dest_pth.write_text(contents)
         return dest_pth
 
@@ -995,16 +875,12 @@ class PackageIt:
         return success
 
     def create_setup_cfg(self):
-        print(
-            msg_milestone("Create {} file...".format(self.project_setup_cfg_pth.name))
-        )
+        print(msg_milestone(f"Create {self.project_setup_cfg_pth.name} file..."))
         if not self.project_setup_cfg_pth.is_file():
             if not self.project_setup_cfg_pth.parent.is_dir():
                 self.project_setup_cfg_pth.parent.mkdir(parents=True, exist_ok=True)
                 self.project_setup_cfg_pth.touch()
-        self.project_setup_cfg = configparserext.ConfigParserExt(
-            inline_comment_prefixes="#"
-        )
+        self.project_setup_cfg = configparserext.ConfigParserExt(inline_comment_prefixes="#")
         self.project_setup_cfg.read([self.project_setup_cfg_pth])
 
         if not self.project_setup_cfg.has_section("metadata"):
@@ -1054,26 +930,18 @@ class PackageIt:
             if not self.project_setup_cfg.has_option("options", option[0]):
                 self.project_setup_cfg.set("options", option[0], option[1])
         for option in options_packages_find:
-            if not self.project_setup_cfg.has_option(
-                "options.packages.find", option[0]
-            ):
-                self.project_setup_cfg.set(
-                    "options.packages.find", option[0], option[1]
-                )
+            if not self.project_setup_cfg.has_option("options.packages.find", option[0]):
+                self.project_setup_cfg.set("options.packages.find", option[0], option[1])
 
         if not self.project_setup_cfg.has_section("flake8"):
             self.project_setup_cfg.add_section("flake8")
         for option in self.packageit_ini.options("flake8"):
-            self.project_setup_cfg.set(
-                "flake8", option, self.packageit_ini.get("flake8", option)
-            )
+            self.project_setup_cfg.set("flake8", option, self.packageit_ini.get("flake8", option))
 
         if not self.project_setup_cfg.has_section("tool:pytest"):
             self.project_setup_cfg.add_section("tool:pytest")
         for option in self.packageit_ini.options("tool:pytest"):
-            self.project_setup_cfg.set(
-                "tool:pytest", option, self.packageit_ini.get("tool:pytest", option)
-            )
+            self.project_setup_cfg.set("tool:pytest", option, self.packageit_ini.get("tool:pytest", option))
 
         with open(self.project_setup_cfg_pth, "w") as fp:
             self.project_setup_cfg.write(fp)
@@ -1082,21 +950,13 @@ class PackageIt:
     def create_sphinx_conf_py(self):
         """Create the Sphinx conf.py"""
         if self.project_sphinx_enable and not self.project_sphinx_conf_py_pth.exists():
-            print(
-                msg_milestone(
-                    "Create {} file...".format(self.project_sphinx_conf_py_pth)
-                )
-            )
+            print(msg_milestone(f"Create {self.project_sphinx_conf_py_pth} file..."))
             contents = "import sys\n"
-            contents += "sys.path.insert(0, '{}')\n".format(
-                str(self.project_src_dir).replace("\\", "\\\\")
-            )
-            contents += "project = '{}'\n".format(self.project_name)
-            contents += "copyright = '{}, {}'\n".format(
-                datetime.datetime.now().strftime("%Y"), self.project_author
-            )
-            contents += "author = '{}'\n".format(self.project_author)
-            contents += "version = '{}'\n".format(self.project_version.maj)
+            contents += "sys.path.insert(0, '{}')\n".format(str(self.project_src_dir).replace("\\", "\\\\"))
+            contents += f"project = '{self.project_name}'\n"
+            contents += "copyright = '{}, {}'\n".format(datetime.datetime.now().strftime("%Y"), self.project_author)
+            contents += f"author = '{self.project_author}'\n"
+            contents += f"version = '{self.project_version.maj}'\n"
             contents += "release = '0.0.1'\n"
             contents += """html_context = {}
                 "display_github" : True,  # Integrate GitHub
@@ -1109,7 +969,7 @@ class PackageIt:
             )
 
             for instr in self.project_sphinx_conf_py_inst:
-                contents += "{}\n".format(instr)
+                contents += f"{instr}\n"
             self.project_sphinx_conf_py_pth.write_text(contents)
         return self.project_sphinx_conf_py_pth
 
@@ -1118,14 +978,10 @@ class PackageIt:
             print(msg_milestone("Build documentation by Sphinx..."))
             cmd = [
                 self.project_root_dir.drive,
-                "cd {}".format(self.project_root_dir),
-                "sphinx-build -b html {} {}".format(
-                    Path("docs", "source"), Path("docs", "build", "html")
-                ),
+                f"cd {self.project_root_dir}",
+                "sphinx-build -b html {} {}".format(Path("docs", "source"), Path("docs", "build", "html")),
             ]
-            rc = beevenv.install_in(
-                self.project_venv_root_dir, self.project_name, cmd, p_verbose=True
-            )
+            rc = beevenv.install_in(self.project_venv_root_dir, self.project_name, cmd, p_verbose=True)
             return rc
 
     def create_sphinx_index_rst(self):
@@ -1134,29 +990,17 @@ class PackageIt:
             print(msg_milestone("Create index.rst..."))
             if self.project_sphinx_index_rst_pth.exists():
                 self.project_sphinx_index_rst_pth.unlink()
-            self.project_sphinx_index_rst = RSTBuilder(
-                self.project_sphinx_index_rst_pth
-            )
-            self.project_sphinx_index_rst.add_comment(
-                "======================================================"
-            )
-            self.project_sphinx_index_rst.add_comment(
-                "This file is auto generated by PackageIt. Any changes"
-            )
+            self.project_sphinx_index_rst = RSTBuilder(self.project_sphinx_index_rst_pth)
+            self.project_sphinx_index_rst.add_comment("======================================================")
+            self.project_sphinx_index_rst.add_comment("This file is auto generated by PackageIt. Any changes")
             self.project_sphinx_index_rst.add_comment("to it will be over written")
-            self.project_sphinx_index_rst.add_comment(
-                "======================================================"
-            )
+            self.project_sphinx_index_rst.add_comment("======================================================")
             self.project_sphinx_index_rst.add_first_level_title(self.project_name)
             for element in self.readme.elements:
                 if self.readme.elements[element]["Type"] == "DirectiveImage":
-                    self.project_sphinx_index_rst.add_element(
-                        self.readme.elements[element]
-                    )
+                    self.project_sphinx_index_rst.add_element(self.readme.elements[element])
             self.project_sphinx_index_rst.add_paragraph(self.project_header_description)
-            self.project_sphinx_index_rst.add_paragraph(
-                self.project_long_description, 1
-            )
+            self.project_sphinx_index_rst.add_paragraph(self.project_long_description, 1)
             self.add_sphinx_index_sections()
             self.add_sphinx_index_contents()
         return self.project_sphinx_index_rst
@@ -1165,8 +1009,8 @@ class PackageIt:
         """Modify ini template file for new module"""
         success = True
         if self.project_type == "Package":
-            dest_pth = self.project_src_dir / "{}.ini".format(self.project_name)
-            print(msg_milestone("Create {} file...".format(dest_pth.name)))
+            dest_pth = self.project_src_dir / f"{self.project_name}.ini"
+            print(msg_milestone(f"Create {dest_pth.name} file..."))
             if not dest_pth.is_file():
                 shutil.copy(self.templ_dir / "templ_package.ini", dest_pth)
                 contents = dest_pth.read_text().format(self.project_name)
@@ -1190,8 +1034,8 @@ class PackageIt:
         # No proper doctest (<<<) because it is os dependent
 
         """
-        dest_pth = self.project_dir / "{}.py".format(self.project_name.lower())
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        dest_pth = self.project_dir / f"{self.project_name.lower()}.py"
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         success = False
         dir_contents = list(self.project_dir.glob("*.py"))
         if not dir_contents:
@@ -1233,14 +1077,8 @@ class PackageIt:
         """
         success = False
         if self.project_venv_enable:
-            self.project_venv_dir = beevenv.get_dir(
-                self.project_venv_root_dir, self.project_name
-            )
-            print(
-                msg_milestone(
-                    "Create virtual environment {}...".format(self.project_venv_dir)
-                )
-            )
+            self.project_venv_dir = beevenv.get_dir(self.project_venv_root_dir, self.project_name)
+            print(msg_milestone(f"Create virtual environment {self.project_venv_dir}..."))
             if self.project_venv_reinstall:
                 beeutils.rm_tree(self.project_venv_dir)
             if not self.project_venv_dir.exists():
@@ -1268,18 +1106,14 @@ class PackageIt:
 
         """
         success = True
-        dest_pth = self.project_tests_dir / "test_{}.py".format(
-            self.project_name.lower()
-        )
-        print(msg_milestone("Create {} file...".format(dest_pth.name)))
+        dest_pth = self.project_tests_dir / "test_{}.py".format(self.project_name.lower())
+        print(msg_milestone(f"Create {dest_pth.name} file..."))
         if not dest_pth.is_file():
             if self.project_type == "Module":
                 shutil.copy(self.templ_dir / "templ_test_module.py", dest_pth)
             elif self.project_type == "Package":
                 shutil.copy(self.templ_dir / "templ_test_package.py", dest_pth)
-            contents = dest_pth.read_text().format(
-                self.project_name, self.project_name.lower()
-            )
+            contents = dest_pth.read_text().format(self.project_name, self.project_name.lower())
             res = dest_pth.write_text(contents)
             if res <= 0:
                 success = False
@@ -1309,12 +1143,10 @@ class PackageIt:
             print(msg_milestone("Test code (pytest)..."))
             instructions = [
                 self.project_venv_root_dir.drive,
-                "cd {}".format(self.project_root_dir),
+                f"cd {self.project_root_dir}",
                 "pytest",
             ]
-            success = beevenv.install_in(
-                self.project_venv_root_dir, self.project_name, instructions
-            )
+            success = beevenv.install_in(self.project_venv_root_dir, self.project_name, instructions)
         return success
 
     def format_code(self):
@@ -1322,14 +1154,10 @@ class PackageIt:
         print(msg_milestone("Format code (PEP8)..."))
         cmd = [
             self.project_root_dir.drive,
-            "cd {}".format(self.project_root_dir),
-            "black --config {} {}".format(
-                self.pyproject_toml_pth, str(self.project_root_dir / ".")
-            ),
+            f"cd {self.project_root_dir}",
+            "black --config {} {}".format(self.pyproject_toml_pth, str(self.project_root_dir / ".")),
         ]
-        rc = beevenv.install_in(
-            self.project_venv_root_dir, self.project_name, cmd, p_verbose=True
-        )
+        rc = beevenv.install_in(self.project_venv_root_dir, self.project_name, cmd, p_verbose=True)
         return rc
 
     def get_github_repo_tags(self):
@@ -1350,9 +1178,7 @@ class PackageIt:
     def get_pypi_project_version(self):
         if self.project_pypi_publishing != "No":
             if not self.project_new:
-                print(
-                    msg_milestone(f"Get details for {self.project_name} from PyPI...")
-                )
+                print(msg_milestone(f"Get details for {self.project_name} from PyPI..."))
                 if self.project_pypi_repository == "pypi":
                     url = f"https://pypi.org/pypi/{self.project_name}/json"
                 else:
@@ -1377,13 +1203,13 @@ class PackageIt:
             else:
                 commit_msg = "PackageIt automated update."
             # include_lst = self.add_repo_files() + self.add_forced_repo_files()
-            print(msg_milestone("""Commit to Git - {}""".format(commit_msg)))
+            print(msg_milestone(f"""Commit to Git - {commit_msg}"""))
             # include_lst = self.add_repo_files() + self.add_forced_repo_files()
             self.git_repo.git.add(all=True)
             instructions = [
                 self.project_root_dir.drive,
-                "cd {}".format(self.project_root_dir),
-                '''git commit -m "{}"'''.format(commit_msg),
+                f"cd {self.project_root_dir}",
+                f'''git commit -m "{commit_msg}"''',
             ]
             retry_cntr = 1
             retry_max = 2
@@ -1401,9 +1227,7 @@ class PackageIt:
                     commit_success = True
                 except git_exc.HookExecutionError as err:
                     if retry_cntr < retry_max:
-                        print(
-                            msg_info("Retry commit due to possible reformat condition.")
-                        )
+                        print(msg_info("Retry commit due to possible reformat condition."))
                         retry_cntr += 1
                     else:
                         print(msg_error(err))
@@ -1417,12 +1241,8 @@ class PackageIt:
         if self.project_git_enable:
             print(msg_milestone("Push to Git"))
             if not self.project_new:
-                if self.project_version <= semverit.SemVerIt(
-                    self.get_pypi_project_version()
-                ):
-                    release_toml_ver = semverit.SemVerIt(
-                        self.project_release.latest_version()
-                    )
+                if self.project_version <= semverit.SemVerIt(self.get_pypi_project_version()):
+                    release_toml_ver = semverit.SemVerIt(self.project_release.latest_version())
                     gh_ver = semverit.SemVerIt(self.github_latest_tag())
                     pypi_ver = semverit.SemVerIt(self.get_pypi_project_version())
                     self.raise_exception_old_version(release_toml_ver, gh_ver, pypi_ver)
@@ -1443,7 +1263,7 @@ class PackageIt:
         for gh_release in gh_releases:
             cor_title = self.make_version_title(gh_release.tag_name, "Version")
             if gh_release.title != cor_title:
-                body = "{}\n{}".format(gh_release.title, gh_release.body)
+                body = f"{gh_release.title}\n{gh_release.body}"
                 gh_release.update_release(cor_title, body)
         return gh_releases
 
@@ -1481,24 +1301,16 @@ class PackageIt:
             self.gh_repo.create_git_release(
                 p_pi_rel,
                 self.project_release.rel_notes[major][minor][patch]["Title"],
-                "\n".join(
-                    self.project_release.rel_notes[major][minor][patch]["Description"]
-                ),
+                "\n".join(self.project_release.rel_notes[major][minor][patch]["Description"]),
             )
             pass
 
         def gh_release_same_as_pi(p_gh_rel):
             rc = True
             major, minor, patch = p_gh_rel.tag_name.split(".")
-            if (
-                p_gh_rel.title
-                != self.project_release.rel_notes[major][minor][patch]["Title"]
-            ):
+            if p_gh_rel.title != self.project_release.rel_notes[major][minor][patch]["Title"]:
                 rc = False
-            if (
-                p_gh_rel.body.split("\n")
-                != self.project_release.rel_notes[major][minor][patch]["Description"]
-            ):
+            if p_gh_rel.body.split("\n") != self.project_release.rel_notes[major][minor][patch]["Description"]:
                 rc = False
             return rc
 
@@ -1510,11 +1322,7 @@ class PackageIt:
                     )
                 )
             )
-            print(
-                msg_error(
-                    "Create the tag in GitHub/Git or remove the release note from release.tom. Sync again:"
-                )
-            )
+            print(msg_error("Create the tag in GitHub/Git or remove the release note from release.tom. Sync again:"))
             print(msg_error("Existing GitHub Tags: {}".format(", ".join(p_gh_tags))))
             print(msg_error("See also .packageit/release.toml"))
             pass
@@ -1531,9 +1339,7 @@ class PackageIt:
         tag_black_list = []
         gh_rel_log = self.gh_repo.get_releases()
         gh_rel_log_list = [x.tag_name for x in gh_rel_log]
-        pi_rel_log_list = [
-            "{}.{}.{}".format(x[0], x[1], x[2]) for x in self.project_release.rel_list
-        ]
+        pi_rel_log_list = [f"{x[0]}.{x[1]}.{x[2]}" for x in self.project_release.rel_list]
         gh_tags = self.get_github_repo_tags()
         for gh_rel in gh_rel_log:
             if self.get_release_from_title(gh_rel.tag_name) in pi_rel_log_list:
@@ -1585,22 +1391,14 @@ class PackageIt:
     def init_github_repo(self):
         success = False
         if self.github:
-            print(
-                msg_milestone(
-                    "Create GitHub {} repository...".format(self.project_name)
-                )
-            )
+            print(msg_milestone(f"Create GitHub {self.project_name} repository..."))
             self.gh_user = self.github.get_user()
             try:
                 self.gh_repo = self.gh_user.create_repo(self.project_name)
                 if self.pypi_prod_token_name:
-                    self.gh_repo.create_secret(
-                        self.pypi_prod_token_name, self.pypi_prod_token
-                    )
+                    self.gh_repo.create_secret(self.pypi_prod_token_name, self.pypi_prod_token)
                 if self.pypi_test_token_name:
-                    self.gh_repo.create_secret(
-                        self.pypi_test_token_name, self.pypi_test_token
-                    )
+                    self.gh_repo.create_secret(self.pypi_test_token_name, self.pypi_test_token)
             except GH_Except as err:
                 if err.status == 422:  # GitHub repo already exist
                     self.gh_repo = self.gh_user.get_repo(self.project_name)
@@ -1614,13 +1412,7 @@ class PackageIt:
     def init_github_master_branch(self):
         success = False
         if self.gh_repo:
-            print(
-                msg_milestone(
-                    'Initialize GitHub {} and create "master" branch...'.format(
-                        self.project_name
-                    )
-                )
-            )
+            print(msg_milestone('Initialize GitHub {} and create "master" branch...'.format(self.project_name)))
             try:
                 self.gh_repo.create_file(
                     "Dummy.txt",
@@ -1638,13 +1430,7 @@ class PackageIt:
                 elif err.status == 422:
                     success = True
                 else:
-                    print(
-                        msg_error(
-                            "{} - {}\nSystem terminated.".format(
-                                err.status, err.data["message"]
-                            )
-                        )
-                    )
+                    print(msg_error("{} - {}\nSystem terminated.".format(err.status, err.data["message"])))
                     sys.exit()
         return success
 
@@ -1671,13 +1457,11 @@ class PackageIt:
         if self.project_venv_enable:
             print(msg_milestone("Install editable package..."))
             instructions = [
-                "{}".format(self.project_root_dir.drive),
-                "cd {}".format(self.project_root_dir),
+                f"{self.project_root_dir.drive}",
+                f"cd {self.project_root_dir}",
                 "pip install -e .",
             ]
-            success = beevenv.install_in(
-                self.project_venv_root_dir, self.project_name, instructions
-            )
+            success = beevenv.install_in(self.project_venv_root_dir, self.project_name, instructions)
         return success
 
     def install_prereq_apps_in_venv(self):
@@ -1704,13 +1488,11 @@ class PackageIt:
             print(msg_milestone("Install apps in virtual environment..."))
             instructions = [
                 self.project_venv_root_dir.drive,
-                "cd {}".format(self.project_root_dir),
+                f"cd {self.project_root_dir}",
             ]
             for app in self.project_install_apps:
                 instructions.append(app)
-            success = beevenv.install_in(
-                self.project_venv_root_dir, self.project_name, instructions
-            )
+            success = beevenv.install_in(self.project_venv_root_dir, self.project_name, instructions)
         return success
 
     def install_prereq_modules_in_venv(self):
@@ -1737,8 +1519,8 @@ class PackageIt:
             print(msg_milestone("Install modules in virtual environment..."))
             switches = ""
             instructions = [
-                "{}".format(self.project_root_dir.drive),
-                "cd {}".format(self.project_root_dir),
+                f"{self.project_root_dir.drive}",
+                f"cd {self.project_root_dir}",
             ]
             # import_items = self.project_import_test + self.project_import_prod
             import_items = self.project_import_test
@@ -1752,40 +1534,29 @@ class PackageIt:
                         not_installed = True
                     if not_installed or self.project_venv_upgrade:
                         if self.project_venv_upgrade:
-                            switches = '--upgrade'
-                        if (
-                            item[1] == "pip" or item[1] == "pip3"
-                        ) and self.project_venv_upgrade:
-                            instructions.append(
-                                "python.exe -m pip install {} pip".format(switches)
-                            )
+                            switches = "--upgrade"
+                        if (item[1] == "pip" or item[1] == "pip3") and self.project_venv_upgrade:
+                            instructions.append(f"python.exe -m pip install {switches} pip")
                         else:
-                            instructions.append(
-                                "pip install {} {}".format(switches, item[1])
-                            )
+                            instructions.append(f"pip install {switches} {item[1]}")
                         imported_list.append(item[1])
-            if (
-                beevenv.install_in(
-                    self.project_venv_root_dir, self.project_name, instructions
-                )
-                != 0
-            ):
+            if beevenv.install_in(self.project_venv_root_dir, self.project_name, instructions) != 0:
                 imported_list = []
         return imported_list
 
     def get_title_and_desc(self, p_project_pth):
         """Definition"""
-        print(msg_milestone("Load {} ...".format(p_project_pth.name)))
+        print(msg_milestone(f"Load {p_project_pth.name} ..."))
         src = p_project_pth.read_text()
         res = re.search(r'"""[\s\S]*?"""', p_project_pth.read_text(), re.DOTALL)
         if not res:
             res = re.search(r"'''[\s\S]*?'''", p_project_pth.read_text(), re.DOTALL)
-        doc_str = src[res.start() : res.end()].split('\n')
+        doc_str = src[res.start() : res.end()].split("\n")
         for i, sep in enumerate(doc_str[1:]):
-            if sep == '':
+            if sep == "":
                 break
-        self.project_title = '\n'.join(doc_str[: i + 1]).strip()[3:]
-        self.project_desc = '\n'.join(doc_str[i + 2 :])[:-3].strip()
+        self.project_title = "\n".join(doc_str[: i + 1]).strip()[3:]
+        self.project_desc = "\n".join(doc_str[i + 2 :])[:-3].strip()
         return self.project_title, self.project_desc
 
     def make_project_specific_ini(self) -> None:
@@ -1805,49 +1576,39 @@ class PackageIt:
 
         """
         # templ_ini_pth = self.templ_dir / 'templ_project.ini'
-        print(
-            msg_milestone(
-                "Create {} file...".format(self.project_packageit_ini_pth.name)
-            )
-        )
+        print(msg_milestone(f"Create {self.project_packageit_ini_pth.name} file..."))
         shutil.copy(self.packageit_ini_pth, self.project_packageit_ini_pth)
         pass
 
     @staticmethod
     def make_version_title(p_release, p_prefix=""):
-        return "{} {}".format(p_prefix, p_release).strip()
+        return f"{p_prefix} {p_release}".strip()
 
     def make_wheels(self):
         """Create the wheels"""
-        print(msg_milestone("Make {} wheels".format(self.project_name)))
+        print(msg_milestone(f"Make {self.project_name} wheels"))
         dist_dir = self.project_root_dir / "dist"
         if beeutils.get_os() == beeutils.WINDOWS:
-            del_cmd = "del /Q {}".format(dist_dir)
+            del_cmd = f"del /Q {dist_dir}"
         elif beeutils.get_os() == beeutils.LINUX:
-            del_cmd = "rm {}".format(dist_dir)
+            del_cmd = f"rm {dist_dir}"
         else:  # beeutils.get_os() == beeutils.MACOS:
-            del_cmd = "rm {}".format(dist_dir)
+            del_cmd = f"rm {dist_dir}"
         instructions = [
-            "{}".format(self.project_root_dir.drive),
-            "cd {}".format(self.project_root_dir),
-            "{}".format(del_cmd),
+            f"{self.project_root_dir.drive}",
+            f"cd {self.project_root_dir}",
+            f"{del_cmd}",
             "python -m pip install build wheel",
             "python -m build",
         ]
-        success = beevenv.install_in(
-            self.project_venv_root_dir, self.project_name, instructions
-        )
+        success = beevenv.install_in(self.project_venv_root_dir, self.project_name, instructions)
         self.project_wheels = list((self.project_root_dir / "dist").glob("*"))
         return success
 
     def marry_git_github(self):
         success = False
         if self.project_git_enable and self.project_gh_enable:
-            print(
-                msg_milestone("Marry Git and GitHub {} master branch").format(
-                    self.project_name
-                )
-            )
+            print(msg_milestone("Marry Git and GitHub {} master branch").format(self.project_name))
             git_project_url = "{}/{}/{}.git".format(
                 self.packageit_ini.get("GitHub", "Url").replace(" ", ""),
                 self.packageit_ini.get("GitHub", "UserName"),
@@ -1913,23 +1674,15 @@ class PackageIt:
         """
         success = False
         if self.project_packageit_ini_pth.exists():
-            print(
-                msg_milestone("Read {} configuration").format(
-                    self.project_packageit_ini_pth.exists
-                )
-            )
+            print(msg_milestone("Read {} configuration").format(self.project_packageit_ini_pth.exists))
             self.project_ini.read([self.project_packageit_ini_pth])
             if self.project_ini.has_option("Detail", "Author"):
                 self.project_author = self.project_ini.get("Detail", "Author")
             if self.project_ini.has_option("Detail", "AuthorEmail"):
-                self.project_author_email = self.project_ini.get(
-                    "Detail", "AuthorEmail"
-                )
+                self.project_author_email = self.project_ini.get("Detail", "AuthorEmail")
 
             if self.project_ini.has_section("Classifiers"):
-                self.project_classifiers = GenClassifiers(
-                    _PROJ_NAME, self.project_packageit_ini_pth
-                ).contents
+                self.project_classifiers = GenClassifiers(_PROJ_NAME, self.project_packageit_ini_pth).contents
 
             if self.project_ini.has_option("Git", "Enable"):
                 self.project_git_enable = self.project_ini.getboolean("Git", "Enable")
@@ -1939,54 +1692,33 @@ class PackageIt:
                 self.project_gh_username = self.project_ini.get("GitHub", "UserName")
 
             if self.project_ini.has_option("Detail", "HeaderDescription"):
-                self.project_header_description = self.project_ini.get(
-                    "Detail", "HeaderDescription"
-                )
+                self.project_header_description = self.project_ini.get("Detail", "HeaderDescription")
 
             if self.project_ini.has_option("Import", "ReWrite"):
                 self.project_import_rewrite = self.project_ini.get("Import", "ReWrite")
             if self.project_ini.has_option("Import", "Prod001"):
                 self.project_import_prod = [
-                    x[1]
-                    for x in self.project_ini.get(
-                        "Import", "Prod", p_prefix=True, p_split=True
-                    )
+                    x[1] for x in self.project_ini.get("Import", "Prod", p_prefix=True, p_split=True)
                 ]
             if self.project_ini.has_option("Import", "Test001"):
                 self.project_import_test = [
-                    x[1]
-                    for x in self.project_ini.get(
-                        "Import", "Test", p_prefix=True, p_split=True
-                    )
+                    x[1] for x in self.project_ini.get("Import", "Test", p_prefix=True, p_split=True)
                 ]
 
             if self.project_ini.has_option("Install Apps", "App01"):
-                self.project_install_apps += [
-                    x[1]
-                    for x in self.project_ini.get("Install Apps", "App", p_prefix=True)
-                ]
+                self.project_install_apps += [x[1] for x in self.project_ini.get("Install Apps", "App", p_prefix=True)]
 
             if self.project_ini.has_option("Detail", "LongDescription"):
-                self.project_long_description = self.project_ini.get(
-                    "Detail", "LongDescription"
-                )
+                self.project_long_description = self.project_ini.get("Detail", "LongDescription")
 
             if self.project_ini.has_option("PyPi", "Publishing"):
-                self.project_pypi_publishing = self.project_ini.get(
-                    "PyPi", "Publishing"
-                )
+                self.project_pypi_publishing = self.project_ini.get("PyPi", "Publishing")
             if self.project_ini.has_option("PyPi", "Repository"):
-                self.project_pypi_repository = self.project_ini.get(
-                    "PyPi", "Repository"
-                )
+                self.project_pypi_repository = self.project_ini.get("PyPi", "Repository")
                 if self.project_pypi_repository == "pypi":
-                    pypi_token_fn = Path(
-                        self.packageit_ini.get("PyPi", "TokenFileNamePyPi")
-                    )
+                    pypi_token_fn = Path(self.packageit_ini.get("PyPi", "TokenFileNamePyPi"))
                 else:
-                    pypi_token_fn = Path(
-                        self.packageit_ini.get("PyPi", "TokenFileNameTestPyPi")
-                    )
+                    pypi_token_fn = Path(self.packageit_ini.get("PyPi", "TokenFileNameTestPyPi"))
                 self.pypi_curr_token = self.read_token(pypi_token_fn)
                 self.pypi_curr_token_name = pypi_token_fn.stem
 
@@ -2004,39 +1736,24 @@ class PackageIt:
             #     )
 
             if self.project_ini.has_option("Sphinx", "Enable"):
-                self.project_sphinx_enable = self.project_ini.getboolean(
-                    "Sphinx", "Enable"
-                )
+                self.project_sphinx_enable = self.project_ini.getboolean("Sphinx", "Enable")
             if self.project_ini.has_option("Sphinx", "ConfPyInstr001"):
                 self.project_sphinx_conf_py_inst = [
-                    x[1]
-                    for x in self.project_ini.get(
-                        "Sphinx", "ConfPyInstr", p_prefix=True
-                    )
+                    x[1] for x in self.project_ini.get("Sphinx", "ConfPyInstr", p_prefix=True)
                 ]
 
             if self.project_ini.has_option("Detail", "PythonRequires"):
-                self.project_python_requires = self.project_ini.get(
-                    "Detail", "PythonRequires"
-                )
+                self.project_python_requires = self.project_ini.get("Detail", "PythonRequires")
             if self.project_ini.has_option("Detail", "Url"):
                 self.project_url = self.project_ini.get("Detail", "Url")
 
             if self.project_ini.has_option("VEnv", "Enable"):
                 self.project_venv_enable = self.project_ini.has_option("VEnv", "Enable")
-                self.project_venv_root_dir = Path(
-                    self.project_ini.get(
-                        "VEnv", "{}VEnvAnchorDir".format(beeutils.get_os())
-                    )
-                )
+                self.project_venv_root_dir = Path(self.project_ini.get("VEnv", f"{beeutils.get_os()}VEnvAnchorDir"))
                 if self.project_ini.has_option("VEnv", "ReinstallVenv"):
-                    self.project_venv_reinstall = self.project_ini.getboolean(
-                        "VEnv", "ReinstallVenv"
-                    )
+                    self.project_venv_reinstall = self.project_ini.getboolean("VEnv", "ReinstallVenv")
                 if self.project_ini.has_option("VEnv", "Upgrade"):
-                    self.project_venv_upgrade = self.project_ini.getboolean(
-                        "VEnv", "Upgrade"
-                    )
+                    self.project_venv_upgrade = self.project_ini.getboolean("VEnv", "Upgrade")
             success = True
         return success
 
@@ -2110,21 +1827,19 @@ class PackageIt:
             print(msg_milestone("Setup Sphinx..."))
             instructions = [
                 self.project_venv_root_dir.drive,
-                "cd {}".format(self.project_root_dir),
+                f"cd {self.project_root_dir}",
             ]
             sphinx_cmd = "sphinx-quickstart "
             sphinx_cmd += "--sep "
-            sphinx_cmd += "--project {} ".format(self.project_name)
-            sphinx_cmd += '--author "{}" '.format(self.project_author)
+            sphinx_cmd += f"--project {self.project_name} "
+            sphinx_cmd += f'--author "{self.project_author}" '
             sphinx_cmd += "-v 1 -r 0 "
             sphinx_cmd += "--language en "
             sphinx_cmd += "--makefile "
             sphinx_cmd += "--batchfile "
             sphinx_cmd += "docs"
             instructions.append(sphinx_cmd)
-            success = beevenv.install_in(
-                self.project_venv_root_dir, self.project_name, instructions
-            )
+            success = beevenv.install_in(self.project_venv_root_dir, self.project_name, instructions)
             self.project_sphinx_conf_py_pth.unlink()
         return success
 
@@ -2149,24 +1864,19 @@ class PackageIt:
     def upload_to_pypi(self):
         """Upload to PyPi"""
         success = False
-        if (
-            self.project_pypi_publishing == "Twine"
-            or self.project_pypi_publishing == "Reahl"
-        ):
-            print(msg_milestone("Manual upload {} to PyPi".format(self.project_name)))
+        if self.project_pypi_publishing == "Twine" or self.project_pypi_publishing == "Reahl":
+            print(msg_milestone(f"Manual upload {self.project_name} to PyPi"))
             cmd = [
-                "{}".format(self.project_root_dir.drive),
-                "cd {}".format(self.project_root_dir),
-                "twine upload --repository {} --skip-existing dist/*".format(
-                    self.project_pypi_repository
-                ),
+                f"{self.project_root_dir.drive}",
+                f"cd {self.project_root_dir}",
+                "twine upload --repository {} --skip-existing dist/*".format(self.project_pypi_repository),
             ]
             success = beescript.exec_batch_in_session(cmd)
         elif self.project_pypi_publishing == "GitHub":
-            print(msg_milestone("Github push {} to PyPi".format(self.project_name)))
+            print(msg_milestone(f"Github push {self.project_name} to PyPi"))
             success = True
         else:
-            print(msg_milestone("No publishing {} to PyPi".format(self.project_name)))
+            print(msg_milestone(f"No publishing {self.project_name} to PyPi"))
         return success
 
     def zip_project(self):
@@ -2188,7 +1898,7 @@ class GenClassifiers:
         self.log_name = None
         self.logger = None
         if p_logger:
-            self.log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
+            self.log_name = f"{p_parent_log_name}.{_PROJ_NAME}"
             self.logger = logging.getLogger(self.log_name)
         self.contents = []
         self.dev_status = None
@@ -2208,18 +1918,13 @@ class GenClassifiers:
         self.ini.read([self.ini_pth])
         self.dev_status = self.ini.get("Classifiers", "DevStatus")
         self.contents.append(self.dev_status)
-        self.intended_audience = [
-            x[1] for x in self.ini.get("Classifiers", "IntendedAudience", p_prefix=True)
-        ]
+        self.intended_audience = [x[1] for x in self.ini.get("Classifiers", "IntendedAudience", p_prefix=True)]
         self.contents += self.intended_audience
         self.topic = [x[1] for x in self.ini.get("Classifiers", "Topic", p_prefix=True)]
         self.contents += self.topic
         self.license = self.ini.get("Classifiers", "License")
         self.contents.append(self.license)
-        self.programming_language = [
-            x[1]
-            for x in self.ini.get("Classifiers", "ProgrammingLanguage", p_prefix=True)
-        ]
+        self.programming_language = [x[1] for x in self.ini.get("Classifiers", "ProgrammingLanguage", p_prefix=True)]
         self.contents += self.programming_language
         return self.contents
 
@@ -2267,20 +1972,18 @@ class GenSetUpPy:
         contents += """with open('requirements.txt', 'r') as fh:\n"""
         contents += """    requirements = [line.strip() for line in fh]\n\n\n"""
         contents += """setuptools.setup(\n"""
-        contents += """    name = '{}',\n""".format(self.name)
-        contents += """    version = '{}',\n""".format(self.version)
-        contents += """    author = '{}',\n""".format(self.author)
-        contents += """    author_email = '{}',\n""".format(self.author_email)
-        contents += """    description = '{}',\n""".format(self.description)
+        contents += f"""    name = '{self.name}',\n"""
+        contents += f"""    version = '{self.version}',\n"""
+        contents += f"""    author = '{self.author}',\n"""
+        contents += f"""    author_email = '{self.author_email}',\n"""
+        contents += f"""    description = '{self.description}',\n"""
         contents += """    long_description = long_description,\n"""
         contents += """    long_description_content_type = 'text/x-rst',\n"""
-        contents += """    classifiers = [\n        '{}'\n    ],\n""".format(
-            """',\n        '""".join(self.classifiers)
-        )
+        contents += """    classifiers = [\n        '{}'\n    ],\n""".format("""',\n        '""".join(self.classifiers))
         if self.packages_dir:
-            contents += """    package_dir = {},\n""".format(self.packages_dir)
-        contents += """    packages = {},\n""".format(self.packages)
-        contents += """    python_requires = '{}',\n""".format(self.python_requires)
+            contents += f"""    package_dir = {self.packages_dir},\n"""
+        contents += f"""    packages = {self.packages},\n"""
+        contents += f"""    python_requires = '{self.python_requires}',\n"""
         contents += """    install_requires = requirements\n"""
         contents += ")\n"
         self.pth.write_text(contents)
@@ -2288,25 +1991,21 @@ class GenSetUpPy:
 
 
 class GenLicense:
-    def __init__(
-        self, p_parent_log_name, p_type, p_templ_pth, p_logger=False, p_verbose=True
-    ):
+    def __init__(self, p_parent_log_name, p_type, p_templ_pth, p_logger=False, p_verbose=True):
         """Initialize the class"""
         self.success = True
         self.verbose = p_verbose
         self.log_name = None
         self.logger = None
         if p_logger:
-            self.log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
+            self.log_name = f"{p_parent_log_name}.{_PROJ_NAME}"
             self.logger = logging.getLogger(self.log_name)
         self.contents = None
         self.templ_prefix = "templ_lic"
         self.templ_pth = p_templ_pth
         self.type = p_type
         self.lic_types = []
-        self.lic_pth = (
-            self.templ_pth / "{}_{}".format(self.templ_prefix, self.type)
-        ).with_suffix(".txt")
+        self.lic_pth = (self.templ_pth / f"{self.templ_prefix}_{self.type}").with_suffix(".txt")
         self.get_lic_types()
         if self.verify_lic_type():
             self.get_type_text()
@@ -2314,7 +2013,7 @@ class GenLicense:
 
     def get_lic_types(self):
         self.lic_types = []
-        for filename in self.templ_pth.glob("{}*.txt".format(self.templ_prefix)):
+        for filename in self.templ_pth.glob(f"{self.templ_prefix}*.txt"):
             self.lic_types.append(str(filename.stem)[len(self.templ_prefix) + 1 :])
         return self.lic_types
 
@@ -2332,7 +2031,7 @@ class GenLicense:
 class RSTBuilder(FileTemplate):
     """Build a  reStructuredText (RST) file.
 
-    The file will be rebuilt everytime i.e. it will be deleted and recreated
+    The file will be rebuilt every time i.e. it will be deleted and recreated
     from scratch according to the elements of the object.
     """
 
@@ -2349,7 +2048,7 @@ class RSTBuilder(FileTemplate):
         self.loger_name = None
         self.logger = None
         if p_parent_log_name:
-            self.loger_name = "{}.{}".format(p_parent_log_name, 'RSTBuilder')
+            self.loger_name = "{}.{}".format(p_parent_log_name, "RSTBuilder")
             self.logger = logging.getLogger(self.loger_name)
         self.contents = ""
         self.curr_pos = 0
@@ -2377,7 +2076,7 @@ class RSTBuilder(FileTemplate):
         """Add a code-block to the rst text.
 
         Add a code-block to the rst text by specifying the language and the
-        position in teh text.
+        position in the text.
 
         Parameters
         ----------
@@ -2409,7 +2108,7 @@ class RSTBuilder(FileTemplate):
         text = ".. code-block:: {}\n\n{}{}\n".format(
             p_lang,
             self._make_indent(1),
-            p_text.replace("\n", "\n{}".format(self._make_indent(1))),
+            p_text.replace("\n", f"\n{self._make_indent(1)}"),
         )
         text += "\n"
         element = {"Type": "CodeBlock", "Text": text}
@@ -2421,7 +2120,7 @@ class RSTBuilder(FileTemplate):
         text = p_text.strip().replace("\n", " ")
         while text.find("  ") >= 0:
             text = text.replace("  ", " ")
-        text = ".. {}\n\n".format(text)
+        text = f".. {text}\n\n"
         element = {"Type": "Comment", "Text": text}
         pos = self._insert_at(element, p_pos)
         if pos > 0 and self.elements[pos - 1]["Type"] == "Comment":
@@ -2442,19 +2141,19 @@ class RSTBuilder(FileTemplate):
     ):
         # ..image: : https: // img.shields.io / pypi / v / BEETest?style = plastic
         #     :alt: PyPI
-        text = self._make_indent(p_level) + ".. image:: {}\n".format(p_uri)
+        text = self._make_indent(p_level) + f".. image:: {p_uri}\n"
         if p_align:
-            text += self._make_indent(p_level + 1) + ":align: {}\n".format(p_align)
+            text += self._make_indent(p_level + 1) + f":align: {p_align}\n"
         if p_alt:
-            text += self._make_indent(p_level + 1) + ":alt: {}\n".format(p_alt)
+            text += self._make_indent(p_level + 1) + f":alt: {p_alt}\n"
         if p_height:
-            text += self._make_indent(p_level + 1) + ":height: {}\n".format(p_height)
+            text += self._make_indent(p_level + 1) + f":height: {p_height}\n"
         if p_scale:
-            text += self._make_indent(p_level + 1) + ":scale: {}\n".format(p_scale)
+            text += self._make_indent(p_level + 1) + f":scale: {p_scale}\n"
         if p_target:
-            text += self._make_indent(p_level + 1) + ":target: {}\n".format(p_target)
+            text += self._make_indent(p_level + 1) + f":target: {p_target}\n"
         if p_width:
-            text += self._make_indent(p_level + 1) + ":width: {}\n".format(p_width)
+            text += self._make_indent(p_level + 1) + f":width: {p_width}\n"
         text += "\n"
         element = {"Type": "DirectiveImage", "Text": text}
         pos = self._insert_at(element, p_pos)
@@ -2465,9 +2164,7 @@ class RSTBuilder(FileTemplate):
 
     def add_first_level_title(self, p_text, p_pos=None):
         """Method description"""
-        text = "{}\n{}\n{}\n".format(
-            self._underline(p_text, "="), p_text, self._underline(p_text, "=")
-        )
+        text = "{}\n{}\n{}\n".format(self._underline(p_text, "="), p_text, self._underline(p_text, "="))
         text += "\n"
         element = {"Type": "FirstLevelTitle", "Text": text}
         pos = self._insert_at(element, p_pos)
@@ -2500,16 +2197,14 @@ class RSTBuilder(FileTemplate):
         text = p_text.strip().replace("\n", " ")
         while text.find("  ") >= 0:
             text = text.replace("  ", " ")
-        text = "{}{}\n\n".format(self._make_indent(p_level), text)
+        text = f"{self._make_indent(p_level)}{text}\n\n"
         element = {"Type": "Paragraph", "Text": text}
         pos = self._insert_at(element, p_pos)
         return pos
 
     def add_second_level_title(self, p_text, p_pos=None):
         """Method description"""
-        text = "{}\n{}\n{}\n".format(
-            self._underline(p_text, "-"), p_text, self._underline(p_text, "-")
-        )
+        text = "{}\n{}\n{}\n".format(self._underline(p_text, "-"), p_text, self._underline(p_text, "-"))
         text += "\n"
         element = {"Type": "SecondLevelTitle", "Text": text}
         pos = self._insert_at(element, p_pos)
@@ -2535,14 +2230,14 @@ class RSTBuilder(FileTemplate):
             p_toc_items = []
         text = ".. toctree::\n"
         if p_maxdepth > 0:
-            text += "{}:maxdepth: {}\n".format(self._make_indent(1), p_maxdepth)
+            text += f"{self._make_indent(1)}:maxdepth: {p_maxdepth}\n"
         if p_caption:
-            text += "{}:caption: {}\n".format(self._make_indent(1), p_caption)
+            text += f"{self._make_indent(1)}:caption: {p_caption}\n"
         if p_numbered:
-            text += "{}:numbered:\n".format(self._make_indent(1))
+            text += f"{self._make_indent(1)}:numbered:\n"
         text += "\n"
         for item in p_toc_items:
-            text += "{}{}\n".format(self._make_indent(1), item)
+            text += f"{self._make_indent(1)}{item}\n"
         text += "\n"
 
         element = {"Type": "TocTree", "Text": text, "Items": p_toc_items}
@@ -2633,7 +2328,7 @@ class OldVersionException(PackageItException):
 class ReadMe(RSTBuilder):
     def __init__(self, p_src_pth):
         super().__init__(p_src_pth)
-        self.src_pth = p_src_pth / 'README.rst'
+        self.src_pth = p_src_pth / "README.rst"
         pass
 
     def create_body_from_template(self, p_body_pth, p_templ_body_pth):
@@ -2649,9 +2344,7 @@ def init_logger():
     file_handle.setLevel(beeutils.DEF_LOG_LEV_FILE)
     console_handle = logging.StreamHandler()
     console_handle.setLevel(beeutils.DEF_LOG_LEV_CON)
-    file_format = logging.Formatter(
-        beeutils.LOG_FILE_FORMAT, datefmt=beeutils.LOG_DATE_FORMAT
-    )
+    file_format = logging.Formatter(beeutils.LOG_FILE_FORMAT, datefmt=beeutils.LOG_DATE_FORMAT)
     console_format = logging.Formatter(beeutils.LOG_CONSOLE_FORMAT)
     file_handle.setFormatter(file_format)
     console_handle.setFormatter(console_format)
@@ -2672,9 +2365,7 @@ def read_args():
         help="Config file name",
         default=arg_parser.prog[: arg_parser.prog.find(".") + 1] + "ini",
     )
-    arg_parser.add_argument(
-        "-e", "--arc-extern-dir", help="Path to external archive", default=None
-    )
+    arg_parser.add_argument("-e", "--arc-extern-dir", help="Path to external archive", default=None)
     arg_parser.add_argument(
         "-t",
         "--token-dir",
@@ -2713,9 +2404,7 @@ if __name__ == "__main__":
         p_arc_extern_dir=arc_extern_dir,
     )
     b_tls.print_header(p_cls=False)
-    package_it = PackageIt(
-        ini_pth, project_name, p_token_dir=token_dir, p_logger_name=False
-    )
+    package_it = PackageIt(ini_pth, project_name, p_token_dir=token_dir, p_logger_name=False)
     if package_it.success:
         package_it.run()
     b_tls.print_footer()

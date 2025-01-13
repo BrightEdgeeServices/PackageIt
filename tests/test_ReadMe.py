@@ -1,6 +1,7 @@
 """Testing FileTmeplate"""
 
 from pathlib import Path
+
 from packageit.packageit import ReadMe
 
 # from beetools.beearchiver import Archiver
@@ -17,15 +18,15 @@ class TestReadMe:
         working_dir = working_dir_self_destruct
 
         t_readme = ReadMe(p_src_pth=working_dir.dir)
-        assert t_readme.src_pth == working_dir.dir / 'README.rst'
+        assert t_readme.src_pth == working_dir.dir / "README.rst"
         pass
 
     def test_create_from_template(self, working_dir_self_destruct):
         """Testing TestFileTemplate.create_from_template"""
         working_dir = working_dir_self_destruct
 
-        FILE_CONTENTS = 'ReadMe'
-        templ_pth = working_dir.dir / 'template_readme.rst'
+        FILE_CONTENTS = "ReadMe"
+        templ_pth = working_dir.dir / "template_readme.rst"
         templ_pth.write_text(FILE_CONTENTS)
         t_readme = ReadMe(p_src_pth=working_dir.dir)
         t_readme.create_from_template(templ_pth)

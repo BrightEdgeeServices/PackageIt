@@ -2,6 +2,7 @@
 
 Define the fixture functions in this file to make them accessible across multiple test files.
 """
+
 import datetime
 from pathlib import Path
 import pytest
@@ -348,42 +349,18 @@ class EnvSetUp:
         self.classifiers = _CLASSIFIERS
         self.external_arc_dir = self.anchor_dir / "external_archive"
         self.external_arc_dir.mkdir(parents=True)
-        self.index_rst_badge_codecov = _INDEX_RST_BADGE_CODECOV.format(
-            self.project_name
-        )
-        self.index_rst_badge_github_ci = _INDEX_RST_BADGE_GITHUB_CI.format(
-            self.project_name
-        )
-        self.index_rst_badge_github_license = _INDEX_RST_BADGE_GITHUB_LICENSE.format(
-            self.project_name
-        )
-        self.index_rst_badge_github_hits = _INDEX_RST_BADGE_GITHUB_HITS.format(
-            self.project_name
-        )
-        self.index_rst_badge_github_issues = _INDEX_RST_BADGE_GITHUB_ISSUES.format(
-            self.project_name
-        )
-        self.index_rst_badge_github_pre_commit = (
-            _INDEX_RST_BADGE_GITHUB_PRE_COMMIT.format(self.project_name)
-        )
-        self.index_rst_badge_github_release = _INDEX_RST_BADGE_GITHUB_RELEASE.format(
-            self.project_name
-        )
-        self.index_rst_badge_pypi_version = _INDEX_RST_BADGE_PYPI_VERSION.format(
-            self.project_name
-        )
-        self.index_rst_badge_pypi_dl = _INDEX_RST_BADGE_PYPI_DL.format(
-            self.project_name
-        )
-        self.index_rst_badge_pypi_status = _INDEX_RST_BADGE_PYPI_STATUS.format(
-            self.project_name
-        )
-        self.index_rst_badge_pypi_wheel = _INDEX_RST_BADGE_PYPI_WHEEL.format(
-            self.project_name
-        )
-        self.index_rst_badge_pyversions = _INDEX_RST_BADGE_PYVERSIONS.format(
-            self.project_name
-        )
+        self.index_rst_badge_codecov = _INDEX_RST_BADGE_CODECOV.format(self.project_name)
+        self.index_rst_badge_github_ci = _INDEX_RST_BADGE_GITHUB_CI.format(self.project_name)
+        self.index_rst_badge_github_license = _INDEX_RST_BADGE_GITHUB_LICENSE.format(self.project_name)
+        self.index_rst_badge_github_hits = _INDEX_RST_BADGE_GITHUB_HITS.format(self.project_name)
+        self.index_rst_badge_github_issues = _INDEX_RST_BADGE_GITHUB_ISSUES.format(self.project_name)
+        self.index_rst_badge_github_pre_commit = _INDEX_RST_BADGE_GITHUB_PRE_COMMIT.format(self.project_name)
+        self.index_rst_badge_github_release = _INDEX_RST_BADGE_GITHUB_RELEASE.format(self.project_name)
+        self.index_rst_badge_pypi_version = _INDEX_RST_BADGE_PYPI_VERSION.format(self.project_name)
+        self.index_rst_badge_pypi_dl = _INDEX_RST_BADGE_PYPI_DL.format(self.project_name)
+        self.index_rst_badge_pypi_status = _INDEX_RST_BADGE_PYPI_STATUS.format(self.project_name)
+        self.index_rst_badge_pypi_wheel = _INDEX_RST_BADGE_PYPI_WHEEL.format(self.project_name)
+        self.index_rst_badge_pyversions = _INDEX_RST_BADGE_PYVERSIONS.format(self.project_name)
         self.index_rst_contents = _INDEX_RST_CONTENTS.format(self.project_name)
         self.project_classifiers = _PROJECT_CLASSIFIERS
         self.packageit_ini_pth = self.make_packageit_ini()
@@ -405,13 +382,9 @@ class EnvSetUp:
         src_dir = project_root_dir / "src" / self.project_name.lower()
         if not src_dir.exists():
             src_dir.mkdir(parents=True)
-        (src_dir / "{}.py".format(self.project_name.lower())).write_text(
-            "Test file\nThis file is included"
-        )
-        (src_dir / "{}.pyc".format(self.project_name.lower())).write_text(
-            "Test file\nThis file is excluded"
-        )
-        (src_dir / "{}.ini".format(self.project_name.lower())).write_text("[Folders]\n")
+        (src_dir / f"{self.project_name.lower()}.py").write_text("Test file\nThis file is included")
+        (src_dir / f"{self.project_name.lower()}.pyc").write_text("Test file\nThis file is excluded")
+        (src_dir / f"{self.project_name.lower()}.ini").write_text("[Folders]\n")
         (project_root_dir / "setup.cfg").write_text(_CONFIG_CFG_CONTENTS)
         pass
 
@@ -419,19 +392,19 @@ class EnvSetUp:
         """Make INI file for testing"""
         packageit_ini_pth = self.anchor_dir / "pimt.ini"
         ini = configparserext.ConfigParserExt()
-        ini['Badges'] = {
-            'BadgePyPI': 'Yes',
-            'BadgeCI': 'Yes',
-            'BadgePreCommit': 'Yes',
-            'BadgeCodeCov': 'Yes',
-            'BadgeGitHubSearch': 'Yes',
-            'BadgePyPIDownload': 'Yes',
-            'BadgeGitHubIssues': 'Yes',
-            'BadgeLicense': 'Yes',
-            'BadgeGitHubRelease': 'Yes',
-            'BadgePyPIVersion': 'Yes',
-            'BadgePyPIWheel': 'Yes',
-            'BadgePyPIStatus': 'Yes',
+        ini["Badges"] = {
+            "BadgePyPI": "Yes",
+            "BadgeCI": "Yes",
+            "BadgePreCommit": "Yes",
+            "BadgeCodeCov": "Yes",
+            "BadgeGitHubSearch": "Yes",
+            "BadgePyPIDownload": "Yes",
+            "BadgeGitHubIssues": "Yes",
+            "BadgeLicense": "Yes",
+            "BadgeGitHubRelease": "Yes",
+            "BadgePyPIVersion": "Yes",
+            "BadgePyPIWheel": "Yes",
+            "BadgePyPIStatus": "Yes",
         }
         ini["Classifiers"] = {
             "DevStatus": "Development Status :: 1 - Planning",
@@ -450,10 +423,10 @@ class EnvSetUp:
             "AuthorEmail": "ann.other@testmodule.com",
             "HeaderDescription": "Project Header Description (default ini)",
             "LongDescription": "Project long description goes in here (default ini)",
-            "{}ProjectAnchorDir".format(get_os()): self.anchor_dir,
-            "{}ProjectIniDir".format(get_os()): Path(self.anchor_dir, "ini"),
+            f"{get_os()}ProjectAnchorDir": self.anchor_dir,
+            f"{get_os()}ProjectIniDir": Path(self.anchor_dir, "ini"),
             "PythonRequires": ">=3.6",
-            "Url": "www.{}.com".format(self.project_name.lower()),
+            "Url": f"www.{self.project_name.lower()}.com",
             "Type": "Module",
         }
 
@@ -530,8 +503,8 @@ class EnvSetUp:
             "Enable": "Yes",
             "Upgrade": "Yes",
             "ReinstallVEnv": "No",
-            "{}VEnvBaseFolder".format(get_os()): self.anchor_dir,
-            "{}VEnvAnchorDir".format(get_os()): self.anchor_dir / "venv",
+            f"{get_os()}VEnvBaseFolder": self.anchor_dir,
+            f"{get_os()}VEnvAnchorDir": self.anchor_dir / "venv",
         }
         with open(packageit_ini_pth, "w") as ini_file:
             ini.write(ini_file)
@@ -548,19 +521,19 @@ class EnvSetUp:
         if not project_ini_pth.parents[0].exists():
             project_ini_pth.parents[0].mkdir(parents=True)
         ini = configparserext.ConfigParserExt(inline_comment_prefixes="#")
-        ini['Badges'] = {
-            'BadgePyPI': 'Yes',
-            'BadgeCI': 'Yes',
-            'BadgePreCommit': 'Yes',
-            'BadgeCodeCov': 'Yes',
-            'BadgeGitHubSearch': 'Yes',
-            'BadgePyPIDownload': 'Yes',
-            'BadgeGitHubIssues': 'Yes',
-            'BadgeLicense': 'Yes',
-            'BadgeGitHubRelease': 'Yes',
-            'BadgePyPIVersion': 'Yes',
-            'BadgePyPIWheel': 'Yes',
-            'BadgePyPIStatus': 'Yes',
+        ini["Badges"] = {
+            "BadgePyPI": "Yes",
+            "BadgeCI": "Yes",
+            "BadgePreCommit": "Yes",
+            "BadgeCodeCov": "Yes",
+            "BadgeGitHubSearch": "Yes",
+            "BadgePyPIDownload": "Yes",
+            "BadgeGitHubIssues": "Yes",
+            "BadgeLicense": "Yes",
+            "BadgeGitHubRelease": "Yes",
+            "BadgePyPIVersion": "Yes",
+            "BadgePyPIWheel": "Yes",
+            "BadgePyPIStatus": "Yes",
         }
         ini["Classifiers"] = {
             "DevStatus": "Development Status :: 1 - Planning",
@@ -603,9 +576,7 @@ class EnvSetUp:
 
     def make_project_name(self, p_static_name):
         if not p_static_name:
-            return "{}{}".format(
-                _PROJECT_NAME, datetime.datetime.now().strftime("%y%m%d%H%M%S%f")
-            )
+            return "{}{}".format(_PROJECT_NAME, datetime.datetime.now().strftime("%y%m%d%H%M%S%f"))
         else:
             return _PROJECT_NAME
 

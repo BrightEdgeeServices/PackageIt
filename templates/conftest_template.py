@@ -3,13 +3,17 @@
 Define the fixture functions in this file to make them accessible across multiple test files.
 '''
 import datetime
-from pathlib import Path
-import pytest
 import sys
+from pathlib import Path
 from tempfile import mkdtemp
-from beetools import get_os, msg_error, rm_tree
+
 import configparserext
-from github import Github, GithubException as gh_exc
+import pytest
+from beetools import get_os
+from beetools import msg_error
+from beetools import rm_tree
+from github import Github
+from github import GithubException as gh_exc
 
 _DESC = __doc__.split('\n')[0]
 _PATH = Path(__file__)

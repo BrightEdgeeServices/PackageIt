@@ -6,8 +6,10 @@
 
 import logging
 from pathlib import Path
+
+from beetools import beearchiver
+from beetools import beeutils
 from termcolor import colored
-from beetools import beearchiver, beeutils
 
 _PROJ_DESC = __doc__.split('\n')[0]
 _PROJ_PATH = Path(__file__)

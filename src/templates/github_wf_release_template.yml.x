@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.9
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
 
@@ -23,6 +23,7 @@ jobs:
         run: python -m build
 
       - name: Publish package to PyPI
+        if: github.repository == 'hendrikdutoit/PackageIt' && github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__

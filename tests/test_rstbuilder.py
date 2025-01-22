@@ -3,8 +3,6 @@
 import logging
 from pathlib import Path
 
-from beetools.beearchiver import Archiver
-
 from packageit.packageit import RSTBuilder
 
 _DESC = __doc__.split("\n")[0]
@@ -61,8 +59,6 @@ Install the test dependencies.
     $ pip install -r requirements_test.txt
 
 """
-
-b_tls = Archiver(_DESC, _PATH)
 
 
 class TestRstBuilder:

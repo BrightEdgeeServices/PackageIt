@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-from beetools.beearchiver import Archiver
-
 # from beetools.beeutils import rm_tree
 from packageit.packageit import GenLicense
 
@@ -14,14 +12,11 @@ _NAME = _PATH.stem
 
 def generate_lic_templates(working_dir):
     """Generate licence types"""
-    templ_pth = working_dir / "templ_lic_MITLicense.txt"
+    templ_pth = working_dir / "templ_lic_MITLicense.txt.x"
     templ_pth.write_text("This is a MIT Licence")
-    templ_pth = working_dir / "templ_lic_ApacheLicense20.txt"
+    templ_pth = working_dir / "templ_lic_ApacheLicense20.txt.x"
     templ_pth.write_text("This is an Apache License")
     return templ_pth.parents[0]
-
-
-b_tls = Archiver(_DESC, _PATH)
 
 
 class TestGenLicense:
@@ -59,6 +54,3 @@ class TestGenLicense:
         t_genlicense = GenLicense(_NAME, "ApacheLicense20", lic_templ_pth)
         assert t_genlicense.verify_lic_type()
         pass
-
-
-del b_tls

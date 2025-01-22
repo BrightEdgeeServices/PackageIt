@@ -5,14 +5,16 @@ Define the fixture functions in this file to make them accessible across multipl
 
 import datetime
 from pathlib import Path
-import pytest
 
 # import sys
 from tempfile import mkdtemp
-from beetools import get_os, rm_tree
-import configparserext
 
-# from github import Github, GithubException as gh_exc
+import configparserext
+import pytest
+from beetools.utils import get_os
+from beetools.utils import rm_tree
+
+import config
 
 _DESC = __doc__.split("\n")[0]
 _PATH = Path(__file__)
@@ -260,7 +262,7 @@ Releases are published automatically when a tag is pushed to GitHub.
     git push upstream --tags
 
 """
-_RELEASE_YAML_PROD = """name: Build distribution
+_RELEASE_YAML_PROD = """name: Distribute to PyPI
 
 on: [push, pull_request]
 
@@ -288,11 +290,11 @@ jobs:
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          password: ${{ secrets.PYPI_API_TOKEN_PROD }}
           repository_url: https://upload.pypi.org/legacy/
           verbose: true
 """
-_RELEASE_YAML_TEST = """name: Build distribution
+_RELEASE_YAML_TEST = """name: Distribute to PyPI
 
 on: [push, pull_request]
 
@@ -320,7 +322,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          password: ${{ secrets.PYPI_API_TOKEN_PROD }}
           repository_url: https://test.pypi.org/legacy/
           verbose: true
 """
@@ -344,6 +346,7 @@ class WorkingDir:
 
 class EnvSetUp:
     def __init__(self, p_make_project_ini=False, p_static_name=False):
+        self.env_settings = config.get_settings()
         self.project_name = self.make_project_name(p_static_name)
         self.anchor_dir = WorkingDir().dir
         self.classifiers = _CLASSIFIERS
@@ -368,11 +371,11 @@ class EnvSetUp:
         self.readme_contents = _README_CONTENTS.format(self.project_name)
         self.release_yaml_prod = _RELEASE_YAML_PROD
         self.release_yaml_test = _RELEASE_YAML_TEST
-        self.token_dir = Path("d:\\", "dropbox", "lib", "SSHKeys")
-        self.token_gh_pth = self.token_dir / "github_token.txt"
-        self.token_pypi_pth = self.token_dir / "PYPI_API_TOKEN.txt"
-        self.token_testpypi_pth = self.token_dir / "TEST_PYPI_API_TOKEN.txt"
-        self.token_rtd_pth = self.token_dir / "readthedocs_token.txt"
+        # self.token_dir = Path("d:\\", "dropbox", "lib", "SSHKeys")
+        # self.token_gh_pth = self.token_dir / "github_token.txt"
+        # self.token_pypi_pth = self.token_dir / "PYPI_API_TOKEN_PROD.txt"
+        # self.token_testpypi_pth = self.token_dir / "PYPI_API_TOKEN_TEST.txt"
+        # self.token_rtd_pth = self.token_dir / "readthedocs_token.txt"
 
         if p_make_project_ini:
             self.project_ini_pth = self.make_project_ini()
@@ -411,10 +414,8 @@ class EnvSetUp:
             "IntendedAudience002": "Intended Audience :: Developers",
             "IntendedAudience013": "Intended Audience :: System Administrators",
             "Topic013": "Topic :: Software Development",
-            "Topic027": "Topic :: System :: Systems Administration",
             "License": "License :: OSI Approved :: MIT License",
             "ProgrammingLanguage001": "Programming Language :: Python :: 3.0",
-            "ProgrammingLanguage010": "Programming Language :: Python :: 3.9",
             "ProgrammingLanguage011": "Programming Language :: Python :: 3.10",
         }
         ini["Coverage"] = {"Omit010": "setup.py"}
@@ -441,10 +442,10 @@ class EnvSetUp:
             #     'Ignore'  : '/VersionArchive;.workspace/;__pycache__/;*.komodoproject;*.log'
         }
         ini["GitHub"] = {
-            "BugTemplate": "templ_github_bug.md",
-            "ConfigTemplate": "templ_github_config.yaml",
+            "BugTemplate": "templ_github_bug.md.x",
+            "ConfigTemplate": "templ_github_config.yaml.x",
             "Enable": "Yes",
-            "FeatureTemplate": "templ_github_feature.md",
+            "FeatureTemplate": "templ_github_feature.md.x",
             "TokenFileName": "github_token.txt",
             "UserName": "hendrikdutoit",
             "Url": "https: // github.com",
@@ -471,14 +472,14 @@ class EnvSetUp:
         ini["PyPi"] = {
             "Publishing": "GitHub",  # No | GitHub| Twine
             "Repository": "testpypi",
-            "TokenFileNamePyPi": "PYPI_API_TOKEN.txt",
-            "TokenFileNameTestPyPi": "TEST_PYPI_API_TOKEN.txt",
+            "TokenFileNamePyPi": "PYPI_API_TOKEN_PROD.txt",
+            "TokenFileNameTestPyPi": "PYPI_API_TOKEN_TEST.txt",
         }
-        ini["ReadMe"] = {"DefaultBodyTemplate": "README_body_template.rst"}
+        ini["ReadMe"] = {"DefaultBodyTemplate": "README_body_template.rst.x"}
         ini["ReadTheDocs"] = {
             "Enable": "Yes",
-            "ConfigTemplate": "readthedocs_def_.readthedocs_template.yaml",
-            "NewProjectTemplate": "readthedocs_def_newproject_template.json",
+            "ConfigTemplate": "readthedocs_def_.readthedocs_template.yaml.x",
+            "NewProjectTemplate": "readthedocs_def_newproject_template.json.x",
             "TokenFileName": "readthedocs_token.txt",
         }
         ini["Sphinx"] = {
@@ -563,7 +564,7 @@ class EnvSetUp:
         ini["Import"] = {}
         ini["Install Apps"] = {}
         ini["LogLevels"] = {}
-        ini["ReadMe"] = {"DefaultBodyTemplate": "README_body_template.rst"}
+        ini["ReadMe"] = {"DefaultBodyTemplate": "README_body_template.rst.x"}
         ini["PyPi"] = {}
         ini["Sphinx"] = {}
         ini["tool:pytest"] = {

@@ -82,7 +82,7 @@ jobs:
           # Publish to PyPI using the API token stored in GitHub Secrets
           poetry publish \
             --username __token__ \
-            --password "${{ secrets.PYPI_API_TOKEN_PROD_231021 }}"
+            --password "${{ secrets.PYPI_API_TOKEN_PROD }}"
 
       - name: New release
         uses: softprops/action-gh-release@v2

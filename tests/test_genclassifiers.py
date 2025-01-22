@@ -2,10 +2,11 @@
 
 from pathlib import Path
 
-# from beetools.beeutils import rm_tree
-from beetools.beearchiver import Archiver
-
 from packageit.packageit import GenClassifiers
+
+# from beetools.beeutils import rm_tree
+# from beetools.beearchiver import Archiver
+
 
 # from genclassifiers_conftest import setup_env, make_ini
 
@@ -22,7 +23,6 @@ _CLASSIFIERS = [
     "Programming Language :: Python :: 3.0",
     "Programming Language :: Python :: 3.10",
 ]
-b_tls = Archiver(_DESC, _PATH)
 
 
 class TestGenClassifiers:
@@ -69,6 +69,3 @@ class TestGenClassifiers:
         assert t_genclassifier.topic == ["Topic :: Software Development"]
         assert t_genclassifier.contents == _CLASSIFIERS
         pass
-
-
-del b_tls

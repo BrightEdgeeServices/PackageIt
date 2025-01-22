@@ -1,9 +1,12 @@
+.idea
 .coverage
+.coveragerc
 .env
 .git/
 .idea/
 .pytest_cache/
 .run/
+.venv
 .vscode/
 _build/
 *.code-workspace
@@ -24,4 +27,7 @@ docs/build/
 docs/_build/
 docs/source/generated/
 htmlcov/
+logs/
+pyvenv.cfg
 tmp/
+venv/

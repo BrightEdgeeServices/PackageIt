@@ -11,8 +11,8 @@ jobs:
       matrix:
         #        python-version: ['3.8', '3.9', '3.10', '3.11']
         python-version: [ '3.12' ]
-    #        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-        os: ['ubuntu-latest']
+        #        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        os: [ 'ubuntu-latest' ]
 
     steps:
       - name: Check out code
@@ -32,12 +32,12 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
-          poetry config http-basic.PoetryExample x-access-token ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
+          poetry config http-basic.github.com x-access-token ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
           poetry config --list
 
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
- 
+      #      - name: Upgrade pip
+      #        run: python -m pip install --upgrade pip
+
       - name: Install dependencies
         run: |
           poetry install --with dev
@@ -47,10 +47,10 @@ jobs:
           echo "PythonPath=$PYTHONPATH"
           poetry run pytest --cov=./ --cov-report=xml
 
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v3
-#        with:
-#          files: coverage.xml
-#          fail_ci_if_error: true
-#          token: ${{ secrets.CODECOV_TOKEN }}
-#          slug: BrightEdgeeServices/DateId
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage.xml
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: BrightEdgeeServices/PackageIt

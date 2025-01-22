@@ -2,15 +2,11 @@
 
 from pathlib import Path
 
-from beetools.beearchiver import Archiver
-
 from packageit.packageit import GenSetUpPy
 
 _DESC = __doc__.split("\n")[0]
 _PATH = Path(__file__)
 _NAME = _PATH.stem
-
-b_tls = Archiver(_DESC, _PATH)
 
 
 _setup_py_contents = """
@@ -179,6 +175,3 @@ class TestGenSetUp:
         setup_py_text = (working_dir / "setup.py").read_text()
         assert setup_py_text == _setup_py_contents
         pass
-
-
-del b_tls

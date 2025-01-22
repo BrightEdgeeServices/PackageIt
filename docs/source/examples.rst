@@ -1,11 +1,10 @@
 .. role:: raw-html(raw)
     :format: html
-	
+
 ========
 Examples
 ========
 
------------------------------------------
 **Insert Example #1 description in here**
 -----------------------------------------
 
@@ -15,7 +14,6 @@ Examples
    t_pm = pympdule.Pymodule('ParentName')
 
 
------------------------------------------
 **Insert Example #2 description in here**
 -----------------------------------------
 

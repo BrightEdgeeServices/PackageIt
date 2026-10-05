@@ -42,14 +42,14 @@ repos:
         args: [ --py311-plus ]
 
   - repo: https://github.com/pycqa/isort
-    rev: 9.0.0a3
+    rev: 9.0.2
     hooks:
       - id: isort
         args: [ "--profile", "black", "--filter-files", "--force-single-line-imports",
                 "--force-alphabetical-sort-within-sections", "--py", "auto" ]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.2
+    rev: v2.4.3
     hooks:
       - id: codespell
         args: [--write, --toml, pyproject.toml]
@@ -57,13 +57,13 @@ repos:
           - tomli
 
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.5.1
+    rev: 26.10.0
     hooks:
     - id: black
       language_version: python3
 
   - repo: https://github.com/pycqa/flake8
-    rev: 7.3.0
+    rev: 7.4.1
     hooks:
     - id: flake8
       language_version: python3
